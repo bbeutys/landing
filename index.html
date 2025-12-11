@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BBeauty – Refined Aesthetics & Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --page-bg: #f6f3ec;
+      --card-bg: #fffaf4;
+      --circle-bg: #eeeade;
+      --accent: #b78163;
+      --accent-dark: #aa6c50;
+      --border-soft: #e3d7c7;
+      --text-main: #22231e;
+      --text-muted: #706a61;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #f1e6d8 0, var(--page-bg) 45%, var(--page-bg) 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 32px;
+      padding: 24px 22px 28px;
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(216, 200, 183, 0.7);
+    }
+
+    header.hero {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .logo-wrap {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fffdf9 0, var(--circle-bg) 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(210, 188, 166, 0.9);
+    }
+
+    .logo-wrap img {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .hero-location {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .hero-location span {
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .pill-row {
+      margin: 22px auto 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #f3e7d9;
+      color: var(--accent-dark);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(183, 129, 99, 0.35);
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .section-note {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .section-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 640px;
+    }
+
+    .btn-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: #fffdf9;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #f6e5d7, #f2dac9);
+      border-color: var(--accent);
+      color: var(--text-main);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      background: #f4e6d7;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .service-card {
+      background: #fffdf9;
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      padding: 12px 14px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .service-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-dark);
+      margin-bottom: 2px;
+    }
+
+    .service-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .service-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .service-footer {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .btn.small {
+      padding: 7px 14px;
+      font-size: 13px;
+    }
+
+    .price-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 6px;
+    }
+
+    .chip-link {
+      font-size: 11px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255, 250, 244, 0.9);
+      text-decoration: none;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .chip-link:hover {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+    }
+
+    .price-section {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid #e0d4c5;
+    }
+
+    .price-section h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 8px;
+    }
+
+    .price-row-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-dark);
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 3px 0;
+      font-size: 13px;
+    }
+
+    .price-row span:last-child {
+      color: var(--accent-dark);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .map-block, .contact-block {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #e0d4c5;
+    }
+
+    .map-text, .contact-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        border-radius: 26px;
+        padding: 20px 16px 24px;
+      }
+
+      .hero-title {
+        font-size: 22px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <header class="hero">
+        <div class="logo-wrap">
+          <!-- Замените src на свой файл логотипа -->
+          <img src="logo-bbeauty.png" alt="BBeauty logo" />
+        </div>
+        <div class="hero-title">BBEAUTY</div>
+        <div class="hero-subtitle">Refined Aesthetics &amp; Laser Care</div>
+        <p class="hero-desc">
+          Modern beauty studio specializing in laser hair removal and lash extensions. Gentle, precise treatments
+          for women &amp; men in a warm, minimalist space.
+        </p>
+        <p class="hero-location">
+          📍 <span>Ouvertureweg 15–19</span>, 2402 DT Alphen aan den Rijn<br />
+          By appointment only
+        </p>
+        <div class="pill-row">
+          <div class="pill">Laser Hair Removal</div>
+          <div class="pill">Lash Extensions</div>
+        </div>
+      </header>
+
+      <section class="section" id="services">
+        <div class="section-header">
+          <h2 class="section-title">Our Services</h2>
+          <span class="section-note">Fast booking for our most popular treatments.</span>
+        </div>
+        <p class="section-text">
+          We offer high-quality laser hair removal for women and men, as well as classic and trending lash extension
+          styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
+        </p>
+        <div class="btn-row">
+          <a href="#" class="btn primary">Book Appointment</a>
+          <a href="#contact" class="btn">Message on WhatsApp</a>
+        </div>
+      </section>
+
+      <section class="section" id="featured">
+        <div class="section-header">
+          <h2 class="section-title">Popular Treatments</h2>
+          <span class="section-note">A quick look at our best‑selling services.</span>
+        </div>
+        <div class="services-grid">
+          <!-- Women laser examples -->
+          <article class="service-card">
+            <div class="service-label">Laser • Women</div>
+            <div class="service-name">Deep Bikini</div>
+            <div class="service-meta">Smooth and precise hair removal in the full bikini area.</div>
+            <div class="service-footer">
+              <div class="price">€75</div>
+              <a href="#" class="btn small primary">Book</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label">Laser • Women</div>
+            <div class="service-name">Full Legs</div>
+            <div class="service-meta">From thighs to ankles – full leg coverage.</div>
+            <div class="service-footer">
+              <div class="price">€80</div>
+              <a href="#" class="btn small primary">Book</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label">Laser • Combo</div>
+            <div class="service-name">Deep Bikini + Armpits</div>
+            <div class="service-meta">Best value combo for frequently treated zones.</div>
+            <div class="service-footer">
+              <div class="price">€80</div>
+              <a href="#" class="btn small primary">Book</a>
+            </div>
+          </article>
+
+          <!-- Men laser examples -->
+          <article class="service-card">
+            <div class="service-label">Laser • Men</div>
+            <div class="service-name">Full Back</div>
+            <div class="service-meta">Even hair reduction across the entire back.</div>
+            <div class="service-footer">
+              <div class="price">€60</div>
+              <a href="#" class="btn small primary">Book</a>
+            </div>
+          </article>
+
+          <!-- Lashes examples -->
+          <article class="service-card">
+            <div class="service-label">Lash Extensions</div>
+            <div class="service-name">Classic Set</div>
+            <div class="service-meta">Soft, natural look that enhances your everyday eye shape.</div>
+            <div class="service-footer">
+              <div class="price">€60</div>
+              <a href="#" class="btn small primary">Book</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label">Lash Extensions</div>
+            <div class="service-name">Trend Effect (Whispy / Wet)</div>
+            <div class="service-meta">Expressive, textured look with inner volume.</div>
+            <div class="service-footer">
+              <div class="price">€80</div>
+              <a href="#" class="btn small primary">Book</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="prices">
+        <div class="section-header">
+          <h2 class="section-title">Full Price List</h2>
+          <span class="section-note">Transparent prices for all zones and sets.</span>
+        </div>
+        <div class="price-nav">
+          <a class="chip-link" href="#price-women-body">Women · Body &amp; Bikini</a>
+          <a class="chip-link" href="#price-women-face">Women · Face &amp; Mini</a>
+          <a class="chip-link" href="#price-women-combo">Women · Combo Sets</a>
+          <a class="chip-link" href="#price-men">Men Only · Laser</a>
+          <a class="chip-link" href="#price-lashes">Lash Extensions</a>
+        </div>
+
+        <div class="price-section" id="price-women-body">
+          <h3>Women&apos;s Body &amp; Bikini (Base Zones)</h3>
+          <div class="price-row-group-title">Bikini</div>
+          <div class="price-row"><span>Classic</span><span>€50</span></div>
+          <div class="price-row"><span>Deep</span><span>€75</span></div>
+
+          <div class="price-row-group-title">Legs</div>
+          <div class="price-row"><span>Half (Lower / Upper)</span><span>€45</span></div>
+          <div class="price-row"><span>Full</span><span>€80</span></div>
+
+          <div class="price-row-group-title">Hands</div>
+          <div class="price-row"><span>Half (Lower / Upper)</span><span>€35</span></div>
+          <div class="price-row"><span>Full</span><span>€60</span></div>
+
+          <div class="price-row-group-title">Body</div>
+          <div class="price-row"><span>Buttocks</span><span>€40</span></div>
+          <div class="price-row"><span>Stomach</span><span>€30</span></div>
+        </div>
+
+        <div class="price-section" id="price-women-combo">
+          <h3>Women&apos;s Combo Sets (Best Value)</h3>
+          <div class="price-row"><span>Deep Bikini + Armpits</span><span>€80</span></div>
+          <div class="price-row"><span>Deep Bikini + Armpits + Full Legs</span><span>€130</span></div>
+          <div class="price-row"><span>All In (Legs + Hands + Belly + Bikini)</span><span>€150</span></div>
+          <div class="price-row"><span>Full Body</span><span>€200</span></div>
+        </div>
+
+        <div class="price-section" id="price-women-face">
+          <h3>Women&apos;s Face &amp; Mini Zones</h3>
+          <div class="price-row-group-title">Face</div>
+          <div class="price-row"><span>Full Face</span><span>€50</span></div>
+          <div class="price-row"><span>Chin</span><span>€15</span></div>
+          <div class="price-row"><span>Mustache</span><span>€15</span></div>
+          <div class="price-row"><span>Cheeks</span><span>€20</span></div>
+
+          <div class="price-row-group-title">Mini Zones</div>
+          <div class="price-row"><span>Areolas</span><span>€20</span></div>
+          <div class="price-row"><span>Belly Line</span><span>€20</span></div>
+          <div class="price-row"><span>Intergluteal Fold</span><span>€15</span></div>
+        </div>
+
+        <div class="price-section" id="price-men">
+          <h3>Men Only (Laser Epilation)</h3>
+          <div class="price-row"><span>Full Back</span><span>€60</span></div>
+          <div class="price-row"><span>Bikini</span><span>€80</span></div>
+          <div class="price-row"><span>Armpits</span><span>€30</span></div>
+          <div class="price-row"><span>Chest</span><span>€50</span></div>
+          <div class="price-row"><span>Chest + Belly</span><span>€80</span></div>
+          <div class="price-row"><span>Beard Line (Neck Right Back)</span><span>€60</span></div>
+        </div>
+
+        <div class="price-section" id="price-lashes">
+          <h3>Lash Extensions</h3>
+          <div class="price-row"><span>Eyelashes Classic</span><span>€60</span></div>
+          <div class="price-row"><span>Refill Classic (till 3 weeks)</span><span>€45</span></div>
+          <div class="price-row"><span>Hybrid Mascara Effect</span><span>€80</span></div>
+          <div class="price-row"><span>Hybrid Refill (till 3 weeks)</span><span>€65</span></div>
+          <div class="price-row"><span>Volume 3D Effect · Full Set</span><span>€90</span></div>
+          <div class="price-row"><span>Refill 3D Effect (till 3 weeks)</span><span>€60</span></div>
+          <div class="price-row"><span>Refill Trend Effect</span><span>€75</span></div>
+          <div class="price-row"><span>Trend Effect Whispy / Wet with Inner Volume</span><span>€80</span></div>
+        </div>
+      </section>
+
+      <section class="map-block" id="map">
+        <div class="section-header">
+          <h2 class="section-title">How to Find Us</h2>
+        </div>
+        <p class="map-text">
+          The studio is located in Alphen aan den Rijn with convenient access and nearby parking. Open the route in your
+          preferred maps app.
+        </p>
+        <div class="btn-row">
+          <a href="#" class="btn primary">Open in Google Maps</a>
+          <a href="#" class="btn">Open in Waze</a>
+        </div>
+      </section>
+
+      <section class="contact-block" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <p class="contact-text">
+          For bookings, questions or changes to your appointment, send us a WhatsApp message or email. We&apos;ll reply as
+          soon as possible between appointments.
+        </p>
+        <div class="btn-row">
+          <a href="#" class="btn primary">Chat on WhatsApp</a>
+          <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
+        </div>
+      </section>
+
+      <footer>
+        <div>BBeauty • Alphen aan den Rijn</div>
+        <div>© 2025 BBeauty</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
