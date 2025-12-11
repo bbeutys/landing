@@ -59,17 +59,21 @@ php -S localhost:8000
 └── README.md           # This file
 ```
 
-## ✨ Recent Improvements (December 2024)
+## ✨ Recent Improvements (December 2025)
 
 ### 🌍 New Features (Latest Update)
+- ✅ **Refined Typography**: Elegant Google Fonts (Cormorant for headings, Inter for body text) with fallback stacks
+- ✅ **Improved Ukrainian Translation**: Natural phrasing with "Всі ноги" (All legs) instead of "Повні ноги", consistent use of "Усе" vs "Все"
+- ✅ **Correct WhatsApp Number**: Updated to +31633915100 across all 8+ booking links
+- ✅ **Better Text Logic**: Changed "Full Price List" to "Service Prices", "Full" to "Complete" for clarity
+- ✅ **Enhanced Button States**: Improved hover/focus/active states with visual feedback and box shadows
+- ✅ **Better Centering**: Fixed button and navigation alignment issues
+- ✅ **Subtle Background Design**: Integrated existing images as decorative watermarks (back.png, mini-icon.png)
+- ✅ **Mobile-First Responsive**: Enhanced touch targets (44-48px min), better spacing, optimized for all screen sizes
 - ✅ **Ukrainian Language Support**: Full Ukrainian translation with language switcher (🇬🇧/🇺🇦)
 - ✅ **Language Persistence**: Selected language saved in localStorage
-- ✅ **Updated Contact**: WhatsApp number changed to +3163391500
-- ✅ **Updated Address**: Ouvertureweg 15 - 19, 2402 DT Alphen aan den Rijn, Netherlands
 - ✅ **Sectional Price List**: Category-based price display with Bundles shown by default
-- ✅ **Active State Indicators**: Proper highlighting for active category buttons
 - ✅ **Smooth Animations**: Fade-in effects on scroll with prefers-reduced-motion support
-- ✅ **Enhanced Mobile UX**: Optimized touch targets (44px min), responsive layout, no horizontal scroll
 - ✅ **Updated Map Links**: Google Maps and Waze links with correct address
 
 ### 🐛 Bug Fixes
@@ -124,14 +128,22 @@ php -S localhost:8000
 **Colors:**
 - Primary background: `#f6f3ec` (warm cream)
 - Card background: `#fffaf4` (off-white)
-- Accent: `#b78163` (warm brown)
+- Accent: `#b78163` (warm brown/terracotta)
 - Text: `#22231e` (near-black)
 - Muted text: `#706a61` (warm gray)
 
 **Typography:**
-- System font stack for optimal loading
+- Headings: Cormorant (serif, elegant)
+- Body: Inter (sans-serif, readable)
+- System font fallbacks for optimal loading
 - Responsive font sizes
 - Proper heading hierarchy
+
+**Visual Design:**
+- Subtle background textures using existing images
+- Minimalist aesthetic with warm tones
+- Decorative watermark elements
+- Smooth transitions and hover effects
 
 ## 🌍 Language
 
@@ -145,7 +157,7 @@ Currently available in **English** and **Ukrainian** (Українська).
 
 - **Location**: Ouvertureweg 15 - 19, 2402 DT Alphen aan den Rijn, Netherlands
 - **Email**: hello@bbeauty.nl
-- **WhatsApp**: [Click to message](https://wa.me/3163391500)
+- **WhatsApp**: [+31 6 33915100](https://wa.me/31633915100)
 - **Appointment**: By appointment only
 
 ## 🔧 Technical Details
