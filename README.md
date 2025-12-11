@@ -59,7 +59,7 @@ php -S localhost:8000
 └── README.md           # This file
 ```
 
-## ✨ Recent Improvements (December 2025)
+## ✨ Recent Improvements (December 2024)
 
 ### 🌍 New Features (Latest Update)
 - ✅ **Refined Typography**: Elegant Google Fonts (Cormorant for headings, Inter for body text) with fallback stacks
