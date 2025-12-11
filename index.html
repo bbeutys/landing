@@ -2,8 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BBeauty – Refined Aesthetics & Care</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BBeauty – Refined Aesthetics & Laser Care | Alphen aan den Rijn</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Modern beauty studio in Alphen aan den Rijn specializing in laser hair removal for women & men, and professional lash extensions. Book your appointment today!" />
+  <meta name="keywords" content="laser hair removal, lash extensions, beauty studio, Alphen aan den Rijn, BBeauty, aesthetics, laser epilation" />
+  <meta name="author" content="BBeauty" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bbeautys.nl/" />
+  <meta property="og:title" content="BBeauty – Refined Aesthetics & Laser Care" />
+  <meta property="og:description" content="Modern beauty studio in Alphen aan den Rijn specializing in laser hair removal and lash extensions. Gentle, precise treatments in a warm, minimalist space." />
+  <meta property="og:image" content="https://bbeautys.nl/logo-bbeauty.png" />
+  <meta property="og:locale" content="en_US" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://bbeautys.nl/" />
+  <meta name="twitter:title" content="BBeauty – Refined Aesthetics & Laser Care" />
+  <meta name="twitter:description" content="Modern beauty studio specializing in laser hair removal and lash extensions in Alphen aan den Rijn." />
+  <meta name="twitter:image" content="https://bbeautys.nl/logo-bbeauty.png" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="logo-bbeauty.png" />
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#f6f3ec" />
   <style>
     :root {
       --page-bg: #f6f3ec;
@@ -327,6 +355,28 @@
       text-decoration: none;
     }
 
+    /* Skip to main content link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Improve focus visibility */
+    a:focus, button:focus, .btn:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     @media (max-width: 640px) {
       .card {
         border-radius: 26px;
@@ -347,17 +397,47 @@
       }
     }
   </style>
+  
+  <!-- Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "BBeauty",
+    "description": "Modern beauty studio specializing in laser hair removal and lash extensions",
+    "url": "https://bbeautys.nl/",
+    "logo": "https://bbeautys.nl/logo-bbeauty.png",
+    "image": "https://bbeautys.nl/logo-bbeauty.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ouvertureweg 15-19",
+      "addressLocality": "Alphen aan den Rijn",
+      "postalCode": "2402 DT",
+      "addressCountry": "NL"
+    },
+    "priceRange": "€€",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  }
+  </script>
 </head>
 <body>
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
   <div class="page">
     <div class="card">
+      <!-- Header/Hero Section -->
       <header class="hero">
         <div class="logo-wrap">
-          <!-- Замените src на свой файл логотипа -->
-          <img src="logo-bbeauty.png" alt="BBeauty logo" />
+          <img src="logo-bbeauty.png" alt="BBeauty studio logo" width="104" height="104" loading="eager" />
         </div>
-        <div class="hero-title">BBEAUTY</div>
-        <div class="hero-subtitle">Refined Aesthetics &amp; Laser Care</div>
+        <h1 class="hero-title">BBEAUTY</h1>
+        <p class="hero-subtitle">Refined Aesthetics &amp; Laser Care</p>
         <p class="hero-desc">
           Modern beauty studio specializing in laser hair removal and lash extensions. Gentle, precise treatments
           for women &amp; men in a warm, minimalist space.
@@ -366,204 +446,214 @@
           📍 <span>Ouvertureweg 15–19</span>, 2402 DT Alphen aan den Rijn<br />
           By appointment only
         </p>
-        <div class="pill-row">
-          <div class="pill">Laser Hair Removal</div>
-          <div class="pill">Lash Extensions</div>
+        <div class="pill-row" role="list">
+          <div class="pill" role="listitem">Laser Hair Removal</div>
+          <div class="pill" role="listitem">Lash Extensions</div>
         </div>
       </header>
 
-      <section class="section" id="services">
-        <div class="section-header">
-          <h2 class="section-title">Our Services</h2>
-          <span class="section-note">Fast booking for our most popular treatments.</span>
-        </div>
-        <p class="section-text">
-          We offer high-quality laser hair removal for women and men, as well as classic and trending lash extension
-          styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
-        </p>
-        <div class="btn-row">
-          <a href="#" class="btn primary">Book Appointment</a>
-          <a href="#contact" class="btn">Message on WhatsApp</a>
-        </div>
-      </section>
+      <!-- Main Content -->
+      <main id="main-content">
 
-      <section class="section" id="featured">
-        <div class="section-header">
-          <h2 class="section-title">Popular Treatments</h2>
-          <span class="section-note">A quick look at our best‑selling services.</span>
-        </div>
-        <div class="services-grid">
-          <!-- Women laser examples -->
-          <article class="service-card">
-            <div class="service-label">Laser • Women</div>
-            <div class="service-name">Deep Bikini</div>
-            <div class="service-meta">Smooth and precise hair removal in the full bikini area.</div>
-            <div class="service-footer">
-              <div class="price">€75</div>
-              <a href="#" class="btn small primary">Book</a>
-            </div>
-          </article>
+        <!-- Services Section -->
+        <section class="section" id="services" aria-labelledby="services-title">
+          <div class="section-header">
+            <h2 id="services-title" class="section-title">Our Services</h2>
+            <span class="section-note">Fast booking for our most popular treatments.</span>
+          </div>
+          <p class="section-text">
+            We offer high-quality laser hair removal for women and men, as well as classic and trending lash extension
+            styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
+          </p>
+          <div class="btn-row">
+            <a href="https://wa.me/31612345678" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp">Book Appointment</a>
+            <a href="#contact" class="btn">Message on WhatsApp</a>
+          </div>
+        </section>
 
-          <article class="service-card">
-            <div class="service-label">Laser • Women</div>
-            <div class="service-name">Full Legs</div>
-            <div class="service-meta">From thighs to ankles – full leg coverage.</div>
-            <div class="service-footer">
-              <div class="price">€80</div>
-              <a href="#" class="btn small primary">Book</a>
-            </div>
-          </article>
+        <!-- Popular Treatments Section -->
+        <section class="section" id="featured" aria-labelledby="featured-title">
+          <div class="section-header">
+            <h2 id="featured-title" class="section-title">Popular Treatments</h2>
+            <span class="section-note">A quick look at our best‑selling services.</span>
+          </div>
+          <div class="services-grid">
+            <!-- Women laser examples -->
+            <article class="service-card">
+              <div class="service-label">Laser • Women</div>
+              <h3 class="service-name">Deep Bikini</h3>
+              <p class="service-meta">Smooth and precise hair removal in the full bikini area.</p>
+              <div class="service-footer">
+                <div class="price" aria-label="Price: 75 euros">€75</div>
+                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+              </div>
+            </article>
 
-          <article class="service-card">
-            <div class="service-label">Laser • Combo</div>
-            <div class="service-name">Deep Bikini + Armpits</div>
-            <div class="service-meta">Best value combo for frequently treated zones.</div>
-            <div class="service-footer">
-              <div class="price">€80</div>
-              <a href="#" class="btn small primary">Book</a>
-            </div>
-          </article>
+            <article class="service-card">
+              <div class="service-label">Laser • Women</div>
+              <h3 class="service-name">Full Legs</h3>
+              <p class="service-meta">From thighs to ankles – full leg coverage.</p>
+              <div class="service-footer">
+                <div class="price" aria-label="Price: 80 euros">€80</div>
+                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Full%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+              </div>
+            </article>
 
-          <!-- Men laser examples -->
-          <article class="service-card">
-            <div class="service-label">Laser • Men</div>
-            <div class="service-name">Full Back</div>
-            <div class="service-meta">Even hair reduction across the entire back.</div>
-            <div class="service-footer">
-              <div class="price">€60</div>
-              <a href="#" class="btn small primary">Book</a>
-            </div>
-          </article>
+            <article class="service-card">
+              <div class="service-label">Laser • Combo</div>
+              <h3 class="service-name">Deep Bikini + Armpits</h3>
+              <p class="service-meta">Best value combo for frequently treated zones.</p>
+              <div class="service-footer">
+                <div class="price" aria-label="Price: 80 euros">€80</div>
+                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+              </div>
+            </article>
 
-          <!-- Lashes examples -->
-          <article class="service-card">
-            <div class="service-label">Lash Extensions</div>
-            <div class="service-name">Classic Set</div>
-            <div class="service-meta">Soft, natural look that enhances your everyday eye shape.</div>
-            <div class="service-footer">
-              <div class="price">€60</div>
-              <a href="#" class="btn small primary">Book</a>
-            </div>
-          </article>
+            <!-- Men laser examples -->
+            <article class="service-card">
+              <div class="service-label">Laser • Men</div>
+              <h3 class="service-name">Full Back</h3>
+              <p class="service-meta">Even hair reduction across the entire back.</p>
+              <div class="service-footer">
+                <div class="price" aria-label="Price: 60 euros">€60</div>
+                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Full%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+              </div>
+            </article>
 
-          <article class="service-card">
-            <div class="service-label">Lash Extensions</div>
-            <div class="service-name">Trend Effect (Whispy / Wet)</div>
-            <div class="service-meta">Expressive, textured look with inner volume.</div>
-            <div class="service-footer">
-              <div class="price">€80</div>
-              <a href="#" class="btn small primary">Book</a>
-            </div>
-          </article>
-        </div>
-      </section>
+            <!-- Lashes examples -->
+            <article class="service-card">
+              <div class="service-label">Lash Extensions</div>
+              <h3 class="service-name">Classic Set</h3>
+              <p class="service-meta">Soft, natural look that enhances your everyday eye shape.</p>
+              <div class="service-footer">
+                <div class="price" aria-label="Price: 60 euros">€60</div>
+                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+              </div>
+            </article>
 
-      <section class="section" id="prices">
-        <div class="section-header">
-          <h2 class="section-title">Full Price List</h2>
-          <span class="section-note">Transparent prices for all zones and sets.</span>
-        </div>
-        <div class="price-nav">
-          <a class="chip-link" href="#price-women-body">Women · Body &amp; Bikini</a>
-          <a class="chip-link" href="#price-women-face">Women · Face &amp; Mini</a>
-          <a class="chip-link" href="#price-women-combo">Women · Combo Sets</a>
-          <a class="chip-link" href="#price-men">Men Only · Laser</a>
-          <a class="chip-link" href="#price-lashes">Lash Extensions</a>
-        </div>
+            <article class="service-card">
+              <div class="service-label">Lash Extensions</div>
+              <h3 class="service-name">Trend Effect (Whispy / Wet)</h3>
+              <p class="service-meta">Expressive, textured look with inner volume.</p>
+              <div class="service-footer">
+                <div class="price" aria-label="Price: 80 euros">€80</div>
+                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+              </div>
+            </article>
+          </div>
+        </section>
 
-        <div class="price-section" id="price-women-body">
-          <h3>Women&apos;s Body &amp; Bikini (Base Zones)</h3>
-          <div class="price-row-group-title">Bikini</div>
-          <div class="price-row"><span>Classic</span><span>€50</span></div>
-          <div class="price-row"><span>Deep</span><span>€75</span></div>
+        <!-- Full Price List Section -->
+        <section class="section" id="prices" aria-labelledby="prices-title">
+          <div class="section-header">
+            <h2 id="prices-title" class="section-title">Full Price List</h2>
+            <span class="section-note">Transparent prices for all zones and sets.</span>
+          </div>
+          <nav class="price-nav" aria-label="Price categories navigation">
+            <a class="chip-link" href="#price-women-body">Women · Body &amp; Bikini</a>
+            <a class="chip-link" href="#price-women-face">Women · Face &amp; Mini</a>
+            <a class="chip-link" href="#price-women-combo">Women · Combo Sets</a>
+            <a class="chip-link" href="#price-men">Men Only · Laser</a>
+            <a class="chip-link" href="#price-lashes">Lash Extensions</a>
+          </nav>
 
-          <div class="price-row-group-title">Legs</div>
-          <div class="price-row"><span>Half (Lower / Upper)</span><span>€45</span></div>
-          <div class="price-row"><span>Full</span><span>€80</span></div>
+          <div class="price-section" id="price-women-body">
+            <h3>Women&apos;s Body &amp; Bikini (Base Zones)</h3>
+            <div class="price-row-group-title">Bikini</div>
+            <div class="price-row"><span>Classic</span><span>€50</span></div>
+            <div class="price-row"><span>Deep</span><span>€75</span></div>
 
-          <div class="price-row-group-title">Hands</div>
-          <div class="price-row"><span>Half (Lower / Upper)</span><span>€35</span></div>
-          <div class="price-row"><span>Full</span><span>€60</span></div>
+            <div class="price-row-group-title">Legs</div>
+            <div class="price-row"><span>Half (Lower / Upper)</span><span>€45</span></div>
+            <div class="price-row"><span>Full</span><span>€80</span></div>
 
-          <div class="price-row-group-title">Body</div>
-          <div class="price-row"><span>Buttocks</span><span>€40</span></div>
-          <div class="price-row"><span>Stomach</span><span>€30</span></div>
-        </div>
+            <div class="price-row-group-title">Arms</div>
+            <div class="price-row"><span>Half (Lower / Upper)</span><span>€35</span></div>
+            <div class="price-row"><span>Full</span><span>€60</span></div>
 
-        <div class="price-section" id="price-women-combo">
-          <h3>Women&apos;s Combo Sets (Best Value)</h3>
-          <div class="price-row"><span>Deep Bikini + Armpits</span><span>€80</span></div>
-          <div class="price-row"><span>Deep Bikini + Armpits + Full Legs</span><span>€130</span></div>
-          <div class="price-row"><span>All In (Legs + Hands + Belly + Bikini)</span><span>€150</span></div>
-          <div class="price-row"><span>Full Body</span><span>€200</span></div>
-        </div>
+            <div class="price-row-group-title">Body</div>
+            <div class="price-row"><span>Buttocks</span><span>€40</span></div>
+            <div class="price-row"><span>Stomach</span><span>€30</span></div>
+          </div>
 
-        <div class="price-section" id="price-women-face">
-          <h3>Women&apos;s Face &amp; Mini Zones</h3>
-          <div class="price-row-group-title">Face</div>
-          <div class="price-row"><span>Full Face</span><span>€50</span></div>
-          <div class="price-row"><span>Chin</span><span>€15</span></div>
-          <div class="price-row"><span>Mustache</span><span>€15</span></div>
-          <div class="price-row"><span>Cheeks</span><span>€20</span></div>
+          <div class="price-section" id="price-women-combo">
+            <h3>Women&apos;s Combo Sets (Best Value)</h3>
+            <div class="price-row"><span>Deep Bikini + Armpits</span><span>€80</span></div>
+            <div class="price-row"><span>Deep Bikini + Armpits + Full Legs</span><span>€130</span></div>
+            <div class="price-row"><span>All In (Legs + Arms + Belly + Bikini)</span><span>€150</span></div>
+            <div class="price-row"><span>Full Body</span><span>€200</span></div>
+          </div>
 
-          <div class="price-row-group-title">Mini Zones</div>
-          <div class="price-row"><span>Areolas</span><span>€20</span></div>
-          <div class="price-row"><span>Belly Line</span><span>€20</span></div>
-          <div class="price-row"><span>Intergluteal Fold</span><span>€15</span></div>
-        </div>
+          <div class="price-section" id="price-women-face">
+            <h3>Women&apos;s Face &amp; Mini Zones</h3>
+            <div class="price-row-group-title">Face</div>
+            <div class="price-row"><span>Full Face</span><span>€50</span></div>
+            <div class="price-row"><span>Chin</span><span>€15</span></div>
+            <div class="price-row"><span>Mustache</span><span>€15</span></div>
+            <div class="price-row"><span>Cheeks</span><span>€20</span></div>
 
-        <div class="price-section" id="price-men">
-          <h3>Men Only (Laser Epilation)</h3>
-          <div class="price-row"><span>Full Back</span><span>€60</span></div>
-          <div class="price-row"><span>Bikini</span><span>€80</span></div>
-          <div class="price-row"><span>Armpits</span><span>€30</span></div>
-          <div class="price-row"><span>Chest</span><span>€50</span></div>
-          <div class="price-row"><span>Chest + Belly</span><span>€80</span></div>
-          <div class="price-row"><span>Beard Line (Neck Right Back)</span><span>€60</span></div>
-        </div>
+            <div class="price-row-group-title">Mini Zones</div>
+            <div class="price-row"><span>Areolas</span><span>€20</span></div>
+            <div class="price-row"><span>Belly Line</span><span>€20</span></div>
+            <div class="price-row"><span>Intergluteal Fold</span><span>€15</span></div>
+          </div>
 
-        <div class="price-section" id="price-lashes">
-          <h3>Lash Extensions</h3>
-          <div class="price-row"><span>Eyelashes Classic</span><span>€60</span></div>
-          <div class="price-row"><span>Refill Classic (till 3 weeks)</span><span>€45</span></div>
-          <div class="price-row"><span>Hybrid Mascara Effect</span><span>€80</span></div>
-          <div class="price-row"><span>Hybrid Refill (till 3 weeks)</span><span>€65</span></div>
-          <div class="price-row"><span>Volume 3D Effect · Full Set</span><span>€90</span></div>
-          <div class="price-row"><span>Refill 3D Effect (till 3 weeks)</span><span>€60</span></div>
-          <div class="price-row"><span>Refill Trend Effect</span><span>€75</span></div>
-          <div class="price-row"><span>Trend Effect Whispy / Wet with Inner Volume</span><span>€80</span></div>
-        </div>
-      </section>
+          <div class="price-section" id="price-men">
+            <h3>Men Only (Laser Epilation)</h3>
+            <div class="price-row"><span>Full Back</span><span>€60</span></div>
+            <div class="price-row"><span>Bikini</span><span>€80</span></div>
+            <div class="price-row"><span>Armpits</span><span>€30</span></div>
+            <div class="price-row"><span>Chest</span><span>€50</span></div>
+            <div class="price-row"><span>Chest + Belly</span><span>€80</span></div>
+            <div class="price-row"><span>Beard Line (Neck & Back)</span><span>€60</span></div>
+          </div>
 
-      <section class="map-block" id="map">
-        <div class="section-header">
-          <h2 class="section-title">How to Find Us</h2>
-        </div>
-        <p class="map-text">
-          The studio is located in Alphen aan den Rijn with convenient access and nearby parking. Open the route in your
-          preferred maps app.
-        </p>
-        <div class="btn-row">
-          <a href="#" class="btn primary">Open in Google Maps</a>
-          <a href="#" class="btn">Open in Waze</a>
-        </div>
-      </section>
+          <div class="price-section" id="price-lashes">
+            <h3>Lash Extensions</h3>
+            <div class="price-row"><span>Eyelashes Classic</span><span>€60</span></div>
+            <div class="price-row"><span>Refill Classic (up to 3 weeks)</span><span>€45</span></div>
+            <div class="price-row"><span>Hybrid Mascara Effect</span><span>€80</span></div>
+            <div class="price-row"><span>Hybrid Refill (up to 3 weeks)</span><span>€65</span></div>
+            <div class="price-row"><span>Volume 3D Effect · Full Set</span><span>€90</span></div>
+            <div class="price-row"><span>Refill 3D Effect (up to 3 weeks)</span><span>€60</span></div>
+            <div class="price-row"><span>Refill Trend Effect</span><span>€75</span></div>
+            <div class="price-row"><span>Trend Effect Whispy / Wet with Inner Volume</span><span>€80</span></div>
+          </div>
+        </section>
 
-      <section class="contact-block" id="contact">
-        <div class="section-header">
-          <h2 class="section-title">Contact</h2>
-        </div>
-        <p class="contact-text">
-          For bookings, questions or changes to your appointment, send us a WhatsApp message or email. We&apos;ll reply as
-          soon as possible between appointments.
-        </p>
-        <div class="btn-row">
-          <a href="#" class="btn primary">Chat on WhatsApp</a>
-          <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
-        </div>
-      </section>
+        <!-- Map/Location Section -->
+        <section class="map-block" id="map" aria-labelledby="map-title">
+          <div class="section-header">
+            <h2 id="map-title" class="section-title">How to Find Us</h2>
+          </div>
+          <p class="map-text">
+            The studio is located in Alphen aan den Rijn with convenient access and nearby parking. Open the route in your
+            preferred maps app.
+          </p>
+          <div class="btn-row">
+            <a href="https://www.google.com/maps/search/?api=1&query=Ouvertureweg+15-19+2402+DT+Alphen+aan+den+Rijn" class="btn primary" rel="noopener noreferrer" target="_blank">Open in Google Maps</a>
+            <a href="https://waze.com/ul?q=Ouvertureweg+15-19+Alphen+aan+den+Rijn" class="btn" rel="noopener noreferrer" target="_blank">Open in Waze</a>
+          </div>
+        </section>
 
-      <footer>
+        <!-- Contact Section -->
+        <section class="contact-block" id="contact" aria-labelledby="contact-title">
+          <div class="section-header">
+            <h2 id="contact-title" class="section-title">Contact</h2>
+          </div>
+          <p class="contact-text">
+            For bookings, questions or changes to your appointment, send us a WhatsApp message or email. We&apos;ll reply as
+            soon as possible between appointments.
+          </p>
+          <div class="btn-row">
+            <a href="https://wa.me/31612345678" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
+            <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer role="contentinfo">
         <div>BBeauty • Alphen aan den Rijn</div>
         <div>© 2025 BBeauty</div>
       </footer>
