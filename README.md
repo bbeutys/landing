@@ -61,6 +61,17 @@ php -S localhost:8000
 
 ## ✨ Recent Improvements (December 2024)
 
+### 🌍 New Features (Latest Update)
+- ✅ **Ukrainian Language Support**: Full Ukrainian translation with language switcher (🇬🇧/🇺🇦)
+- ✅ **Language Persistence**: Selected language saved in localStorage
+- ✅ **Updated Contact**: WhatsApp number changed to +3163391500
+- ✅ **Updated Address**: Ouvertureweg 15 - 19, 2402 DT Alphen aan den Rijn, Netherlands
+- ✅ **Sectional Price List**: Category-based price display with Bundles shown by default
+- ✅ **Active State Indicators**: Proper highlighting for active category buttons
+- ✅ **Smooth Animations**: Fade-in effects on scroll with prefers-reduced-motion support
+- ✅ **Enhanced Mobile UX**: Optimized touch targets (44px min), responsive layout, no horizontal scroll
+- ✅ **Updated Map Links**: Google Maps and Waze links with correct address
+
 ### 🐛 Bug Fixes
 - ✅ **Image Optimization**: Compressed logo from 5.9MB to ~60KB (99% reduction)
 - ✅ **Fixed Broken Links**: All booking, WhatsApp, and map links now functional
@@ -124,13 +135,17 @@ php -S localhost:8000
 
 ## 🌍 Language
 
-Currently available in **English** only. The original design references Ukrainian translations but none were found in the codebase.
+Currently available in **English** and **Ukrainian** (Українська). 
+
+- Language switcher in the header (🇬🇧/🇺🇦)
+- Selected language persists across page visits (localStorage)
+- Default language: English
 
 ## 📞 Contact Information
 
-- **Location**: Ouvertureweg 15-19, 2402 DT Alphen aan den Rijn, Netherlands
+- **Location**: Ouvertureweg 15 - 19, 2402 DT Alphen aan den Rijn, Netherlands
 - **Email**: hello@bbeauty.nl
-- **WhatsApp**: [Click to message](https://wa.me/31612345678)
+- **WhatsApp**: [Click to message](https://wa.me/3163391500)
 - **Appointment**: By appointment only
 
 ## 🔧 Technical Details
@@ -158,6 +173,38 @@ No build tools required. Simply edit `index.html` and refresh your browser.
 3. Commit and push to GitHub
 4. GitHub Pages automatically deploys
 
+## 🎯 Features Implemented
+
+### Language Switcher
+- **Dual Language Support**: English and Ukrainian with flag emoji buttons (🇬🇧/🇺🇦)
+- **Instant Translation**: All content translates immediately on language switch
+- **Persistent Selection**: User's language choice saved in localStorage
+- **Full Coverage**: All sections translated including hero, services, prices, contact
+
+### Price List Categories
+- **Category Filtering**: Buttons to filter prices by category
+- **Default View**: Bundles (Best Value) shown by default
+- **Categories**:
+  - Bundles (Combo packages)
+  - Women · Body & Bikini
+  - Women · Face & Mini
+  - Men Only · Laser
+  - Lash Extensions
+- **Active State**: Clear visual indication of selected category
+
+### Animations
+- **Fade-in on Scroll**: Sections smoothly appear as user scrolls
+- **Hover Transitions**: Smooth button and link hover effects
+- **Smooth Scrolling**: Native smooth scroll for anchor links
+- **Accessibility**: Respects `prefers-reduced-motion` for users who prefer reduced animations
+
+### Mobile Optimization
+- **Touch-Friendly**: All buttons meet 44px minimum touch target size
+- **Responsive Layout**: Optimized for iPhone, Android, and tablets
+- **No Horizontal Scroll**: Content fits viewport on all screen sizes
+- **Stacked Layout**: Single-column layout on mobile for better readability
+- **Readable Text**: Font sizes adjusted for mobile viewing
+
 ## 📝 License
 
 © 2025 BBeauty. All rights reserved.
@@ -165,7 +212,3 @@ No build tools required. Simply edit `index.html` and refresh your browser.
 ## 🚀 Deployment
 
 This site is automatically deployed via GitHub Pages. Any push to the main branch updates the live site at [bbeautys.nl](https://bbeautys.nl/).
-
----
-
-**Note**: For actual WhatsApp functionality, replace the placeholder phone number `31612345678` with your actual business WhatsApp number in the format `[country code][number]` (no spaces or special characters).

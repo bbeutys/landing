@@ -50,6 +50,21 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
@@ -72,6 +87,42 @@
         0 18px 40px rgba(0, 0, 0, 0.08),
         0 0 0 1px rgba(255, 255, 255, 0.8);
       border: 1px solid rgba(216, 200, 183, 0.7);
+    }
+
+    .lang-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .lang-btn {
+      font-size: 24px;
+      background: none;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+
+    .lang-btn.active {
+      opacity: 1;
+      border-color: var(--accent);
+      background: rgba(183, 129, 99, 0.1);
+    }
+
+    .lang-btn:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      opacity: 1;
     }
 
     header.hero {
@@ -148,6 +199,21 @@
       text-transform: uppercase;
       letter-spacing: 0.14em;
       border: 1px solid rgba(183, 129, 99, 0.35);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out;
     }
 
     .section {
@@ -288,17 +354,37 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
     .chip-link:hover {
       border-color: var(--accent);
       color: var(--accent-dark);
+      background: rgba(246, 229, 215, 0.5);
+    }
+
+    .chip-link.active {
+      border-color: var(--accent);
+      color: var(--accent-dark);
+      background: linear-gradient(135deg, #f6e5d7, #f2dac9);
+      font-weight: 600;
+    }
+
+    .chip-link:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     .price-section {
       margin-top: 18px;
       padding-top: 12px;
       border-top: 1px solid #e0d4c5;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .price-section.hidden {
+      display: none;
     }
 
     .price-section h3 {
@@ -378,13 +464,52 @@
     }
 
     @media (max-width: 640px) {
+      .page {
+        padding: 16px 12px 32px;
+      }
+
       .card {
-        border-radius: 26px;
-        padding: 20px 16px 24px;
+        border-radius: 24px;
+        padding: 18px 14px 22px;
+      }
+
+      .logo-wrap {
+        width: 100px;
+        height: 100px;
+      }
+
+      .logo-wrap img {
+        width: 88px;
+        height: 88px;
       }
 
       .hero-title {
-        font-size: 22px;
+        font-size: 20px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      .hero-desc {
+        font-size: 13px;
+      }
+
+      .pill {
+        font-size: 10px;
+        padding: 5px 12px;
+      }
+
+      .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+        min-height: 44px;
+      }
+
+      .btn.small {
+        padding: 10px 16px;
+        font-size: 13px;
+        min-height: 44px;
       }
 
       .services-grid {
@@ -394,6 +519,44 @@
       .section-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 6px;
+      }
+
+      .section-title {
+        font-size: 15px;
+      }
+
+      .chip-link {
+        font-size: 10px;
+        padding: 7px 12px;
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .price-row {
+        font-size: 13px;
+        padding: 5px 0;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero-title {
+        font-size: 18px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn, .btn.small {
+        width: 100%;
+      }
+
+      .chip-link {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
     }
   </style>
@@ -410,7 +573,7 @@
     "image": "https://bbeautys.nl/logo-bbeauty.png",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Ouvertureweg 15-19",
+      "streetAddress": "Ouvertureweg 15 - 19",
       "addressLocality": "Alphen aan den Rijn",
       "postalCode": "2402 DT",
       "addressCountry": "NL"
@@ -431,6 +594,12 @@
   
   <div class="page">
     <div class="card">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" aria-label="Switch to English" title="English">🇬🇧</button>
+        <button class="lang-btn" data-lang="uk" aria-label="Switch to Ukrainian" title="Українська">🇺🇦</button>
+      </div>
+
       <!-- Header/Hero Section -->
       <header class="hero">
         <div class="logo-wrap">
@@ -443,7 +612,7 @@
           for women &amp; men in a warm, minimalist space.
         </p>
         <p class="hero-location">
-          📍 <span>Ouvertureweg 15–19</span>, 2402 DT Alphen aan den Rijn<br />
+          📍 <span>Ouvertureweg 15 - 19</span>, 2402 DT Alphen aan den Rijn<br />
           By appointment only
         </p>
         <div class="pill-row" role="list">
@@ -466,8 +635,8 @@
             styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/31612345678" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp">Book Appointment</a>
-            <a href="#contact" class="btn">Message on WhatsApp</a>
+            <a href="https://wa.me/3163391500" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp">Book Appointment</a>
+            <a href="https://wa.me/3163391500" class="btn">Message on WhatsApp</a>
           </div>
         </section>
 
@@ -485,7 +654,7 @@
               <p class="service-meta">Smooth and precise hair removal in the full bikini area.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 75 euros">€75</div>
-                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -495,7 +664,7 @@
               <p class="service-meta">From thighs to ankles – full leg coverage.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Full%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Full%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -505,7 +674,7 @@
               <p class="service-meta">Best value combo for frequently treated zones.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -516,7 +685,7 @@
               <p class="service-meta">Even hair reduction across the entire back.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Full%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Full%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -527,7 +696,7 @@
               <p class="service-meta">Soft, natural look that enhances your everyday eye shape.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -537,7 +706,7 @@
               <p class="service-meta">Expressive, textured look with inner volume.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31612345678?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
           </div>
@@ -550,14 +719,14 @@
             <span class="section-note">Transparent prices for all zones and sets.</span>
           </div>
           <nav class="price-nav" aria-label="Price categories navigation">
-            <a class="chip-link" href="#price-women-body">Women · Body &amp; Bikini</a>
-            <a class="chip-link" href="#price-women-face">Women · Face &amp; Mini</a>
-            <a class="chip-link" href="#price-women-combo">Women · Combo Sets</a>
-            <a class="chip-link" href="#price-men">Men Only · Laser</a>
-            <a class="chip-link" href="#price-lashes">Lash Extensions</a>
+            <button class="chip-link active" data-category="bundles">Bundles</button>
+            <button class="chip-link" data-category="women-body">Women · Body &amp; Bikini</button>
+            <button class="chip-link" data-category="women-face">Women · Face &amp; Mini</button>
+            <button class="chip-link" data-category="men">Men Only · Laser</button>
+            <button class="chip-link" data-category="lashes">Lash Extensions</button>
           </nav>
 
-          <div class="price-section" id="price-women-body">
+          <div class="price-section hidden" data-category="women-body">
             <h3>Women&apos;s Body &amp; Bikini (Base Zones)</h3>
             <div class="price-row-group-title">Bikini</div>
             <div class="price-row"><span>Classic</span><span>€50</span></div>
@@ -576,15 +745,15 @@
             <div class="price-row"><span>Stomach</span><span>€30</span></div>
           </div>
 
-          <div class="price-section" id="price-women-combo">
-            <h3>Women&apos;s Combo Sets (Best Value)</h3>
+          <div class="price-section" data-category="bundles">
+            <h3>Bundles (Best Value)</h3>
             <div class="price-row"><span>Deep Bikini + Armpits</span><span>€80</span></div>
             <div class="price-row"><span>Deep Bikini + Armpits + Full Legs</span><span>€130</span></div>
             <div class="price-row"><span>All In (Legs + Arms + Belly + Bikini)</span><span>€150</span></div>
             <div class="price-row"><span>Full Body</span><span>€200</span></div>
           </div>
 
-          <div class="price-section" id="price-women-face">
+          <div class="price-section hidden" data-category="women-face">
             <h3>Women&apos;s Face &amp; Mini Zones</h3>
             <div class="price-row-group-title">Face</div>
             <div class="price-row"><span>Full Face</span><span>€50</span></div>
@@ -598,7 +767,7 @@
             <div class="price-row"><span>Intergluteal Fold</span><span>€15</span></div>
           </div>
 
-          <div class="price-section" id="price-men">
+          <div class="price-section hidden" data-category="men">
             <h3>Men Only (Laser Epilation)</h3>
             <div class="price-row"><span>Full Back</span><span>€60</span></div>
             <div class="price-row"><span>Bikini</span><span>€80</span></div>
@@ -608,7 +777,7 @@
             <div class="price-row"><span>Beard Line (Neck & Back)</span><span>€60</span></div>
           </div>
 
-          <div class="price-section" id="price-lashes">
+          <div class="price-section hidden" data-category="lashes">
             <h3>Lash Extensions</h3>
             <div class="price-row"><span>Eyelashes Classic</span><span>€60</span></div>
             <div class="price-row"><span>Refill Classic (up to 3 weeks)</span><span>€45</span></div>
@@ -631,8 +800,8 @@
             preferred maps app.
           </p>
           <div class="btn-row">
-            <a href="https://www.google.com/maps/search/?api=1&query=Ouvertureweg+15-19+2402+DT+Alphen+aan+den+Rijn" class="btn primary" rel="noopener noreferrer" target="_blank">Open in Google Maps</a>
-            <a href="https://waze.com/ul?q=Ouvertureweg+15-19+Alphen+aan+den+Rijn" class="btn" rel="noopener noreferrer" target="_blank">Open in Waze</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ouvertureweg+15+-+19+2402+DT+Alphen+aan+den+Rijn+Netherlands" class="btn primary" rel="noopener noreferrer" target="_blank">Open in Google Maps</a>
+            <a href="https://waze.com/ul?q=Ouvertureweg+15+-+19+Alphen+aan+den+Rijn+Netherlands" class="btn" rel="noopener noreferrer" target="_blank">Open in Waze</a>
           </div>
         </section>
 
@@ -646,7 +815,7 @@
             soon as possible between appointments.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/31612345678" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
+            <a href="https://wa.me/3163391500" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
             <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
           </div>
         </section>
@@ -659,5 +828,400 @@
       </footer>
     </div>
   </div>
+
+  <script>
+    // Translations object
+    const translations = {
+      en: {
+        title: "BBEAUTY",
+        subtitle: "Refined Aesthetics & Laser Care",
+        description: "Modern beauty studio specializing in laser hair removal and lash extensions. Gentle, precise treatments for women & men in a warm, minimalist space.",
+        location: "By appointment only",
+        pills: ["Laser Hair Removal", "Lash Extensions"],
+        servicesTitle: "Our Services",
+        servicesNote: "Fast booking for our most popular treatments.",
+        servicesText: "We offer high-quality laser hair removal for women and men, as well as classic and trending lash extension styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.",
+        bookAppointment: "Book Appointment",
+        messageWhatsApp: "Message on WhatsApp",
+        featuredTitle: "Popular Treatments",
+        featuredNote: "A quick look at our best‑selling services.",
+        pricesTitle: "Full Price List",
+        pricesNote: "Transparent prices for all zones and sets.",
+        categoryBundles: "Bundles",
+        categoryWomenBody: "Women · Body & Bikini",
+        categoryWomenFace: "Women · Face & Mini",
+        categoryMen: "Men Only · Laser",
+        categoryLashes: "Lash Extensions",
+        bundlesTitle: "Bundles (Best Value)",
+        womenBodyTitle: "Women's Body & Bikini (Base Zones)",
+        womenFaceTitle: "Women's Face & Mini Zones",
+        menTitle: "Men Only (Laser Epilation)",
+        lashesTitle: "Lash Extensions",
+        mapTitle: "How to Find Us",
+        mapText: "The studio is located in Alphen aan den Rijn with convenient access and nearby parking. Open the route in your preferred maps app.",
+        openGoogleMaps: "Open in Google Maps",
+        openWaze: "Open in Waze",
+        contactTitle: "Contact",
+        contactText: "For bookings, questions or changes to your appointment, send us a WhatsApp message or email. We'll reply as soon as possible between appointments.",
+        chatWhatsApp: "Chat on WhatsApp",
+        sendEmail: "Send an Email",
+        book: "Book",
+        // Service cards
+        deepBikini: "Deep Bikini",
+        deepBikiniDesc: "Smooth and precise hair removal in the full bikini area.",
+        fullLegs: "Full Legs",
+        fullLegsDesc: "From thighs to ankles – full leg coverage.",
+        deepBikiniArmpits: "Deep Bikini + Armpits",
+        deepBikiniArmpitsDesc: "Best value combo for frequently treated zones.",
+        fullBack: "Full Back",
+        fullBackDesc: "Even hair reduction across the entire back.",
+        classicSet: "Classic Set",
+        classicSetDesc: "Soft, natural look that enhances your everyday eye shape.",
+        trendEffect: "Trend Effect (Whispy / Wet)",
+        trendEffectDesc: "Expressive, textured look with inner volume.",
+        laserWomen: "Laser • Women",
+        laserMen: "Laser • Men",
+        laserCombo: "Laser • Combo",
+        lashExtensions: "Lash Extensions",
+        // Price items
+        bikiniClassic: "Classic",
+        bikiniDeep: "Deep",
+        legsHalf: "Half (Lower / Upper)",
+        legsFull: "Full",
+        armsHalf: "Half (Lower / Upper)",
+        armsFull: "Full",
+        buttocks: "Buttocks",
+        stomach: "Stomach",
+        deepBikiniArmpitsCombo: "Deep Bikini + Armpits",
+        deepBikiniArmpitsLegs: "Deep Bikini + Armpits + Full Legs",
+        allIn: "All In (Legs + Arms + Belly + Bikini)",
+        fullBody: "Full Body",
+        fullFace: "Full Face",
+        chin: "Chin",
+        mustache: "Mustache",
+        cheeks: "Cheeks",
+        areolas: "Areolas",
+        bellyLine: "Belly Line",
+        interglutealFold: "Intergluteal Fold",
+        menFullBack: "Full Back",
+        menBikini: "Bikini",
+        menArmpits: "Armpits",
+        menChest: "Chest",
+        menChestBelly: "Chest + Belly",
+        menBeardLine: "Beard Line (Neck & Back)",
+        lashesClassic: "Eyelashes Classic",
+        lashesRefillClassic: "Refill Classic (up to 3 weeks)",
+        lashesHybrid: "Hybrid Mascara Effect",
+        lashesHybridRefill: "Hybrid Refill (up to 3 weeks)",
+        lashesVolume3D: "Volume 3D Effect · Full Set",
+        lashesRefill3D: "Refill 3D Effect (up to 3 weeks)",
+        lashesRefillTrend: "Refill Trend Effect",
+        lashesTrendEffect: "Trend Effect Whispy / Wet with Inner Volume",
+        groupBikini: "Bikini",
+        groupLegs: "Legs",
+        groupArms: "Arms",
+        groupBody: "Body",
+        groupFace: "Face",
+        groupMiniZones: "Mini Zones"
+      },
+      uk: {
+        title: "BBEAUTY",
+        subtitle: "Вишукана естетика та лазерний догляд",
+        description: "Сучасна студія краси, що спеціалізується на лазерній епіляції та нарощуванні вій. Ніжні, точні процедури для жінок і чоловіків у теплому мінімалістичному просторі.",
+        location: "Лише за записом",
+        pills: ["Лазерна епіляція", "Нарощування вій"],
+        servicesTitle: "Наші послуги",
+        servicesNote: "Швидке бронювання найпопулярніших процедур.",
+        servicesText: "Ми пропонуємо високоякісну лазерну епіляцію для жінок і чоловіків, а також класичне та трендове нарощування вій. Оберіть свою процедуру та забронюйте онлайн у кілька кліків або напишіть нам у WhatsApp для отримання допомоги.",
+        bookAppointment: "Записатися",
+        messageWhatsApp: "Написати в WhatsApp",
+        featuredTitle: "Популярні процедури",
+        featuredNote: "Короткий огляд наших найпопулярніших послуг.",
+        pricesTitle: "Повний прайс-лист",
+        pricesNote: "Прозорі ціни на всі зони та набори.",
+        categoryBundles: "Набори",
+        categoryWomenBody: "Жінки · Тіло та бікіні",
+        categoryWomenFace: "Жінки · Обличчя та міні-зони",
+        categoryMen: "Тільки чоловіки · Лазер",
+        categoryLashes: "Нарощування вій",
+        bundlesTitle: "Набори (найвигідніше)",
+        womenBodyTitle: "Жінки: Тіло та бікіні (базові зони)",
+        womenFaceTitle: "Жінки: Обличчя та міні-зони",
+        menTitle: "Тільки чоловіки (лазерна епіляція)",
+        lashesTitle: "Нарощування вій",
+        mapTitle: "Як нас знайти",
+        mapText: "Студія розташована в Алфен-ан-ден-Рейні зі зручним доступом та паркуванням поруч. Відкрийте маршрут у своєму улюбленому додатку карт.",
+        openGoogleMaps: "Відкрити в Google Maps",
+        openWaze: "Відкрити в Waze",
+        contactTitle: "Контакти",
+        contactText: "Для бронювання, питань або змін у записі надішліть нам повідомлення в WhatsApp або електронний лист. Ми відповімо якомога швидше між процедурами.",
+        chatWhatsApp: "Написати в WhatsApp",
+        sendEmail: "Надіслати Email",
+        book: "Записатися",
+        // Service cards
+        deepBikini: "Глибоке бікіні",
+        deepBikiniDesc: "Гладке та точне видалення волосся у всій зоні бікіні.",
+        fullLegs: "Повні ноги",
+        fullLegsDesc: "Від стегон до щиколоток – повне покриття ніг.",
+        deepBikiniArmpits: "Глибоке бікіні + пахви",
+        deepBikiniArmpitsDesc: "Найвигідніший набір для популярних зон.",
+        fullBack: "Вся спина",
+        fullBackDesc: "Рівномірне видалення волосся на всій спині.",
+        classicSet: "Класичний набір",
+        classicSetDesc: "М'який, природний вигляд, що підкреслює вашу повсякденну форму очей.",
+        trendEffect: "Трендовий ефект (Whispy / Wet)",
+        trendEffectDesc: "Виразний, текстурний вигляд з внутрішнім об'ємом.",
+        laserWomen: "Лазер • Жінки",
+        laserMen: "Лазер • Чоловіки",
+        laserCombo: "Лазер • Комбо",
+        lashExtensions: "Нарощування вій",
+        // Price items
+        bikiniClassic: "Класичне",
+        bikiniDeep: "Глибоке",
+        legsHalf: "Половина (нижня / верхня)",
+        legsFull: "Повні",
+        armsHalf: "Половина (нижня / верхня)",
+        armsFull: "Повні",
+        buttocks: "Сідниці",
+        stomach: "Живіт",
+        deepBikiniArmpitsCombo: "Глибоке бікіні + пахви",
+        deepBikiniArmpitsLegs: "Глибоке бікіні + пахви + повні ноги",
+        allIn: "Все включено (ноги + руки + живіт + бікіні)",
+        fullBody: "Все тіло",
+        fullFace: "Все обличчя",
+        chin: "Підборіддя",
+        mustache: "Вусики",
+        cheeks: "Щоки",
+        areolas: "Ареоли",
+        bellyLine: "Лінія живота",
+        interglutealFold: "Міжсіднична складка",
+        menFullBack: "Вся спина",
+        menBikini: "Бікіні",
+        menArmpits: "Пахви",
+        menChest: "Груди",
+        menChestBelly: "Груди + живіт",
+        menBeardLine: "Лінія бороди (шия та задня частина)",
+        lashesClassic: "Класичні вії",
+        lashesRefillClassic: "Корекція класичних (до 3 тижнів)",
+        lashesHybrid: "Гібридний ефект туші",
+        lashesHybridRefill: "Корекція гібридних (до 3 тижнів)",
+        lashesVolume3D: "Об'ємний 3D ефект · Повний набір",
+        lashesRefill3D: "Корекція 3D ефекту (до 3 тижнів)",
+        lashesRefillTrend: "Корекція трендового ефекту",
+        lashesTrendEffect: "Трендовий ефект Whispy / Wet з внутрішнім об'ємом",
+        groupBikini: "Бікіні",
+        groupLegs: "Ноги",
+        groupArms: "Руки",
+        groupBody: "Тіло",
+        groupFace: "Обличчя",
+        groupMiniZones: "Міні-зони"
+      }
+    };
+
+    // Get current language from localStorage or default to 'en'
+    let currentLang = localStorage.getItem('bbeauty-lang') || 'en';
+
+    // Update page content based on language
+    function updateLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('bbeauty-lang', lang);
+      
+      const t = translations[lang];
+      document.documentElement.lang = lang;
+
+      // Update language buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      // Update hero section
+      document.querySelector('.hero-title').textContent = t.title;
+      document.querySelector('.hero-subtitle').textContent = t.subtitle;
+      document.querySelector('.hero-desc').textContent = t.description;
+      const locationP = document.querySelector('.hero-location');
+      locationP.textContent = '📍 ';
+      const addressSpan = document.createElement('span');
+      addressSpan.textContent = 'Ouvertureweg 15 - 19';
+      locationP.appendChild(addressSpan);
+      locationP.appendChild(document.createTextNode(', 2402 DT Alphen aan den Rijn'));
+      locationP.appendChild(document.createElement('br'));
+      locationP.appendChild(document.createTextNode(t.location));
+
+      // Update pills
+      const pills = document.querySelectorAll('.pill');
+      t.pills.forEach((text, i) => {
+        if (pills[i]) pills[i].textContent = text;
+      });
+
+      // Update services section
+      document.querySelector('#services-title').textContent = t.servicesTitle;
+      document.querySelector('#services .section-note').textContent = t.servicesNote;
+      document.querySelector('#services .section-text').textContent = t.servicesText;
+      document.querySelector('#services .btn.primary').textContent = t.bookAppointment;
+      document.querySelector('#services .btn:not(.primary)').textContent = t.messageWhatsApp;
+
+      // Update featured section
+      document.querySelector('#featured-title').textContent = t.featuredTitle;
+      document.querySelector('#featured .section-note').textContent = t.featuredNote;
+
+      // Update service cards
+      const serviceCards = document.querySelectorAll('.service-card');
+      const serviceData = [
+        { label: t.laserWomen, name: t.deepBikini, meta: t.deepBikiniDesc },
+        { label: t.laserWomen, name: t.fullLegs, meta: t.fullLegsDesc },
+        { label: t.laserCombo, name: t.deepBikiniArmpits, meta: t.deepBikiniArmpitsDesc },
+        { label: t.laserMen, name: t.fullBack, meta: t.fullBackDesc },
+        { label: t.lashExtensions, name: t.classicSet, meta: t.classicSetDesc },
+        { label: t.lashExtensions, name: t.trendEffect, meta: t.trendEffectDesc }
+      ];
+      serviceCards.forEach((card, i) => {
+        if (serviceData[i]) {
+          card.querySelector('.service-label').textContent = serviceData[i].label;
+          card.querySelector('.service-name').textContent = serviceData[i].name;
+          card.querySelector('.service-meta').textContent = serviceData[i].meta;
+          card.querySelector('.btn').textContent = t.book;
+        }
+      });
+
+      // Update prices section
+      document.querySelector('#prices-title').textContent = t.pricesTitle;
+      document.querySelector('#prices .section-note').textContent = t.pricesNote;
+
+      // Update category buttons
+      document.querySelector('[data-category="bundles"]').textContent = t.categoryBundles;
+      document.querySelector('[data-category="women-body"]').textContent = t.categoryWomenBody;
+      document.querySelector('[data-category="women-face"]').textContent = t.categoryWomenFace;
+      document.querySelector('[data-category="men"]').textContent = t.categoryMen;
+      document.querySelector('[data-category="lashes"]').textContent = t.categoryLashes;
+
+      // Update price section titles
+      document.querySelector('[data-category="bundles"] h3').textContent = t.bundlesTitle;
+      document.querySelector('[data-category="women-body"] h3').textContent = t.womenBodyTitle;
+      document.querySelector('[data-category="women-face"] h3').textContent = t.womenFaceTitle;
+      document.querySelector('[data-category="men"] h3').textContent = t.menTitle;
+      document.querySelector('[data-category="lashes"] h3').textContent = t.lashesTitle;
+
+      // Update price items - Women's Body
+      const womenBodySection = document.querySelector('[data-category="women-body"]');
+      const womenBodyRows = womenBodySection.querySelectorAll('.price-row span:first-child');
+      const womenBodyTitles = womenBodySection.querySelectorAll('.price-row-group-title');
+      [t.groupBikini, t.groupLegs, t.groupArms, t.groupBody].forEach((text, i) => {
+        if (womenBodyTitles[i]) womenBodyTitles[i].textContent = text;
+      });
+      [t.bikiniClassic, t.bikiniDeep, t.legsHalf, t.legsFull, t.armsHalf, t.armsFull, t.buttocks, t.stomach].forEach((text, i) => {
+        if (womenBodyRows[i]) womenBodyRows[i].textContent = text;
+      });
+
+      // Update price items - Bundles
+      const bundlesSection = document.querySelector('[data-category="bundles"]');
+      const bundlesRows = bundlesSection.querySelectorAll('.price-row span:first-child');
+      [t.deepBikiniArmpitsCombo, t.deepBikiniArmpitsLegs, t.allIn, t.fullBody].forEach((text, i) => {
+        if (bundlesRows[i]) bundlesRows[i].textContent = text;
+      });
+
+      // Update price items - Women's Face
+      const womenFaceSection = document.querySelector('[data-category="women-face"]');
+      const womenFaceRows = womenFaceSection.querySelectorAll('.price-row span:first-child');
+      const womenFaceTitles = womenFaceSection.querySelectorAll('.price-row-group-title');
+      [t.groupFace, t.groupMiniZones].forEach((text, i) => {
+        if (womenFaceTitles[i]) womenFaceTitles[i].textContent = text;
+      });
+      [t.fullFace, t.chin, t.mustache, t.cheeks, t.areolas, t.bellyLine, t.interglutealFold].forEach((text, i) => {
+        if (womenFaceRows[i]) womenFaceRows[i].textContent = text;
+      });
+
+      // Update price items - Men
+      const menSection = document.querySelector('[data-category="men"]');
+      const menRows = menSection.querySelectorAll('.price-row span:first-child');
+      [t.menFullBack, t.menBikini, t.menArmpits, t.menChest, t.menChestBelly, t.menBeardLine].forEach((text, i) => {
+        if (menRows[i]) menRows[i].textContent = text;
+      });
+
+      // Update price items - Lashes
+      const lashesSection = document.querySelector('[data-category="lashes"]');
+      const lashesRows = lashesSection.querySelectorAll('.price-row span:first-child');
+      [t.lashesClassic, t.lashesRefillClassic, t.lashesHybrid, t.lashesHybridRefill, t.lashesVolume3D, t.lashesRefill3D, t.lashesRefillTrend, t.lashesTrendEffect].forEach((text, i) => {
+        if (lashesRows[i]) lashesRows[i].textContent = text;
+      });
+
+      // Update map section
+      document.querySelector('#map-title').textContent = t.mapTitle;
+      document.querySelector('.map-text').textContent = t.mapText;
+      document.querySelector('.map-block .btn.primary').textContent = t.openGoogleMaps;
+      document.querySelector('.map-block .btn:not(.primary)').textContent = t.openWaze;
+
+      // Update contact section
+      document.querySelector('#contact-title').textContent = t.contactTitle;
+      document.querySelector('.contact-text').textContent = t.contactText;
+      document.querySelector('.contact-block .btn.primary').textContent = t.chatWhatsApp;
+      document.querySelector('.contact-block .btn:not(.primary)').textContent = t.sendEmail;
+    }
+
+    // Price category filtering
+    function initPriceCategoryFilter() {
+      const categoryButtons = document.querySelectorAll('.price-nav .chip-link');
+      const priceSections = document.querySelectorAll('.price-section');
+
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const category = button.dataset.category;
+
+          // Update active button
+          categoryButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          // Show/hide price sections
+          priceSections.forEach(section => {
+            if (section.dataset.category === category) {
+              section.classList.remove('hidden');
+            } else {
+              section.classList.add('hidden');
+            }
+          });
+        });
+      });
+    }
+
+    // Initialize fade-in animation on scroll
+    function initScrollAnimations() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+
+      document.querySelectorAll('.section, .service-card, .price-section').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set initial language
+      updateLanguage(currentLang);
+
+      // Language switcher event listeners
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          updateLanguage(btn.dataset.lang);
+        });
+      });
+
+      // Initialize price category filter
+      initPriceCategoryFilter();
+
+      // Initialize scroll animations
+      initScrollAnimations();
+    });
+  </script>
 </body>
 </html>
