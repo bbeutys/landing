@@ -994,7 +994,7 @@
         cheeks: "Щоки",
         areolas: "Ареоли",
         bellyLine: "Лінія живота",
-        interglutealFold: "Міжсідничная складка",
+        interglutealFold: "Міжсіднична складка",
         menFullBack: "Вся спина",
         menBikini: "Бікіні",
         menArmpits: "Пахви",
@@ -1038,8 +1038,14 @@
       document.querySelector('.hero-title').textContent = t.title;
       document.querySelector('.hero-subtitle').textContent = t.subtitle;
       document.querySelector('.hero-desc').textContent = t.description;
-      const locationSpan = document.querySelector('.hero-location');
-      locationSpan.innerHTML = `📍 <span>Ouvertureweg 15 - 19</span>, 2402 DT Alphen aan den Rijn<br />${t.location}`;
+      const locationP = document.querySelector('.hero-location');
+      locationP.textContent = '📍 ';
+      const addressSpan = document.createElement('span');
+      addressSpan.textContent = 'Ouvertureweg 15 - 19';
+      locationP.appendChild(addressSpan);
+      locationP.appendChild(document.createTextNode(', 2402 DT Alphen aan den Rijn'));
+      locationP.appendChild(document.createElement('br'));
+      locationP.appendChild(document.createTextNode(t.location));
 
       // Update pills
       const pills = document.querySelectorAll('.pill');
