@@ -79,40 +79,6 @@
       position: relative;
     }
     
-    /* Subtle background decoration using existing images */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('back.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.025;
-      z-index: -1;
-      pointer-events: none;
-    }
-    
-    /* Subtle watermark icon */
-    .card::after {
-      content: '';
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background-image: url('mini-icon.png');
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.04;
-      pointer-events: none;
-      z-index: 0;
-    }
-    
     .card {
       position: relative;
     }
@@ -177,6 +143,48 @@
     header.hero {
       text-align: center;
       margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hero section background with back.png */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 400px;
+      background-image: url('back.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      mix-blend-mode: multiply;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(246, 243, 236, 0.7) 0%,
+        rgba(246, 243, 236, 0.3) 50%,
+        rgba(246, 243, 236, 0.8) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 2;
     }
 
     .logo-wrap {
@@ -262,12 +270,47 @@
       }
     }
 
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
     .fade-in {
       animation: fadeInUp 0.6s ease-out;
     }
 
     .section {
       margin-top: 28px;
+    }
+
+    /* Featured & Price sections background with big-back.png */
+    .section#featured,
+    .section#prices {
+      position: relative;
+    }
+
+    .section#featured::before,
+    .section#prices::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -10%;
+      width: 120%;
+      height: 100%;
+      background-image: url('big-back.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.06;
+      mix-blend-mode: soft-light;
+      z-index: 0;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .section > * {
+      position: relative;
+      z-index: 1;
     }
 
     .section-header {
@@ -455,10 +498,28 @@
       padding-top: 12px;
       border-top: 1px solid #e0d4c5;
       transition: opacity 0.3s ease, transform 0.3s ease;
+      position: relative;
     }
 
     .price-section.hidden {
       display: none;
+    }
+
+    /* Decorative accent with mini-icon.png */
+    .price-section::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      background-image: url('mini-icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.12;
+      mix-blend-mode: multiply;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
     }
 
     .price-section h3 {
@@ -494,6 +555,24 @@
       margin-top: 22px;
       padding-top: 16px;
       border-top: 1px solid #e0d4c5;
+      position: relative;
+    }
+
+    /* Decorative accent on contact block */
+    .contact-block::before {
+      content: '';
+      position: absolute;
+      bottom: 40px;
+      left: 30px;
+      width: 100px;
+      height: 100px;
+      background-image: url('mini-icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.08;
+      mix-blend-mode: overlay;
+      transform: rotate(-15deg);
+      pointer-events: none;
     }
 
     .map-text, .contact-text {
@@ -508,11 +587,29 @@
       text-align: center;
       font-size: 11px;
       color: var(--text-muted);
+      position: relative;
     }
 
     footer a {
       color: var(--text-muted);
       text-decoration: none;
+    }
+
+    /* Decorative accent above footer */
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 60px;
+      background-image: url('mini-icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      mix-blend-mode: darken;
+      pointer-events: none;
     }
 
     /* Skip to main content link for accessibility */
@@ -627,6 +724,25 @@
         margin-top: 16px;
         gap: 12px;
       }
+
+      /* Mobile adjustments for decorative images */
+      .section#featured::before,
+      .section#prices::before {
+        background-attachment: scroll;
+        opacity: 0.04;
+      }
+
+      .price-section::after {
+        width: 60px;
+        height: 60px;
+        opacity: 0.08;
+      }
+
+      .contact-block::before {
+        width: 70px;
+        height: 70px;
+        opacity: 0.05;
+      }
     }
 
     @media (max-width: 380px) {
@@ -724,8 +840,8 @@
             styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp">Book Appointment</a>
-            <a href="https://wa.me/31633915100" class="btn">Message on WhatsApp</a>
+            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp" data-translate="bookAppointment">Book Appointment</a>
+            <a href="https://wa.me/31633915100" class="btn" data-translate="messageWhatsApp">Message on WhatsApp</a>
           </div>
         </section>
 
@@ -738,64 +854,64 @@
           <div class="services-grid">
             <!-- Women laser examples -->
             <article class="service-card">
-              <div class="service-label">Laser • Women</div>
-              <h3 class="service-name">Deep Bikini</h3>
-              <p class="service-meta">Smooth and precise hair removal in the full bikini area.</p>
+              <div class="service-label" data-translate="laserWomen">Laser • Women</div>
+              <h3 class="service-name" data-translate="deepBikini">Deep Bikini</h3>
+              <p class="service-meta" data-translate="deepBikiniDesc">Smooth and precise hair removal in the full bikini area.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 75 euros">€75</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
               </div>
             </article>
 
             <article class="service-card">
-              <div class="service-label">Laser • Women</div>
-              <h3 class="service-name">Complete Legs</h3>
-              <p class="service-meta">From thighs to ankles – complete leg coverage.</p>
+              <div class="service-label" data-translate="laserWomen">Laser • Women</div>
+              <h3 class="service-name" data-translate="fullLegs">Complete Legs</h3>
+              <p class="service-meta" data-translate="fullLegsDesc">From thighs to ankles – complete leg coverage.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
               </div>
             </article>
 
             <article class="service-card">
-              <div class="service-label">Laser • Combo</div>
-              <h3 class="service-name">Deep Bikini + Armpits</h3>
-              <p class="service-meta">Best value combo for frequently treated zones.</p>
+              <div class="service-label" data-translate="laserCombo">Laser • Combo</div>
+              <h3 class="service-name" data-translate="deepBikiniArmpits">Deep Bikini + Armpits</h3>
+              <p class="service-meta" data-translate="deepBikiniArmpitsDesc">Best value combo for frequently treated zones.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
               </div>
             </article>
 
             <!-- Men laser examples -->
             <article class="service-card">
-              <div class="service-label">Laser • Men</div>
-              <h3 class="service-name">Complete Back</h3>
-              <p class="service-meta">Even hair reduction across the entire back.</p>
+              <div class="service-label" data-translate="laserMen">Laser • Men</div>
+              <h3 class="service-name" data-translate="fullBack">Complete Back</h3>
+              <p class="service-meta" data-translate="fullBackDesc">Even hair reduction across the entire back.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
               </div>
             </article>
 
             <!-- Lashes examples -->
             <article class="service-card">
-              <div class="service-label">Lash Extensions</div>
-              <h3 class="service-name">Classic Set</h3>
-              <p class="service-meta">Soft, natural look that enhances your everyday eye shape.</p>
+              <div class="service-label" data-translate="lashExtensions">Lash Extensions</div>
+              <h3 class="service-name" data-translate="classicSet">Classic Set</h3>
+              <p class="service-meta" data-translate="classicSetDesc">Soft, natural look that enhances your everyday eye shape.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
               </div>
             </article>
 
             <article class="service-card">
-              <div class="service-label">Lash Extensions</div>
-              <h3 class="service-name">Trend Effect (Whispy / Wet)</h3>
-              <p class="service-meta">Expressive, textured look with inner volume.</p>
+              <div class="service-label" data-translate="lashExtensions">Lash Extensions</div>
+              <h3 class="service-name" data-translate="trendEffect">Trend Effect (Whispy / Wet)</h3>
+              <p class="service-meta" data-translate="trendEffectDesc">Expressive, textured look with inner volume.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
               </div>
             </article>
           </div>
@@ -816,66 +932,66 @@
           </nav>
 
           <div class="price-section hidden" data-category="women-body">
-            <h3>Women&apos;s Body &amp; Bikini (Base Zones)</h3>
-            <div class="price-row-group-title">Bikini</div>
-            <div class="price-row"><span>Classic</span><span>€50</span></div>
-            <div class="price-row"><span>Deep</span><span>€75</span></div>
+            <h3 data-translate="womenBodyTitle">Women&apos;s Body &amp; Bikini (Base Zones)</h3>
+            <div class="price-row-group-title" data-translate="groupBikini">Bikini</div>
+            <div class="price-row"><span data-translate="bikiniClassic">Classic</span><span>€50</span></div>
+            <div class="price-row"><span data-translate="bikiniDeep">Deep</span><span>€75</span></div>
 
-            <div class="price-row-group-title">Legs</div>
-            <div class="price-row"><span>Half (Lower / Upper)</span><span>€45</span></div>
-            <div class="price-row"><span>Complete</span><span>€80</span></div>
+            <div class="price-row-group-title" data-translate="groupLegs">Legs</div>
+            <div class="price-row"><span data-translate="legsHalf">Half (Lower / Upper)</span><span>€45</span></div>
+            <div class="price-row"><span data-translate="legsFull">Complete</span><span>€80</span></div>
 
-            <div class="price-row-group-title">Arms</div>
-            <div class="price-row"><span>Half (Lower / Upper)</span><span>€35</span></div>
-            <div class="price-row"><span>Complete</span><span>€60</span></div>
+            <div class="price-row-group-title" data-translate="groupArms">Arms</div>
+            <div class="price-row"><span data-translate="armsHalf">Half (Lower / Upper)</span><span>€35</span></div>
+            <div class="price-row"><span data-translate="armsFull">Complete</span><span>€60</span></div>
 
-            <div class="price-row-group-title">Body</div>
-            <div class="price-row"><span>Buttocks</span><span>€40</span></div>
-            <div class="price-row"><span>Stomach</span><span>€30</span></div>
+            <div class="price-row-group-title" data-translate="groupBody">Body</div>
+            <div class="price-row"><span data-translate="buttocks">Buttocks</span><span>€40</span></div>
+            <div class="price-row"><span data-translate="stomach">Stomach</span><span>€30</span></div>
           </div>
 
           <div class="price-section" data-category="bundles">
-            <h3>Bundles (Best Value)</h3>
-            <div class="price-row"><span>Deep Bikini + Armpits</span><span>€80</span></div>
-            <div class="price-row"><span>Deep Bikini + Armpits + Complete Legs</span><span>€130</span></div>
-            <div class="price-row"><span>All Included (Legs + Arms + Belly + Bikini)</span><span>€150</span></div>
-            <div class="price-row"><span>Complete Body</span><span>€200</span></div>
+            <h3 data-translate="bundlesTitle">Bundles (Best Value)</h3>
+            <div class="price-row"><span data-translate="deepBikiniArmpitsCombo">Deep Bikini + Armpits</span><span>€80</span></div>
+            <div class="price-row"><span data-translate="deepBikiniArmpitsLegs">Deep Bikini + Armpits + Complete Legs</span><span>€130</span></div>
+            <div class="price-row"><span data-translate="allIn">All Included (Legs + Arms + Belly + Bikini)</span><span>€150</span></div>
+            <div class="price-row"><span data-translate="fullBody">Complete Body</span><span>€200</span></div>
           </div>
 
           <div class="price-section hidden" data-category="women-face">
-            <h3>Women&apos;s Face &amp; Mini Zones</h3>
-            <div class="price-row-group-title">Face</div>
-            <div class="price-row"><span>Complete Face</span><span>€50</span></div>
-            <div class="price-row"><span>Chin</span><span>€15</span></div>
-            <div class="price-row"><span>Mustache</span><span>€15</span></div>
-            <div class="price-row"><span>Cheeks</span><span>€20</span></div>
+            <h3 data-translate="womenFaceTitle">Women&apos;s Face &amp; Mini Zones</h3>
+            <div class="price-row-group-title" data-translate="groupFace">Face</div>
+            <div class="price-row"><span data-translate="fullFace">Complete Face</span><span>€50</span></div>
+            <div class="price-row"><span data-translate="chin">Chin</span><span>€15</span></div>
+            <div class="price-row"><span data-translate="mustache">Mustache</span><span>€15</span></div>
+            <div class="price-row"><span data-translate="cheeks">Cheeks</span><span>€20</span></div>
 
-            <div class="price-row-group-title">Mini Zones</div>
-            <div class="price-row"><span>Areolas</span><span>€20</span></div>
-            <div class="price-row"><span>Belly Line</span><span>€20</span></div>
-            <div class="price-row"><span>Intergluteal Fold</span><span>€15</span></div>
+            <div class="price-row-group-title" data-translate="groupMiniZones">Mini Zones</div>
+            <div class="price-row"><span data-translate="areolas">Areolas</span><span>€20</span></div>
+            <div class="price-row"><span data-translate="bellyLine">Belly Line</span><span>€20</span></div>
+            <div class="price-row"><span data-translate="interglutealFold">Intergluteal Fold</span><span>€15</span></div>
           </div>
 
           <div class="price-section hidden" data-category="men">
-            <h3>Men Only (Laser Epilation)</h3>
-            <div class="price-row"><span>Complete Back</span><span>€60</span></div>
-            <div class="price-row"><span>Bikini</span><span>€80</span></div>
-            <div class="price-row"><span>Armpits</span><span>€30</span></div>
-            <div class="price-row"><span>Chest</span><span>€50</span></div>
-            <div class="price-row"><span>Chest + Belly</span><span>€80</span></div>
-            <div class="price-row"><span>Beard Line (Neck & Back)</span><span>€60</span></div>
+            <h3 data-translate="menTitle">Men Only (Laser Epilation)</h3>
+            <div class="price-row"><span data-translate="menFullBack">Complete Back</span><span>€60</span></div>
+            <div class="price-row"><span data-translate="menBikini">Bikini</span><span>€80</span></div>
+            <div class="price-row"><span data-translate="menArmpits">Armpits</span><span>€30</span></div>
+            <div class="price-row"><span data-translate="menChest">Chest</span><span>€50</span></div>
+            <div class="price-row"><span data-translate="menChestBelly">Chest + Belly</span><span>€80</span></div>
+            <div class="price-row"><span data-translate="menBeardLine">Beard Line (Neck & Back)</span><span>€60</span></div>
           </div>
 
           <div class="price-section hidden" data-category="lashes">
-            <h3>Lash Extensions</h3>
-            <div class="price-row"><span>Eyelashes Classic</span><span>€60</span></div>
-            <div class="price-row"><span>Refill Classic (up to 3 weeks)</span><span>€45</span></div>
-            <div class="price-row"><span>Hybrid Mascara Effect</span><span>€80</span></div>
-            <div class="price-row"><span>Hybrid Refill (up to 3 weeks)</span><span>€65</span></div>
-            <div class="price-row"><span>Volume 3D Effect · Full Set</span><span>€90</span></div>
-            <div class="price-row"><span>Refill 3D Effect (up to 3 weeks)</span><span>€60</span></div>
-            <div class="price-row"><span>Refill Trend Effect</span><span>€75</span></div>
-            <div class="price-row"><span>Trend Effect Whispy / Wet with Inner Volume</span><span>€80</span></div>
+            <h3 data-translate="lashesTitle">Lash Extensions</h3>
+            <div class="price-row"><span data-translate="lashesClassic">Eyelashes Classic</span><span>€60</span></div>
+            <div class="price-row"><span data-translate="lashesRefillClassic">Refill Classic (up to 3 weeks)</span><span>€45</span></div>
+            <div class="price-row"><span data-translate="lashesHybrid">Hybrid Mascara Effect</span><span>€80</span></div>
+            <div class="price-row"><span data-translate="lashesHybridRefill">Hybrid Refill (up to 3 weeks)</span><span>€65</span></div>
+            <div class="price-row"><span data-translate="lashesVolume3D">Volume 3D Effect · Full Set</span><span>€90</span></div>
+            <div class="price-row"><span data-translate="lashesRefill3D">Refill 3D Effect (up to 3 weeks)</span><span>€60</span></div>
+            <div class="price-row"><span data-translate="lashesRefillTrend">Refill Trend Effect</span><span>€75</span></div>
+            <div class="price-row"><span data-translate="lashesTrendEffect">Trend Effect Whispy / Wet with Inner Volume</span><span>€80</span></div>
           </div>
         </section>
 
@@ -912,8 +1028,8 @@
 
       <!-- Footer -->
       <footer role="contentinfo">
-        <div>BBeauty • Alphen aan den Rijn</div>
-        <div>© 2025 BBeauty</div>
+        <div data-translate="footerLocation">BBeauty • Alphen aan den Rijn</div>
+        <div data-translate="footerCopyright">© 2025 BBeauty</div>
       </footer>
     </div>
   </div>
@@ -1011,7 +1127,9 @@
         groupArms: "Arms",
         groupBody: "Body",
         groupFace: "Face",
-        groupMiniZones: "Mini Zones"
+        groupMiniZones: "Mini Zones",
+        footerLocation: "BBeauty • Alphen aan den Rijn",
+        footerCopyright: "© 2025 BBeauty"
       },
       uk: {
         title: "BBEAUTY",
@@ -1103,7 +1221,9 @@
         groupArms: "Руки",
         groupBody: "Тіло",
         groupFace: "Обличчя",
-        groupMiniZones: "Міні-зони"
+        groupMiniZones: "Міні-зони",
+        footerLocation: "BBeauty • Алфен-ан-ден-Рейн",
+        footerCopyright: "© 2025 BBeauty"
       }
     };
 
@@ -1142,35 +1262,22 @@
         if (pills[i]) pills[i].textContent = text;
       });
 
-      // Update services section
+      // Update all elements with data-translate attributes
+      document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.dataset.translate;
+        if (t[key]) {
+          element.textContent = t[key];
+        }
+      });
+
+      // Update services section (not using data-translate)
       document.querySelector('#services-title').textContent = t.servicesTitle;
       document.querySelector('#services .section-note').textContent = t.servicesNote;
       document.querySelector('#services .section-text').textContent = t.servicesText;
-      document.querySelector('#services .btn.primary').textContent = t.bookAppointment;
-      document.querySelector('#services .btn:not(.primary)').textContent = t.messageWhatsApp;
 
       // Update featured section
       document.querySelector('#featured-title').textContent = t.featuredTitle;
       document.querySelector('#featured .section-note').textContent = t.featuredNote;
-
-      // Update service cards
-      const serviceCards = document.querySelectorAll('.service-card');
-      const serviceData = [
-        { label: t.laserWomen, name: t.deepBikini, meta: t.deepBikiniDesc },
-        { label: t.laserWomen, name: t.fullLegs, meta: t.fullLegsDesc },
-        { label: t.laserCombo, name: t.deepBikiniArmpits, meta: t.deepBikiniArmpitsDesc },
-        { label: t.laserMen, name: t.fullBack, meta: t.fullBackDesc },
-        { label: t.lashExtensions, name: t.classicSet, meta: t.classicSetDesc },
-        { label: t.lashExtensions, name: t.trendEffect, meta: t.trendEffectDesc }
-      ];
-      serviceCards.forEach((card, i) => {
-        if (serviceData[i]) {
-          card.querySelector('.service-label').textContent = serviceData[i].label;
-          card.querySelector('.service-name').textContent = serviceData[i].name;
-          card.querySelector('.service-meta').textContent = serviceData[i].meta;
-          card.querySelector('.btn').textContent = t.book;
-        }
-      });
 
       // Update prices section
       document.querySelector('#prices-title').textContent = t.pricesTitle;
@@ -1182,56 +1289,6 @@
       document.querySelector('[data-category="women-face"]').textContent = t.categoryWomenFace;
       document.querySelector('[data-category="men"]').textContent = t.categoryMen;
       document.querySelector('[data-category="lashes"]').textContent = t.categoryLashes;
-
-      // Update price section titles
-      document.querySelector('[data-category="bundles"] h3').textContent = t.bundlesTitle;
-      document.querySelector('[data-category="women-body"] h3').textContent = t.womenBodyTitle;
-      document.querySelector('[data-category="women-face"] h3').textContent = t.womenFaceTitle;
-      document.querySelector('[data-category="men"] h3').textContent = t.menTitle;
-      document.querySelector('[data-category="lashes"] h3').textContent = t.lashesTitle;
-
-      // Update price items - Women's Body
-      const womenBodySection = document.querySelector('[data-category="women-body"]');
-      const womenBodyRows = womenBodySection.querySelectorAll('.price-row span:first-child');
-      const womenBodyTitles = womenBodySection.querySelectorAll('.price-row-group-title');
-      [t.groupBikini, t.groupLegs, t.groupArms, t.groupBody].forEach((text, i) => {
-        if (womenBodyTitles[i]) womenBodyTitles[i].textContent = text;
-      });
-      [t.bikiniClassic, t.bikiniDeep, t.legsHalf, t.legsFull, t.armsHalf, t.armsFull, t.buttocks, t.stomach].forEach((text, i) => {
-        if (womenBodyRows[i]) womenBodyRows[i].textContent = text;
-      });
-
-      // Update price items - Bundles
-      const bundlesSection = document.querySelector('[data-category="bundles"]');
-      const bundlesRows = bundlesSection.querySelectorAll('.price-row span:first-child');
-      [t.deepBikiniArmpitsCombo, t.deepBikiniArmpitsLegs, t.allIn, t.fullBody].forEach((text, i) => {
-        if (bundlesRows[i]) bundlesRows[i].textContent = text;
-      });
-
-      // Update price items - Women's Face
-      const womenFaceSection = document.querySelector('[data-category="women-face"]');
-      const womenFaceRows = womenFaceSection.querySelectorAll('.price-row span:first-child');
-      const womenFaceTitles = womenFaceSection.querySelectorAll('.price-row-group-title');
-      [t.groupFace, t.groupMiniZones].forEach((text, i) => {
-        if (womenFaceTitles[i]) womenFaceTitles[i].textContent = text;
-      });
-      [t.fullFace, t.chin, t.mustache, t.cheeks, t.areolas, t.bellyLine, t.interglutealFold].forEach((text, i) => {
-        if (womenFaceRows[i]) womenFaceRows[i].textContent = text;
-      });
-
-      // Update price items - Men
-      const menSection = document.querySelector('[data-category="men"]');
-      const menRows = menSection.querySelectorAll('.price-row span:first-child');
-      [t.menFullBack, t.menBikini, t.menArmpits, t.menChest, t.menChestBelly, t.menBeardLine].forEach((text, i) => {
-        if (menRows[i]) menRows[i].textContent = text;
-      });
-
-      // Update price items - Lashes
-      const lashesSection = document.querySelector('[data-category="lashes"]');
-      const lashesRows = lashesSection.querySelectorAll('.price-row span:first-child');
-      [t.lashesClassic, t.lashesRefillClassic, t.lashesHybrid, t.lashesHybridRefill, t.lashesVolume3D, t.lashesRefill3D, t.lashesRefillTrend, t.lashesTrendEffect].forEach((text, i) => {
-        if (lashesRows[i]) lashesRows[i].textContent = text;
-      });
 
       // Update map section
       document.querySelector('#map-title').textContent = t.mapTitle;
