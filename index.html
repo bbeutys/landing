@@ -30,6 +30,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="logo-bbeauty.png" />
   
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
   <!-- Theme Color -->
   <meta name="theme-color" content="#f6f3ec" />
   <style>
@@ -66,11 +71,55 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top, #f1e6d8 0, var(--page-bg) 45%, var(--page-bg) 100%);
       color: var(--text-main);
       min-height: 100vh;
+      position: relative;
+    }
+    
+    /* Subtle background decoration using existing images */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('back.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.025;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* Subtle watermark icon */
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-image: url('mini-icon.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .card {
+      position: relative;
+    }
+    
+    .card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .page {
@@ -151,10 +200,11 @@
     }
 
     .hero-title {
-      font-size: 26px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
+      font-family: 'Cormorant', serif;
+      font-size: 32px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
       text-transform: uppercase;
     }
 
@@ -229,7 +279,8 @@
     }
 
     .section-title {
-      font-size: 16px;
+      font-family: 'Cormorant', serif;
+      font-size: 18px;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -251,6 +302,7 @@
       margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
     }
 
@@ -281,6 +333,16 @@
       border-color: var(--accent);
       background: #f4e6d7;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    
+    .btn.primary:hover {
+      background: linear-gradient(135deg, #f2dac9, #efd0ba);
+      box-shadow: 0 8px 18px rgba(183, 129, 99, 0.15);
     }
 
     .services-grid {
@@ -340,6 +402,7 @@
     .price-nav {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 8px;
       margin: 10px 0 6px;
     }
@@ -361,19 +424,30 @@
     .chip-link:hover {
       border-color: var(--accent);
       color: var(--accent-dark);
-      background: rgba(246, 229, 215, 0.5);
+      background: rgba(246, 229, 215, 0.6);
+      transform: translateY(-1px);
     }
 
     .chip-link.active {
       border-color: var(--accent);
-      color: var(--accent-dark);
+      color: var(--text-main);
       background: linear-gradient(135deg, #f6e5d7, #f2dac9);
       font-weight: 600;
+      box-shadow: 0 2px 8px rgba(183, 129, 99, 0.12);
+    }
+    
+    .chip-link.active:hover {
+      transform: none;
+      background: linear-gradient(135deg, #f2dac9, #efd0ba);
     }
 
     .chip-link:focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
+    }
+    
+    .chip-link:active {
+      transform: translateY(0);
     }
 
     .price-section {
@@ -465,55 +539,60 @@
 
     @media (max-width: 640px) {
       .page {
-        padding: 16px 12px 32px;
+        padding: 20px 16px 40px;
       }
 
       .card {
         border-radius: 24px;
-        padding: 18px 14px 22px;
+        padding: 20px 16px 24px;
       }
 
       .logo-wrap {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
       }
 
       .logo-wrap img {
-        width: 88px;
-        height: 88px;
+        width: 96px;
+        height: 96px;
       }
 
       .hero-title {
-        font-size: 20px;
+        font-size: 24px;
       }
 
       .hero-subtitle {
-        font-size: 13px;
+        font-size: 14px;
       }
 
       .hero-desc {
-        font-size: 13px;
+        font-size: 14px;
+        line-height: 1.6;
       }
 
       .pill {
         font-size: 10px;
-        padding: 5px 12px;
+        padding: 6px 14px;
+        min-height: 28px;
       }
 
       .btn {
-        padding: 12px 20px;
-        font-size: 14px;
-        min-height: 44px;
+        padding: 13px 22px;
+        font-size: 15px;
+        min-height: 48px;
+        flex: 1;
+        min-width: 140px;
       }
 
       .btn.small {
-        padding: 10px 16px;
-        font-size: 13px;
+        padding: 11px 18px;
+        font-size: 14px;
         min-height: 44px;
       }
 
       .services-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
       }
 
       .section-header {
@@ -523,20 +602,30 @@
       }
 
       .section-title {
-        font-size: 15px;
+        font-size: 16px;
       }
 
       .chip-link {
-        font-size: 10px;
-        padding: 7px 12px;
-        min-height: 32px;
+        font-size: 11px;
+        padding: 10px 14px;
+        min-height: 40px;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
       }
 
       .price-row {
         font-size: 13px;
-        padding: 5px 0;
+        padding: 6px 0;
+      }
+      
+      .section {
+        margin-top: 32px;
+      }
+      
+      .btn-row {
+        margin-top: 16px;
+        gap: 12px;
       }
     }
 
@@ -603,7 +692,7 @@
       <!-- Header/Hero Section -->
       <header class="hero">
         <div class="logo-wrap">
-          <img src="logo-bbeauty.png" alt="BBeauty studio logo" width="104" height="104" loading="eager" />
+          <img src="logo-bbeauty.png" alt="BBeauty studio logo" width="104" height="104" loading="eager" fetchPriority="high" />
         </div>
         <h1 class="hero-title">BBEAUTY</h1>
         <p class="hero-subtitle">Refined Aesthetics &amp; Laser Care</p>
@@ -635,8 +724,8 @@
             styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/3163391500" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp">Book Appointment</a>
-            <a href="https://wa.me/3163391500" class="btn">Message on WhatsApp</a>
+            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp">Book Appointment</a>
+            <a href="https://wa.me/31633915100" class="btn">Message on WhatsApp</a>
           </div>
         </section>
 
@@ -654,17 +743,17 @@
               <p class="service-meta">Smooth and precise hair removal in the full bikini area.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 75 euros">€75</div>
-                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
             <article class="service-card">
               <div class="service-label">Laser • Women</div>
-              <h3 class="service-name">Full Legs</h3>
-              <p class="service-meta">From thighs to ankles – full leg coverage.</p>
+              <h3 class="service-name">Complete Legs</h3>
+              <p class="service-meta">From thighs to ankles – complete leg coverage.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Full%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -674,18 +763,18 @@
               <p class="service-meta">Best value combo for frequently treated zones.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
             <!-- Men laser examples -->
             <article class="service-card">
               <div class="service-label">Laser • Men</div>
-              <h3 class="service-name">Full Back</h3>
+              <h3 class="service-name">Complete Back</h3>
               <p class="service-meta">Even hair reduction across the entire back.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Full%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -696,7 +785,7 @@
               <p class="service-meta">Soft, natural look that enhances your everyday eye shape.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
 
@@ -706,16 +795,16 @@
               <p class="service-meta">Expressive, textured look with inner volume.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/3163391500?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
+                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank">Book</a>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- Full Price List Section -->
+        <!-- Price List Section -->
         <section class="section" id="prices" aria-labelledby="prices-title">
           <div class="section-header">
-            <h2 id="prices-title" class="section-title">Full Price List</h2>
+            <h2 id="prices-title" class="section-title">Service Prices</h2>
             <span class="section-note">Transparent prices for all zones and sets.</span>
           </div>
           <nav class="price-nav" aria-label="Price categories navigation">
@@ -734,11 +823,11 @@
 
             <div class="price-row-group-title">Legs</div>
             <div class="price-row"><span>Half (Lower / Upper)</span><span>€45</span></div>
-            <div class="price-row"><span>Full</span><span>€80</span></div>
+            <div class="price-row"><span>Complete</span><span>€80</span></div>
 
             <div class="price-row-group-title">Arms</div>
             <div class="price-row"><span>Half (Lower / Upper)</span><span>€35</span></div>
-            <div class="price-row"><span>Full</span><span>€60</span></div>
+            <div class="price-row"><span>Complete</span><span>€60</span></div>
 
             <div class="price-row-group-title">Body</div>
             <div class="price-row"><span>Buttocks</span><span>€40</span></div>
@@ -748,15 +837,15 @@
           <div class="price-section" data-category="bundles">
             <h3>Bundles (Best Value)</h3>
             <div class="price-row"><span>Deep Bikini + Armpits</span><span>€80</span></div>
-            <div class="price-row"><span>Deep Bikini + Armpits + Full Legs</span><span>€130</span></div>
-            <div class="price-row"><span>All In (Legs + Arms + Belly + Bikini)</span><span>€150</span></div>
-            <div class="price-row"><span>Full Body</span><span>€200</span></div>
+            <div class="price-row"><span>Deep Bikini + Armpits + Complete Legs</span><span>€130</span></div>
+            <div class="price-row"><span>All Included (Legs + Arms + Belly + Bikini)</span><span>€150</span></div>
+            <div class="price-row"><span>Complete Body</span><span>€200</span></div>
           </div>
 
           <div class="price-section hidden" data-category="women-face">
             <h3>Women&apos;s Face &amp; Mini Zones</h3>
             <div class="price-row-group-title">Face</div>
-            <div class="price-row"><span>Full Face</span><span>€50</span></div>
+            <div class="price-row"><span>Complete Face</span><span>€50</span></div>
             <div class="price-row"><span>Chin</span><span>€15</span></div>
             <div class="price-row"><span>Mustache</span><span>€15</span></div>
             <div class="price-row"><span>Cheeks</span><span>€20</span></div>
@@ -769,7 +858,7 @@
 
           <div class="price-section hidden" data-category="men">
             <h3>Men Only (Laser Epilation)</h3>
-            <div class="price-row"><span>Full Back</span><span>€60</span></div>
+            <div class="price-row"><span>Complete Back</span><span>€60</span></div>
             <div class="price-row"><span>Bikini</span><span>€80</span></div>
             <div class="price-row"><span>Armpits</span><span>€30</span></div>
             <div class="price-row"><span>Chest</span><span>€50</span></div>
@@ -815,7 +904,7 @@
             soon as possible between appointments.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/3163391500" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
+            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
             <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
           </div>
         </section>
@@ -845,7 +934,7 @@
         messageWhatsApp: "Message on WhatsApp",
         featuredTitle: "Popular Treatments",
         featuredNote: "A quick look at our best‑selling services.",
-        pricesTitle: "Full Price List",
+        pricesTitle: "Service Prices",
         pricesNote: "Transparent prices for all zones and sets.",
         categoryBundles: "Bundles",
         categoryWomenBody: "Women · Body & Bikini",
@@ -869,11 +958,11 @@
         // Service cards
         deepBikini: "Deep Bikini",
         deepBikiniDesc: "Smooth and precise hair removal in the full bikini area.",
-        fullLegs: "Full Legs",
-        fullLegsDesc: "From thighs to ankles – full leg coverage.",
+        fullLegs: "Complete Legs",
+        fullLegsDesc: "From thighs to ankles – complete leg coverage.",
         deepBikiniArmpits: "Deep Bikini + Armpits",
         deepBikiniArmpitsDesc: "Best value combo for frequently treated zones.",
-        fullBack: "Full Back",
+        fullBack: "Complete Back",
         fullBackDesc: "Even hair reduction across the entire back.",
         classicSet: "Classic Set",
         classicSetDesc: "Soft, natural look that enhances your everyday eye shape.",
@@ -887,23 +976,23 @@
         bikiniClassic: "Classic",
         bikiniDeep: "Deep",
         legsHalf: "Half (Lower / Upper)",
-        legsFull: "Full",
+        legsFull: "Complete",
         armsHalf: "Half (Lower / Upper)",
-        armsFull: "Full",
+        armsFull: "Complete",
         buttocks: "Buttocks",
         stomach: "Stomach",
         deepBikiniArmpitsCombo: "Deep Bikini + Armpits",
         deepBikiniArmpitsLegs: "Deep Bikini + Armpits + Full Legs",
-        allIn: "All In (Legs + Arms + Belly + Bikini)",
-        fullBody: "Full Body",
-        fullFace: "Full Face",
+        allIn: "All Included (Legs + Arms + Belly + Bikini)",
+        fullBody: "Complete Body",
+        fullFace: "Complete Face",
         chin: "Chin",
         mustache: "Mustache",
         cheeks: "Cheeks",
         areolas: "Areolas",
         bellyLine: "Belly Line",
         interglutealFold: "Intergluteal Fold",
-        menFullBack: "Full Back",
+        menFullBack: "Complete Back",
         menBikini: "Bikini",
         menArmpits: "Armpits",
         menChest: "Chest",
@@ -937,7 +1026,7 @@
         messageWhatsApp: "Написати в WhatsApp",
         featuredTitle: "Популярні процедури",
         featuredNote: "Короткий огляд наших найпопулярніших послуг.",
-        pricesTitle: "Повний прайс-лист",
+        pricesTitle: "Ціни на послуги",
         pricesNote: "Прозорі ціни на всі зони та набори.",
         categoryBundles: "Набори",
         categoryWomenBody: "Жінки · Тіло та бікіні",
@@ -961,11 +1050,11 @@
         // Service cards
         deepBikini: "Глибоке бікіні",
         deepBikiniDesc: "Гладке та точне видалення волосся у всій зоні бікіні.",
-        fullLegs: "Повні ноги",
+        fullLegs: "Всі ноги",
         fullLegsDesc: "Від стегон до щиколоток – повне покриття ніг.",
         deepBikiniArmpits: "Глибоке бікіні + пахви",
         deepBikiniArmpitsDesc: "Найвигідніший набір для популярних зон.",
-        fullBack: "Вся спина",
+        fullBack: "Уся спина",
         fullBackDesc: "Рівномірне видалення волосся на всій спині.",
         classicSet: "Класичний набір",
         classicSetDesc: "М'який, природний вигляд, що підкреслює вашу повсякденну форму очей.",
@@ -979,23 +1068,23 @@
         bikiniClassic: "Класичне",
         bikiniDeep: "Глибоке",
         legsHalf: "Половина (нижня / верхня)",
-        legsFull: "Повні",
+        legsFull: "Всі ноги",
         armsHalf: "Половина (нижня / верхня)",
-        armsFull: "Повні",
+        armsFull: "Всі руки",
         buttocks: "Сідниці",
         stomach: "Живіт",
         deepBikiniArmpitsCombo: "Глибоке бікіні + пахви",
-        deepBikiniArmpitsLegs: "Глибоке бікіні + пахви + повні ноги",
-        allIn: "Все включено (ноги + руки + живіт + бікіні)",
-        fullBody: "Все тіло",
-        fullFace: "Все обличчя",
+        deepBikiniArmpitsLegs: "Глибоке бікіні + пахви + всі ноги",
+        allIn: "Усе включено (ноги + руки + живіт + бікіні)",
+        fullBody: "Усе тіло",
+        fullFace: "Усе обличчя",
         chin: "Підборіддя",
         mustache: "Вусики",
         cheeks: "Щоки",
         areolas: "Ареоли",
         bellyLine: "Лінія живота",
         interglutealFold: "Міжсіднична складка",
-        menFullBack: "Вся спина",
+        menFullBack: "Уся спина",
         menBikini: "Бікіні",
         menArmpits: "Пахви",
         menChest: "Груди",
