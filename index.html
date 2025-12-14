@@ -52,6 +52,29 @@
       --border-soft: #e3d7c7;
       --text-main: #22231e;
       --text-muted: #706a61;
+      --gradient-top: #f1e6d8;
+      --btn-bg: #fffdf9;
+      --pill-bg: #f3e7d9;
+      --hero-gradient-start: rgba(246, 243, 236, 0.7);
+      --hero-gradient-mid: rgba(246, 243, 236, 0.3);
+      --hero-gradient-end: rgba(246, 243, 236, 0.8);
+    }
+
+    [data-theme="dark"] {
+      --page-bg: #2E1E12;
+      --card-bg: #3d2a1c;
+      --circle-bg: #4a3222;
+      --accent: #FF7043;
+      --accent-dark: #FF8A65;
+      --border-soft: #5a4030;
+      --text-main: #f5e6d3;
+      --text-muted: #c4b5a3;
+      --gradient-top: #3a2818;
+      --btn-bg: #473324;
+      --pill-bg: #4a3222;
+      --hero-gradient-start: rgba(46, 30, 18, 0.7);
+      --hero-gradient-mid: rgba(46, 30, 18, 0.3);
+      --hero-gradient-end: rgba(46, 30, 18, 0.8);
     }
 
     * {
@@ -78,10 +101,11 @@
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, #f1e6d8 0, var(--page-bg) 45%, var(--page-bg) 100%);
+        radial-gradient(circle at top, var(--gradient-top) 0, var(--page-bg) 45%, var(--page-bg) 100%);
       color: var(--text-main);
       min-height: 100vh;
       position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     
     .page {
@@ -106,11 +130,40 @@
       z-index: 1;
     }
 
-    .lang-switcher {
+    .theme-lang-bar {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: center;
       gap: 8px;
       margin-bottom: 16px;
+    }
+
+    .theme-toggle {
+      font-size: 24px;
+      background: none;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      padding: 4px 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0.7;
+      line-height: 1;
+    }
+
+    .theme-toggle:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .theme-toggle:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      opacity: 1;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
     }
 
     .lang-btn {
@@ -161,8 +214,9 @@
       background-image: url('back.png');
       background-size: cover;
       background-position: center;
-      opacity: 0.08;
+      opacity: 0.15;
       mix-blend-mode: multiply;
+      filter: contrast(1.1);
       z-index: 0;
       pointer-events: none;
     }
@@ -176,9 +230,9 @@
       height: 100%;
       background: linear-gradient(
         180deg,
-        rgba(246, 243, 236, 0.7) 0%,
-        rgba(246, 243, 236, 0.3) 50%,
-        rgba(246, 243, 236, 0.8) 100%
+        var(--hero-gradient-start) 0%,
+        var(--hero-gradient-mid) 50%,
+        var(--hero-gradient-end) 100%
       );
       z-index: 1;
       pointer-events: none;
@@ -190,20 +244,23 @@
     }
 
     .logo-wrap {
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
       margin: 0 auto 14px;
       border-radius: 50%;
       background: radial-gradient(circle, #fffdf9 0, var(--circle-bg) 80%);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(210, 188, 166, 0.9);
+      border: 2px solid var(--accent);
+      box-shadow: 
+        0 4px 12px rgba(183, 129, 99, 0.2),
+        0 8px 24px rgba(183, 129, 99, 0.15);
     }
 
     .logo-wrap img {
-      width: 104px;
-      height: 104px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       display: block;
@@ -253,12 +310,12 @@
     .pill {
       padding: 6px 14px;
       border-radius: 999px;
-      background: #f3e7d9;
+      background: var(--pill-bg);
       color: var(--accent-dark);
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      border: 1px solid rgba(183, 129, 99, 0.35);
+      border: 1px solid var(--accent);
     }
 
     @keyframes fadeInUp {
@@ -303,11 +360,11 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      opacity: 0.06;
+      opacity: 0.12;
       mix-blend-mode: soft-light;
+      filter: contrast(1.15);
       z-index: 0;
       pointer-events: none;
-      filter: blur(1px);
     }
 
     .section > * {
@@ -358,7 +415,7 @@
       padding: 11px 18px;
       border-radius: 999px;
       border: 1px solid var(--border-soft);
-      background: #fffdf9;
+      background: var(--btn-bg);
       font-size: 14px;
       font-weight: 500;
       text-decoration: none;
@@ -368,26 +425,26 @@
     }
 
     .btn.primary {
-      background: linear-gradient(135deg, #f6e5d7, #f2dac9);
+      background: var(--accent);
       border-color: var(--accent);
-      color: var(--text-main);
+      color: white;
     }
 
     .btn:hover {
       transform: translateY(-1px);
       border-color: var(--accent);
-      background: #f4e6d7;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      filter: brightness(1.1);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     }
     
     .btn:active {
       transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
     .btn.primary:hover {
-      background: linear-gradient(135deg, #f2dac9, #efd0ba);
-      box-shadow: 0 8px 18px rgba(183, 129, 99, 0.15);
+      background: var(--accent-dark);
+      box-shadow: 0 8px 18px rgba(255, 112, 67, 0.3);
     }
 
     .services-grid {
@@ -398,7 +455,7 @@
     }
 
     .service-card {
-      background: #fffdf9;
+      background: var(--btn-bg);
       border-radius: 20px;
       border: 1px solid var(--border-soft);
       padding: 12px 14px 14px;
@@ -457,7 +514,7 @@
       padding: 5px 12px;
       border-radius: 999px;
       border: 1px solid var(--border-soft);
-      background: rgba(255, 250, 244, 0.9);
+      background: var(--btn-bg);
       text-decoration: none;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -469,21 +526,21 @@
     .chip-link:hover {
       border-color: var(--accent);
       color: var(--accent-dark);
-      background: rgba(246, 229, 215, 0.6);
+      filter: brightness(1.1);
       transform: translateY(-1px);
     }
 
     .chip-link.active {
       border-color: var(--accent);
-      color: var(--text-main);
-      background: linear-gradient(135deg, #f6e5d7, #f2dac9);
+      color: white;
+      background: var(--accent);
       font-weight: 600;
-      box-shadow: 0 2px 8px rgba(183, 129, 99, 0.12);
+      box-shadow: 0 2px 8px rgba(255, 112, 67, 0.3);
     }
     
     .chip-link.active:hover {
       transform: none;
-      background: linear-gradient(135deg, #f2dac9, #efd0ba);
+      background: var(--accent-dark);
     }
 
     .chip-link:focus {
@@ -518,8 +575,9 @@
       background-image: url('mini-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.12;
+      opacity: 0.20;
       mix-blend-mode: multiply;
+      filter: contrast(1.1);
       z-index: 0;
       will-change: transform;
       animation: float 6s ease-in-out infinite;
@@ -572,8 +630,9 @@
       background-image: url('mini-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.08;
+      opacity: 0.20;
       mix-blend-mode: overlay;
+      filter: contrast(1.1);
       transform: rotate(-15deg);
       will-change: transform;
       pointer-events: none;
@@ -611,8 +670,9 @@
       background-image: url('mini-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.15;
+      opacity: 0.20;
       mix-blend-mode: darken;
+      filter: contrast(1.1);
       will-change: transform;
       pointer-events: none;
     }
@@ -654,6 +714,18 @@
       }
     }
 
+    @media (min-width: 1024px) {
+      .logo-wrap {
+        width: 190px;
+        height: 190px;
+      }
+
+      .logo-wrap img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
     @media (max-width: 640px) {
       .page {
         padding: 20px 16px 40px;
@@ -665,13 +737,13 @@
       }
 
       .logo-wrap {
-        width: 110px;
-        height: 110px;
+        width: 130px;
+        height: 130px;
       }
 
       .logo-wrap img {
-        width: 96px;
-        height: 96px;
+        width: 120px;
+        height: 120px;
       }
 
       .hero-title {
@@ -749,7 +821,7 @@
       .section#featured::before,
       .section#prices::before {
         background-attachment: scroll;
-        opacity: 0.04;
+        opacity: 0.10;
         transform: translateZ(0);
         backface-visibility: hidden;
       }
@@ -757,14 +829,14 @@
       .price-section::after {
         width: 60px;
         height: 60px;
-        opacity: 0.08;
+        opacity: 0.15;
         transform: translateZ(0);
       }
 
       .contact-block::before {
         width: 70px;
         height: 70px;
-        opacity: 0.05;
+        opacity: 0.15;
         transform: translateZ(0) rotate(-15deg);
       }
     }
@@ -825,10 +897,15 @@
   
   <div class="page">
     <div class="card">
-      <!-- Language Switcher -->
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en" aria-label="Switch to English" title="English" aria-pressed="true">🇬🇧</button>
-        <button class="lang-btn" data-lang="uk" aria-label="Switch to Ukrainian" title="Українська" aria-pressed="false">🇺🇦</button>
+      <!-- Theme and Language Switcher -->
+      <div class="theme-lang-bar">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <span class="theme-icon">☀️</span>
+        </button>
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" aria-label="Switch to English" title="English" aria-pressed="true">🇬🇧</button>
+          <button class="lang-btn" data-lang="uk" aria-label="Switch to Ukrainian" title="Українська" aria-pressed="false">🇺🇦</button>
+        </div>
       </div>
 
       <!-- Header/Hero Section -->
@@ -866,8 +943,8 @@
             styles. Choose your treatment and book online in a few taps or message us on WhatsApp for assistance.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp" data-translate="bookAppointment">Book Appointment</a>
-            <a href="https://wa.me/31633915100" class="btn" data-translate="messageWhatsApp">Message on WhatsApp</a>
+            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Book appointment via WhatsApp" data-translate="bookAppointment" data-whatsapp-service="general">Book Appointment</a>
+            <a href="https://wa.me/31633915100" class="btn" data-translate="messageWhatsApp" data-whatsapp-service="general">Message on WhatsApp</a>
           </div>
         </section>
 
@@ -885,7 +962,7 @@
               <p class="service-meta" data-translate="deepBikiniDesc">Smooth and precise hair removal in the full bikini area.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 75 euros">€75</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="deepBikini">Book</a>
               </div>
             </article>
 
@@ -895,7 +972,7 @@
               <p class="service-meta" data-translate="fullLegsDesc">From thighs to ankles – complete leg coverage.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Legs%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="fullLegs">Book</a>
               </div>
             </article>
 
@@ -905,7 +982,7 @@
               <p class="service-meta" data-translate="deepBikiniArmpitsDesc">Best value combo for frequently treated zones.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Deep%20Bikini%20+%20Armpits%20combo" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="deepBikiniArmpits">Book</a>
               </div>
             </article>
 
@@ -916,7 +993,7 @@
               <p class="service-meta" data-translate="fullBackDesc">Even hair reduction across the entire back.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Complete%20Back%20treatment" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="fullBack">Book</a>
               </div>
             </article>
 
@@ -927,7 +1004,7 @@
               <p class="service-meta" data-translate="classicSetDesc">Soft, natural look that enhances your everyday eye shape.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Classic%20Lash%20Set" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="classicSet">Book</a>
               </div>
             </article>
 
@@ -937,7 +1014,7 @@
               <p class="service-meta" data-translate="trendEffectDesc">Expressive, textured look with inner volume.</p>
               <div class="service-footer">
                 <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100?text=I%20want%20to%20book%20Trend%20Effect%20Lashes" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="trendEffect">Book</a>
               </div>
             </article>
           </div>
@@ -1046,7 +1123,7 @@
             soon as possible between appointments.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp">Chat on WhatsApp</a>
+            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp" data-whatsapp-service="general">Chat on WhatsApp</a>
             <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
           </div>
         </section>
@@ -1061,6 +1138,14 @@
   </div>
 
   <script>
+    // Early theme initialization to prevent flash
+    (function() {
+      const savedTheme = localStorage.getItem('bbeauty-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+
     // Translations object
     const translations = {
       en: {
@@ -1155,7 +1240,15 @@
         groupFace: "Face",
         groupMiniZones: "Mini Zones",
         footerLocation: "BBeauty • Alphen aan den Rijn",
-        footerCopyright: "© 2025 BBeauty"
+        footerCopyright: "© 2025 BBeauty",
+        // WhatsApp messages
+        whatsappDeepBikini: "Hello! I would like to book Deep Bikini.",
+        whatsappFullLegs: "Hello! I would like to book Complete Legs.",
+        whatsappDeepBikiniArmpits: "Hello! I would like to book Deep Bikini + Armpits.",
+        whatsappFullBack: "Hello! I would like to book Complete Back.",
+        whatsappClassicSet: "Hello! I would like to book Classic Set.",
+        whatsappTrendEffect: "Hello! I would like to book Trend Effect (Whispy / Wet).",
+        whatsappGeneral: "Hello! I would like to book an appointment."
       },
       uk: {
         title: "BBEAUTY",
@@ -1249,12 +1342,64 @@
         groupFace: "Обличчя",
         groupMiniZones: "Міні-зони",
         footerLocation: "BBeauty • Алфен-ан-ден-Рейн",
-        footerCopyright: "© 2025 BBeauty"
+        footerCopyright: "© 2025 BBeauty",
+        // WhatsApp messages
+        whatsappDeepBikini: "Привіт! Я хочу записатися на глибоке бікіні.",
+        whatsappFullLegs: "Привіт! Я хочу записатися на всі ноги.",
+        whatsappDeepBikiniArmpits: "Привіт! Я хочу записатися на глибоке бікіні + пахви.",
+        whatsappFullBack: "Привіт! Я хочу записатися на всю спину.",
+        whatsappClassicSet: "Привіт! Я хочу записатися на класичний набір вій.",
+        whatsappTrendEffect: "Привіт! Я хочу записатися на трендовий ефект (Whispy / Wet).",
+        whatsappGeneral: "Привіт! Я хочу записатися на процедуру."
       }
     };
 
     // Get current language from localStorage or default to 'en'
     let currentLang = localStorage.getItem('bbeauty-lang') || 'en';
+    
+    // Theme management
+    function getPreferredTheme() {
+      const savedTheme = localStorage.getItem('bbeauty-theme');
+      if (savedTheme) return savedTheme;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('bbeauty-theme', theme);
+      
+      const themeIcon = document.querySelector('.theme-icon');
+      if (themeIcon) {
+        themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+      }
+      
+      // Update theme color meta tag
+      const themeColor = theme === 'dark' ? '#2E1E12' : '#f6f3ec';
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    }
+
+    // Generate WhatsApp link with translated message
+    function generateWhatsAppLink(service) {
+      const phoneNumber = '31633915100';
+      const t = translations[currentLang];
+      const messageKey = `whatsapp${service.charAt(0).toUpperCase() + service.slice(1)}`;
+      const message = t[messageKey] || t.whatsappGeneral;
+      return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    }
+
+    // Update all WhatsApp links with current language
+    function updateWhatsAppLinks() {
+      document.querySelectorAll('[data-whatsapp-service]').forEach(link => {
+        const service = link.dataset.whatsappService;
+        link.href = generateWhatsAppLink(service);
+      });
+    }
 
     // Update page content based on language
     function updateLanguage(lang) {
@@ -1331,6 +1476,9 @@
       document.querySelector('.contact-text').textContent = t.contactText;
       document.querySelector('.contact-block .btn.primary').textContent = t.chatWhatsApp;
       document.querySelector('.contact-block .btn:not(.primary)').textContent = t.sendEmail;
+
+      // Update WhatsApp links
+      updateWhatsAppLinks();
     }
 
     // Price category filtering
@@ -1386,6 +1534,16 @@
 
     // Initialize on page load
     document.addEventListener('DOMContentLoaded', () => {
+      // Set initial theme
+      const preferredTheme = getPreferredTheme();
+      setTheme(preferredTheme);
+
+      // Theme toggle event listener
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+
       // Set initial language
       updateLanguage(currentLang);
 
