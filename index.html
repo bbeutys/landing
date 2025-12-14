@@ -1392,9 +1392,6 @@
       // Language switcher event listeners
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          // Update aria-pressed for all buttons
-          document.querySelectorAll('.lang-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
-          btn.setAttribute('aria-pressed', 'true');
           updateLanguage(btn.dataset.lang);
         });
       });
