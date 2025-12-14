@@ -30,10 +30,15 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="logo-bbeauty.png" />
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts - Optimized Loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+  
+  <!-- Resource Hints -->
+  <link rel="dns-prefetch" href="https://wa.me">
+  <link rel="preconnect" href="https://wa.me">
   
   <!-- Theme Color -->
   <meta name="theme-color" content="#f6f3ec" />
@@ -79,15 +84,6 @@
       position: relative;
     }
     
-    .card {
-      position: relative;
-    }
-    
-    .card > * {
-      position: relative;
-      z-index: 1;
-    }
-
     .page {
       max-width: 960px;
       margin: 0 auto;
@@ -95,6 +91,7 @@
     }
 
     .card {
+      position: relative;
       background: var(--card-bg);
       border-radius: 32px;
       padding: 24px 22px 28px;
@@ -102,6 +99,11 @@
         0 18px 40px rgba(0, 0, 0, 0.08),
         0 0 0 1px rgba(255, 255, 255, 0.8);
       border: 1px solid rgba(216, 200, 183, 0.7);
+    }
+    
+    .card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .lang-switcher {
@@ -519,6 +521,7 @@
       opacity: 0.12;
       mix-blend-mode: multiply;
       z-index: 0;
+      will-change: transform;
       animation: float 6s ease-in-out infinite;
     }
 
@@ -572,6 +575,7 @@
       opacity: 0.08;
       mix-blend-mode: overlay;
       transform: rotate(-15deg);
+      will-change: transform;
       pointer-events: none;
     }
 
@@ -609,6 +613,7 @@
       background-repeat: no-repeat;
       opacity: 0.15;
       mix-blend-mode: darken;
+      will-change: transform;
       pointer-events: none;
     }
 
@@ -632,6 +637,21 @@
     a:focus, button:focus, .btn:focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
+    }
+
+    /* Touch feedback for mobile devices */
+    @media (hover: none) and (pointer: coarse) {
+      .btn:active,
+      .chip-link:active {
+        background: var(--accent);
+        color: white;
+        transform: scale(0.98);
+        transition: none;
+      }
+      
+      .btn.primary:active {
+        background: var(--accent-dark);
+      }
     }
 
     @media (max-width: 640px) {
@@ -730,18 +750,22 @@
       .section#prices::before {
         background-attachment: scroll;
         opacity: 0.04;
+        transform: translateZ(0);
+        backface-visibility: hidden;
       }
 
       .price-section::after {
         width: 60px;
         height: 60px;
         opacity: 0.08;
+        transform: translateZ(0);
       }
 
       .contact-block::before {
         width: 70px;
         height: 70px;
         opacity: 0.05;
+        transform: translateZ(0) rotate(-15deg);
       }
     }
 
@@ -776,6 +800,8 @@
     "url": "https://bbeautys.nl/",
     "logo": "https://bbeautys.nl/logo-bbeauty.png",
     "image": "https://bbeautys.nl/logo-bbeauty.png",
+    "telephone": "+31-6-33915100",
+    "email": "hello@bbeauty.nl",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Ouvertureweg 15 - 19",
@@ -801,14 +827,14 @@
     <div class="card">
       <!-- Language Switcher -->
       <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en" aria-label="Switch to English" title="English">🇬🇧</button>
-        <button class="lang-btn" data-lang="uk" aria-label="Switch to Ukrainian" title="Українська">🇺🇦</button>
+        <button class="lang-btn active" data-lang="en" aria-label="Switch to English" title="English" aria-pressed="true">🇬🇧</button>
+        <button class="lang-btn" data-lang="uk" aria-label="Switch to Ukrainian" title="Українська" aria-pressed="false">🇺🇦</button>
       </div>
 
       <!-- Header/Hero Section -->
       <header class="hero">
         <div class="logo-wrap">
-          <img src="logo-bbeauty.png" alt="BBeauty studio logo" width="104" height="104" loading="eager" fetchPriority="high" />
+          <img src="logo-bbeauty.png" alt="BBeauty studio logo" width="104" height="104" loading="eager" fetchpriority="high" />
         </div>
         <h1 class="hero-title">BBEAUTY</h1>
         <p class="hero-subtitle">Refined Aesthetics &amp; Laser Care</p>
@@ -817,7 +843,7 @@
           for women &amp; men in a warm, minimalist space.
         </p>
         <p class="hero-location">
-          📍 <span>Ouvertureweg 15 - 19</span>, 2402 DT Alphen aan den Rijn<br />
+          <span aria-label="Location" role="img">📍</span> <span>Ouvertureweg 15 - 19</span>, 2402 DT Alphen aan den Rijn<br />
           By appointment only
         </p>
         <div class="pill-row" role="list">
@@ -924,14 +950,14 @@
             <span class="section-note">Transparent prices for all zones and sets.</span>
           </div>
           <nav class="price-nav" aria-label="Price categories navigation">
-            <button class="chip-link active" data-category="bundles">Bundles</button>
-            <button class="chip-link" data-category="women-body">Women · Body &amp; Bikini</button>
-            <button class="chip-link" data-category="women-face">Women · Face &amp; Mini</button>
-            <button class="chip-link" data-category="men">Men Only · Laser</button>
-            <button class="chip-link" data-category="lashes">Lash Extensions</button>
+            <button class="chip-link active" data-category="bundles" aria-expanded="true" aria-controls="bundles-section">Bundles</button>
+            <button class="chip-link" data-category="women-body" aria-expanded="false" aria-controls="women-body-section">Women · Body &amp; Bikini</button>
+            <button class="chip-link" data-category="women-face" aria-expanded="false" aria-controls="women-face-section">Women · Face &amp; Mini</button>
+            <button class="chip-link" data-category="men" aria-expanded="false" aria-controls="men-section">Men Only · Laser</button>
+            <button class="chip-link" data-category="lashes" aria-expanded="false" aria-controls="lashes-section">Lash Extensions</button>
           </nav>
 
-          <div class="price-section hidden" data-category="women-body">
+          <div class="price-section hidden" data-category="women-body" id="women-body-section" aria-live="polite" aria-atomic="true">
             <h3 data-translate="womenBodyTitle">Women&apos;s Body &amp; Bikini (Base Zones)</h3>
             <div class="price-row-group-title" data-translate="groupBikini">Bikini</div>
             <div class="price-row"><span data-translate="bikiniClassic">Classic</span><span>€50</span></div>
@@ -950,7 +976,7 @@
             <div class="price-row"><span data-translate="stomach">Stomach</span><span>€30</span></div>
           </div>
 
-          <div class="price-section" data-category="bundles">
+          <div class="price-section" data-category="bundles" id="bundles-section" aria-live="polite" aria-atomic="true">
             <h3 data-translate="bundlesTitle">Bundles (Best Value)</h3>
             <div class="price-row"><span data-translate="deepBikiniArmpitsCombo">Deep Bikini + Armpits</span><span>€80</span></div>
             <div class="price-row"><span data-translate="deepBikiniArmpitsLegs">Deep Bikini + Armpits + Complete Legs</span><span>€130</span></div>
@@ -958,7 +984,7 @@
             <div class="price-row"><span data-translate="fullBody">Complete Body</span><span>€200</span></div>
           </div>
 
-          <div class="price-section hidden" data-category="women-face">
+          <div class="price-section hidden" data-category="women-face" id="women-face-section" aria-live="polite" aria-atomic="true">
             <h3 data-translate="womenFaceTitle">Women&apos;s Face &amp; Mini Zones</h3>
             <div class="price-row-group-title" data-translate="groupFace">Face</div>
             <div class="price-row"><span data-translate="fullFace">Complete Face</span><span>€50</span></div>
@@ -972,7 +998,7 @@
             <div class="price-row"><span data-translate="interglutealFold">Intergluteal Fold</span><span>€15</span></div>
           </div>
 
-          <div class="price-section hidden" data-category="men">
+          <div class="price-section hidden" data-category="men" id="men-section" aria-live="polite" aria-atomic="true">
             <h3 data-translate="menTitle">Men Only (Laser Epilation)</h3>
             <div class="price-row"><span data-translate="menFullBack">Complete Back</span><span>€60</span></div>
             <div class="price-row"><span data-translate="menBikini">Bikini</span><span>€80</span></div>
@@ -982,7 +1008,7 @@
             <div class="price-row"><span data-translate="menBeardLine">Beard Line (Neck & Back)</span><span>€60</span></div>
           </div>
 
-          <div class="price-section hidden" data-category="lashes">
+          <div class="price-section hidden" data-category="lashes" id="lashes-section" aria-live="polite" aria-atomic="true">
             <h3 data-translate="lashesTitle">Lash Extensions</h3>
             <div class="price-row"><span data-translate="lashesClassic">Eyelashes Classic</span><span>€60</span></div>
             <div class="price-row"><span data-translate="lashesRefillClassic">Refill Classic (up to 3 weeks)</span><span>€45</span></div>
@@ -1235,12 +1261,16 @@
       currentLang = lang;
       localStorage.setItem('bbeauty-lang', lang);
       
-      const t = translations[lang];
+      // Update the HTML lang attribute for screen readers
       document.documentElement.lang = lang;
+      
+      const t = translations[lang];
 
       // Update language buttons
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
+        const isActive = btn.dataset.lang === lang;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
 
       // Update hero section
@@ -1312,9 +1342,13 @@
         button.addEventListener('click', () => {
           const category = button.dataset.category;
 
-          // Update active button
-          categoryButtons.forEach(btn => btn.classList.remove('active'));
+          // Update active button and aria-expanded
+          categoryButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-expanded', 'false');
+          });
           button.classList.add('active');
+          button.setAttribute('aria-expanded', 'true');
 
           // Show/hide price sections
           priceSections.forEach(section => {
