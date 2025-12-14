@@ -1375,7 +1375,10 @@
       
       // Update theme color meta tag
       const themeColor = theme === 'dark' ? '#2E1E12' : '#f6f3ec';
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', themeColor);
+      }
     }
 
     function toggleTheme() {
@@ -1388,6 +1391,13 @@
     function generateWhatsAppLink(service) {
       const phoneNumber = '31633915100';
       const t = translations[currentLang];
+      
+      // Validate service parameter
+      if (!service || typeof service !== 'string' || service.length === 0) {
+        const message = t.whatsappGeneral || 'Hello! I would like to book an appointment.';
+        return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      }
+      
       const messageKey = `whatsapp${service.charAt(0).toUpperCase() + service.slice(1)}`;
       const message = t[messageKey] || t.whatsappGeneral;
       return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
