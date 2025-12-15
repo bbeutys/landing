@@ -1299,99 +1299,7 @@
       }
     }
 
-    /* ===== NEW SECTIONS: WHATSAPP FLOATING BUBBLE ===== */
-    .whatsapp-bubble {
-      position: fixed;
-      bottom: 80px;
-      right: 24px;
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(183, 129, 99, 0.4);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      z-index: 100;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      animation: pulse-accent 2s infinite;
-    }
 
-    [data-theme="dark"] .whatsapp-bubble {
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      box-shadow: 0 6px 16px rgba(255, 112, 67, 0.4);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .whatsapp-bubble:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 8px 20px rgba(183, 129, 99, 0.6);
-    }
-
-    [data-theme="dark"] .whatsapp-bubble:hover {
-      box-shadow: 0 8px 20px rgba(255, 112, 67, 0.6);
-    }
-
-    .whatsapp-bubble .bubble-icon {
-      width: 32px;
-      height: 32px;
-    }
-
-    .bubble-tooltip {
-      position: absolute;
-      right: 70px;
-      background: var(--card-bg);
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-main);
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      border: 1px solid var(--border-soft);
-    }
-
-    .whatsapp-bubble:hover .bubble-tooltip {
-      opacity: 1;
-    }
-
-    @keyframes pulse-accent {
-      0%, 100% {
-        box-shadow: 0 4px 12px rgba(183, 129, 99, 0.4);
-      }
-      50% {
-        box-shadow: 0 4px 20px rgba(183, 129, 99, 0.7), 0 0 0 8px rgba(183, 129, 99, 0.1);
-      }
-    }
-
-    [data-theme="dark"] .whatsapp-bubble {
-      animation: pulse-accent-dark 2s infinite;
-    }
-
-    @keyframes pulse-accent-dark {
-      0%, 100% {
-        box-shadow: 0 6px 16px rgba(255, 112, 67, 0.4);
-      }
-      50% {
-        box-shadow: 0 6px 20px rgba(255, 112, 67, 0.7), 0 0 0 8px rgba(255, 112, 67, 0.1);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .whatsapp-bubble {
-        bottom: 70px;
-        right: 16px;
-      }
-      
-      .bubble-tooltip {
-        display: none;
-      }
-    }
 
     /* ===== HERO IMPROVEMENTS ===== */
     .hero-usp {
@@ -2067,13 +1975,7 @@
     <a href="#contact" class="floating-nav-item" data-translate="navContact">Contact</a>
   </nav>
 
-  <!-- WhatsApp Floating Bubble -->
-  <a href="https://wa.me/31633915100" class="whatsapp-bubble" rel="noopener noreferrer" target="_blank" aria-label="Free Consultation via WhatsApp" data-whatsapp-service="general">
-    <svg class="bubble-icon" width="32" height="32" viewBox="0 0 32 32" fill="white">
-      <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.739 5.479 2.032 7.784L0 32l8.427-2.016A15.904 15.904 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.453 0-4.787-.666-6.784-1.827l-.485-.29-5.026 1.203 1.217-4.933-.318-.504A13.231 13.231 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.973c-.4-.2-2.365-1.168-2.731-1.301-.365-.133-.631-.2-.897.2-.266.4-1.032 1.301-1.265 1.567-.233.266-.465.3-.865.1-.4-.2-1.687-.622-3.213-1.983-1.187-1.06-1.989-2.368-2.222-2.768-.233-.4-.025-.616.175-.815.18-.18.4-.465.6-.698.2-.233.266-.4.4-.665.133-.266.066-.5-.034-.698-.1-.2-.897-2.165-1.23-2.965-.324-.78-.652-.673-.897-.686-.233-.013-.498-.016-.764-.016-.266 0-.698.1-1.064.5-.365.4-1.397 1.368-1.397 3.333s1.43 3.867 1.63 4.133c.2.266 2.816 4.3 6.822 6.03.953.412 1.697.658 2.276.842.957.304 1.828.261 2.517.158.768-.115 2.365-.968 2.698-1.903.333-.935.333-1.736.233-1.903-.1-.167-.365-.267-.765-.467z"/>
-    </svg>
-    <span class="bubble-tooltip" data-translate="consultationViaWhatsApp">Free Consultation</span>
-  </a>
+
 
   <!-- Sticky CTA (mobile only) -->
   <div class="sticky-cta">
@@ -2439,8 +2341,26 @@
       }
     };
 
-    // Get current language from localStorage or default to 'en'
-    let currentLang = localStorage.getItem('bbeauty-lang') || 'en';
+    // Auto-detect preferred language
+    function getPreferredLanguage() {
+      // Check if user already selected
+      const savedLang = localStorage.getItem('bbeauty-lang');
+      if (savedLang) return savedLang;
+      
+      // Auto-detect from browser
+      const browserLang = navigator.language || navigator.userLanguage;
+      const langCode = browserLang.toLowerCase();
+      
+      // Ukrainian for Ukrainian or Russian
+      if (langCode.startsWith('uk') || langCode.startsWith('ru')) {
+        return 'uk';
+      }
+      
+      // English for all others (nl, en, de, fr, etc.)
+      return 'en';
+    }
+
+    let currentLang = getPreferredLanguage();
     
     // Theme management
     function getPreferredTheme() {
@@ -2451,7 +2371,6 @@
 
     function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('bbeauty-theme', theme);
       
       const themeIcon = document.querySelector('.theme-icon');
       if (themeIcon) {
@@ -2469,6 +2388,9 @@
     function toggleTheme() {
       const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      // Save user preference when manually toggling
+      localStorage.setItem('bbeauty-theme', newTheme);
       setTheme(newTheme);
     }
 
@@ -2648,6 +2570,14 @@
 
       // Initialize testimonials slider
       initTestimonialsSlider();
+
+      // Real-time system theme tracking
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only auto-switch if user hasn't manually selected
+        if (!localStorage.getItem('bbeauty-theme')) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
     });
 
     // Progress Bar functionality
