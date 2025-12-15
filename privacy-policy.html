@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy - BBeauty</title>
+  <meta name="description" content="BBeauty Privacy Policy - How we collect, use, and protect your personal data. GDPR compliant.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="logo-bbeauty.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    : root {
+      --page-bg: #f6f3ec;
+      --card-bg:  #fffaf4;
+      --accent: #b78163;
+      --accent-dark:  #aa6c50;
+      --border-soft: #e3d7c7;
+      --text-main:  #22231e;
+      --text-muted: #706a61;
+    }
+    
+    [data-theme="dark"] {
+      --page-bg: #2E1E12;
+      --card-bg:  #3d2a1c;
+      --accent: #FF7043;
+      --accent-dark:  #FF8A65;
+      --border-soft:  #5a4030;
+      --text-main:  #f5e6d3;
+      --text-muted: #c4b5a3;
+    }
+    
+    * {
+      box-sizing:  border-box;
+      margin:  0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--page-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    . container {
+      max-width:  800px;
+      margin:  0 auto;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow:  0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+    
+    . lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+    
+    .lang-btn {
+      font-size: 20px;
+      background: var(--card-bg);
+      border: 2px solid var(--border-soft);
+      border-radius:  8px;
+      padding:  8px 12px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+    
+    .lang-btn: hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+    
+    .lang-btn.active {
+      opacity: 1;
+      border-color:  var(--accent);
+      background: rgba(183, 129, 99, 0.1);
+    }
+    
+    . lang-btn: focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .back-link:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+      transform: translateX(-3px);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--border-soft);
+    }
+    
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    
+    .last-updated {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    
+    h2 {
+      font-family: 'Cormorant', serif;
+      font-size:  24px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom:  8px;
+      color: var(--text-main);
+    }
+    
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    
+    strong {
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+    
+    a {
+      color: var(--accent);
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-dark);
+    }
+    
+    . contact-box {
+      background:  rgba(183, 129, 99, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 32px 0;
+    }
+    
+    .contact-box strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom:  12px;
+      color: var(--accent);
+    }
+    
+    .contact-box p {
+      margin-bottom: 8px;
+    }
+    
+    [data-lang] {
+      display: none;
+    }
+    
+    body[data-current-lang="en"] [data-lang="en"] {
+      display:  block;
+    }
+    
+    body[data-current-lang="nl"] [data-lang="nl"] {
+      display: block;
+    }
+    
+    body[data-current-lang="uk"] [data-lang="uk"] {
+      display: block;
+    }
+    
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 12px;
+      }
+      
+      .container {
+        padding: 24px;
+        border-radius: 16px;
+      }
+      
+      h1 {
+        font-size:  24px;
+      }
+      
+      h2 {
+        font-size: 20px;
+      }
+      
+      h3 {
+        font-size: 16px;
+      }
+      
+      .lang-switcher {
+        top: 12px;
+        right: 12px;
+      }
+      
+      .lang-btn {
+        font-size: 18px;
+        padding: 6px 10px;
+      }
+      
+      .contact-box {
+        padding: 16px;
+      }
+    }
+    
+    @media print {
+      . lang-switcher,
+      .back-link {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .container {
+        box-shadow: none;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body data-current-lang="en">
+  
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="nl" aria-label="Nederlands">🇳🇱</button>
+    <button class="lang-btn" data-lang="uk" aria-label="Українська">🇺🇦</button>
+  </div>
+  
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Back Link -->
+    <a href="index.html" class="back-link">← <span data-lang="en">Back to Home</span><span data-lang="nl">Terug naar Home</span><span data-lang="uk">Назад на головну</span></a>
+    
+    <!-- Header -->
+    <header class="header">
+      <h1 data-lang="en">Privacy Policy</h1>
+      <h1 data-lang="nl">Privacybeleid</h1>
+      <h1 data-lang="uk">Політика конфіденційності</h1>
+      
+      <p class="last-updated" data-lang="en">Last updated: December 15, 2025</p>
+      <p class="last-updated" data-lang="nl">Laatst bijgewerkt: 15 december 2025</p>
+      <p class="last-updated" data-lang="uk">Останнє оновлення: 15 грудня 2025 року</p>
+    </header>
+    
+    <!-- ENGLISH CONTENT -->
+    <article data-lang="en">
+      
+      <section>
+        <h2>1. Introduction</h2>
+        <p>BBeauty ("we", "us", or "our") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you visit our website or use our services.</p>
+        <p>We are a beauty salon located in Alphen aan den Rijn, Netherlands, specializing in laser hair removal and lash extensions. This policy applies to all personal data we process. </p>
+      </section>
+      
+      <section>
+        <h2>2. Information We Collect</h2>
+        <p>We collect the following types of personal data:</p>
+        <ul>
+          <li><strong>Contact Information:</strong> Name, email address, phone number</li>
+          <li><strong>Appointment Data:</strong> Service preferences, booking history, treatment notes, medical information relevant to treatments</li>
+          <li><strong>Communication: </strong> WhatsApp messages, email correspondence, phone call records</li>
+          <li><strong>Website Data:</strong> Cookies, IP address, browser type, device information (only with your consent)</li>
+          <li><strong>Payment Information:</strong> Transaction records (payment processor handles card details)</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>3. How We Use Your Data</h2>
+        <p>We use your personal data for the following purposes:</p>
+        <ul>
+          <li>Scheduling and managing appointments</li>
+          <li>Providing beauty and laser treatments safely and effectively</li>
+          <li>Sending appointment reminders and confirmations</li>
+          <li>Responding to your inquiries and customer service requests</li>
+          <li>Maintaining treatment records and medical history (for your safety)</li>
+          <li>Processing payments</li>
+          <li>Improving our services and website</li>
+          <li>Compliance with legal obligations (tax, business records)</li>
+          <li>Marketing communications (only with your explicit consent - you can opt-out anytime)</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>4. Legal Basis for Processing</h2>
+        <p>Under the General Data Protection Regulation (GDPR), we process your data based on: </p>
+        <ul>
+          <li><strong>Contract performance:</strong> To provide services you've booked with us</li>
+          <li><strong>Consent:</strong> For marketing communications and analytics cookies (you can withdraw consent anytime)</li>
+          <li><strong>Legitimate interest:</strong> To improve our services, prevent fraud, and ensure business security</li>
+          <li><strong>Legal obligation:</strong> To comply with tax laws, business record-keeping requirements, and health & safety regulations</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>5. Data Storage and Security</h2>
+        <p>Your data is stored securely with the following measures:</p>
+        <ul>
+          <li><strong>Encrypted transmission:</strong> All data sent via our website uses HTTPS/SSL encryption</li>
+          <li><strong>Access control:</strong> Only authorized staff members can access your personal data</li>
+          <li><strong>Secure servers:</strong> Data is stored on secure servers within the EU/EEA</li>
+          <li><strong>Regular updates:</strong> We maintain up-to-date security software and protocols</li>
+          <li><strong>Staff training:</strong> Our team is trained in data protection and confidentiality</li>
+        </ul>
+        <p><strong>Retention period:</strong> We retain your personal data for <strong>2 years after your last appointment</strong> with us.  Tax and business records are kept for 7 years as required by Dutch law.</p>
+      </section>
+      
+      <section>
+        <h2>6. Third-Party Services</h2>
+        <p>We may share your data with trusted third-party service providers: </p>
+        <ul>
+          <li><strong>WhatsApp (Meta):</strong> For appointment communication and customer service</li>
+          <li><strong>Google Fonts:</strong> For website typography (performance, no personal data shared)</li>
+          <li><strong>Analytics providers:</strong> For website usage statistics (only with your consent)</li>
+          <li><strong>Payment processors: </strong> For secure payment handling (they don't share card details with us)</li>
+        </ul>
+        <p><strong>We do NOT sell your personal data to third parties.</strong> All service providers are contractually required to protect your data and comply with GDPR. </p>
+      </section>
+      
+      <section>
+        <h2>7. Your Rights (GDPR)</h2>
+        <p>Under EU and Dutch law, you have the following data protection rights:</p>
+        <ul>
+          <li><strong>Right to access:</strong> Request a copy of your personal data we hold</li>
+          <li><strong>Right to rectification:</strong> Correct inaccurate or incomplete data</li>
+          <li><strong>Right to erasure ("right to be forgotten"):</strong> Request deletion of your data (subject to legal retention requirements)</li>
+          <li><strong>Right to data portability:</strong> Receive your data in a structured, machine-readable format</li>
+          <li><strong>Right to object:</strong> Opt-out of marketing communications or data processing based on legitimate interests</li>
+          <li><strong>Right to withdraw consent:</strong> Revoke consent for cookies or marketing at any time</li>
+          <li><strong>Right to restrict processing:</strong> Request limitation of how we use your data</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us (details below).</p>
+      </section>
+      
+      <section>
+        <h2>8.  Cookies</h2>
+        <p>We use cookies to improve your website experience: </p>
+        <h3>Essential Cookies (no consent required)</h3>
+        <ul>
+          <li><strong>Language preference:</strong> Remembers your chosen language (EN/NL/UK)</li>
+          <li><strong>Theme preference:</strong> Saves light/dark mode choice</li>
+          <li><strong>Cookie consent:</strong> Records your cookie preference</li>
+        </ul>
+        <h3>Analytics Cookies (requires consent)</h3>
+        <ul>
+          <li><strong>Website analytics:</strong> Helps us understand how visitors use our site (e.g., Google Analytics)</li>
+        </ul>
+        <p>You can manage cookie preferences via: </p>
+        <ul>
+          <li>The "Cookie Settings" link in our website footer</li>
+          <li>Your browser settings</li>
+        </ul>
+        <p>For more details, see our <a href="cookie-policy.html">Cookie Policy</a>.</p>
+      </section>
+      
+      <section>
+        <h2>9. Contact for Data Requests</h2>
+        <div class="contact-box">
+          <strong>Data Protection Contact</strong>
+          <p>📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></p>
+          <p>📞 <strong>Phone:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p>📍 <strong>Address:</strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Netherlands</p>
+          <p>⏱️ <strong>Response time:</strong> We will respond to your data request within <strong>30 days</strong>.</p>
+        </div>
+      </section>
+      
+      <section>
+        <h2>10. Changes to This Policy</h2>
+        <p>We may update this privacy policy from time to time to reflect changes in our practices or legal requirements. When we make changes: </p>
+        <ul>
+          <li>We will update the "Last updated" date at the top of this page</li>
+          <li>Significant changes will be communicated via email (if we have your consent)</li>
+          <li>We recommend reviewing this policy periodically</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>11. Complaints</h2>
+        <p>If you're not satisfied with how we handle your personal data, you have the right to file a complaint with the Dutch Data Protection Authority: </p>
+        <p><strong>Autoriteit Persoonsgegevens</strong><br>
+        🌐 Website: <a href="https://autoriteitpersoonsgegevens. nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens. nl</a><br>
+        📧 Email: <a href="mailto:info@autoriteitpersoonsgegevens.nl">info@autoriteitpersoonsgegevens.nl</a></p>
+      </section>
+      
+      <section>
+        <h2>12. Business Information</h2>
+        <p>
+          <strong>BBeauty</strong><br>
+          📋 <strong>KVK-nummer (Chamber of Commerce):</strong> 97592366<br>
+          📍 <strong>Address:</strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Netherlands<br>
+          📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a><br>
+          📞 <strong>Phone:</strong> <a href="tel:+31633915100">+31 6 33915100</a>
+        </p>
+      </section>
+      
+    </article>
+    
+    <!-- DUTCH CONTENT -->
+    <article data-lang="nl">
+      
+      <section>
+        <h2>1. Introductie</h2>
+        <p>BBeauty ("wij", "ons" of "onze") respecteert uw privacy en zet zich in voor de bescherming van uw persoonsgegevens. Dit privacybeleid legt uit hoe wij uw informatie verzamelen, gebruiken en beschermen wanneer u onze website bezoekt of onze diensten gebruikt.</p>
+        <p>Wij zijn een beauty salon gevestigd in Alphen aan den Rijn, Nederland, gespecialiseerd in laserontharing en wimperextensions. Dit beleid is van toepassing op alle persoonsgegevens die wij verwerken.</p>
+      </section>
+      
+      <section>
+        <h2>2. Informatie die Wij Verzamelen</h2>
+        <p>Wij verzamelen de volgende soorten persoonsgegevens:</p>
+        <ul>
+          <li><strong>Contactgegevens:</strong> Naam, e-mailadres, telefoonnummer</li>
+          <li><strong>Afspraakgegevens:</strong> Servicevoorkeuren, boekingsgeschiedenis, behandelnotities, medische informatie relevant voor behandelingen</li>
+          <li><strong>Communicatie:</strong> WhatsApp-berichten, e-mailcorrespondentie, telefoongespreksverslagen</li>
+          <li><strong>Websitegegevens:</strong> Cookies, IP-adres, browsertype, apparaatinformatie (alleen met uw toestemming)</li>
+          <li><strong>Betalingsinformatie:</strong> Transactiegegevens (betalingsverwerker behandelt kaartgegevens)</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>3. Hoe Wij Uw Gegevens Gebruiken</h2>
+        <p>Wij gebruiken uw persoonsgegevens voor de volgende doeleinden:</p>
+        <ul>
+          <li>Het plannen en beheren van afspraken</li>
+          <li>Het veilig en effectief leveren van beauty- en laserbehandelingen</li>
+          <li>Het verzenden van afspraakherinneringen en bevestigingen</li>
+          <li>Het beantwoorden van uw vragen en klantenserviceverzoeken</li>
+          <li>Het bijhouden van behandelgegevens en medische geschiedenis (voor uw veiligheid)</li>
+          <li>Het verwerken van betalingen</li>
+          <li>Het verbeteren van onze diensten en website</li>
+          <li>Naleving van wettelijke verplichtingen (belasting, bedrijfsadministratie)</li>
+          <li>Marketingcommunicatie (alleen met uw expliciete toestemming - u kunt zich altijd afmelden)</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>4. Rechtsgrondslag voor Verwerking</h2>
+        <p>Volgens de Algemene Verordening Gegevensbescherming (AVG) verwerken wij uw gegevens op basis van: </p>
+        <ul>
+          <li><strong>Contractuitvoering:</strong> Om diensten te leveren die u bij ons heeft geboekt</li>
+          <li><strong>Toestemming:</strong> Voor marketingcommunicatie en analytics cookies (u kunt toestemming altijd intrekken)</li>
+          <li><strong>Gerechtvaardigd belang: </strong> Om onze diensten te verbeteren, fraude te voorkomen en bedrijfsveiligheid te waarborgen</li>
+          <li><strong>Wettelijke verplichting:</strong> Om te voldoen aan belastingwetten, vereisten voor bedrijfsadministratie en gezondheids- en veiligheidsvoorschriften</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>5. Gegevensopslag en Beveiliging</h2>
+        <p>Uw gegevens worden veilig opgeslagen met de volgende maatregelen:</p>
+        <ul>
+          <li><strong>Versleutelde overdracht:</strong> Alle gegevens die via onze website worden verzonden, gebruiken HTTPS/SSL-versleuteling</li>
+          <li><strong>Toegangscontrole:</strong> Alleen geautoriseerd personeel heeft toegang tot uw persoonsgegevens</li>
+          <li><strong>Beveiligde servers:</strong> Gegevens worden opgeslagen op beveiligde servers binnen de EU/EER</li>
+          <li><strong>Regelmatige updates: </strong> Wij onderhouden actuele beveiligingssoftware en protocollen</li>
+          <li><strong>Personeelstraining:</strong> Ons team is getraind in gegevensbescherming en vertrouwelijkheid</li>
+        </ul>
+        <p><strong>Bewaartermijn:</strong> Wij bewaren uw persoonsgegevens voor <strong>2 jaar na uw laatste afspraak</strong> bij ons. Belasting- en bedrijfsadministratie worden 7 jaar bewaard zoals vereist door de Nederlandse wet.</p>
+      </section>
+      
+      <section>
+        <h2>6. Diensten van Derden</h2>
+        <p>Wij kunnen uw gegevens delen met vertrouwde externe dienstverleners:</p>
+        <ul>
+          <li><strong>WhatsApp (Meta):</strong> Voor afspraakcommunicatie en klantenservice</li>
+          <li><strong>Google Fonts:</strong> Voor website-typografie (prestaties, geen persoonsgegevens gedeeld)</li>
+          <li><strong>Analytics providers:</strong> Voor website-gebruiksstatistieken (alleen met uw toestemming)</li>
+          <li><strong>Betalingsverwerkers: </strong> Voor veilige betalingsverwerking (zij delen geen kaartgegevens met ons)</li>
+        </ul>
+        <p><strong>Wij verkopen uw persoonsgegevens NIET aan derden.</strong> Alle dienstverleners zijn contractueel verplicht uw gegevens te beschermen en te voldoen aan de AVG.</p>
+      </section>
+      
+      <section>
+        <h2>7. Uw Rechten (AVG)</h2>
+        <p>Volgens de EU- en Nederlandse wetgeving heeft u de volgende gegevensbeschermingsrechten:</p>
+        <ul>
+          <li><strong>Recht op inzage:</strong> Vraag een kopie aan van uw persoonsgegevens die wij bewaren</li>
+          <li><strong>Recht op rectificatie:</strong> Corrigeer onjuiste of onvolledige gegevens</li>
+          <li><strong>Recht op verwijdering ("recht om vergeten te worden"):</strong> Vraag verwijdering van uw gegevens (onder voorbehoud van wettelijke bewaarvereisten)</li>
+          <li><strong>Recht op dataportabiliteit:</strong> Ontvang uw gegevens in een gestructureerd, machineleesbaar formaat</li>
+          <li><strong>Recht op bezwaar:</strong> Opt-out van marketingcommunicatie of gegevensverwerking op basis van gerechtvaardigde belangen</li>
+          <li><strong>Recht om toestemming in te trekken:</strong> Herroep toestemming voor cookies of marketing op elk moment</li>
+          <li><strong>Recht op beperking van verwerking:</strong> Vraag beperking van hoe wij uw gegevens gebruiken</li>
+        </ul>
+        <p>Om een van deze rechten uit te oefenen, neem contact met ons op (details hieronder).</p>
+      </section>
+      
+      <section>
+        <h2>8. Cookies</h2>
+        <p>Wij gebruiken cookies om uw website-ervaring te verbeteren:</p>
+        <h3>Essentiële Cookies (geen toestemming vereist)</h3>
+        <ul>
+          <li><strong>Taalvoorkeur:</strong> Onthoudt uw gekozen taal (EN/NL/UK)</li>
+          <li><strong>Themavoorkeur:</strong> Slaat lichte/donkere modus keuze op</li>
+          <li><strong>Cookie-toestemming:</strong> Registreert uw cookie-voorkeur</li>
+        </ul>
+        <h3>Analytics Cookies (toestemming vereist)</h3>
+        <ul>
+          <li><strong>Website-analyse:</strong> Helpt ons begrijpen hoe bezoekers onze site gebruiken (bijv. Google Analytics)</li>
+        </ul>
+        <p>U kunt cookievoorkeuren beheren via:</p>
+        <ul>
+          <li>De "Cookie-instellingen" link in onze website-footer</li>
+          <li>Uw browserinstellingen</li>
+        </ul>
+        <p>Voor meer details, zie ons <a href="cookie-policy.html">Cookiebeleid</a>. </p>
+      </section>
+      
+      <section>
+        <h2>9. Contact voor Gegevensverzoeken</h2>
+        <div class="contact-box">
+          <strong>Gegevensbescherming Contact</strong>
+          <p>📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></p>
+          <p>📞 <strong>Telefoon:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p>📍 <strong>Adres:</strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Nederland</p>
+          <p>⏱️ <strong>Reactietijd:</strong> Wij reageren op uw gegevensverzoek binnen <strong>30 dagen</strong>.</p>
+        </div>
+      </section>
+      
+      <section>
+        <h2>10. Wijzigingen in Dit Beleid</h2>
+        <p>Wij kunnen dit privacybeleid van tijd tot tijd bijwerken om veranderingen in onze praktijken of wettelijke vereisten weer te geven. Wanneer wij wijzigingen aanbrengen:</p>
+        <ul>
+          <li>Wij werken de "Laatst bijgewerkt" datum bovenaan deze pagina bij</li>
+          <li>Belangrijke wijzigingen worden via e-mail gecommuniceerd (als wij uw toestemming hebben)</li>
+          <li>Wij raden aan dit beleid regelmatig te bekijken</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>11. Klachten</h2>
+        <p>Als u niet tevreden bent met hoe wij met uw persoonsgegevens omgaan, heeft u het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens:</p>
+        <p><strong>Autoriteit Persoonsgegevens</strong><br>
+        🌐 Website: <a href="https://autoriteitpersoonsgegevens. nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a><br>
+        📧 Email: <a href="mailto: info@autoriteitpersoonsgegevens.nl">info@autoriteitpersoonsgegevens. nl</a></p>
+      </section>
+      
+      <section>
+        <h2>12. Bedrijfsinformatie</h2>
+        <p>
+          <strong>BBeauty</strong><br>
+          📋 <strong>KVK-nummer: </strong> 97592366<br>
+          📍 <strong>Adres:</strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Nederland<br>
+          📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a><br>
+          📞 <strong>Telefoon:</strong> <a href="tel:+31633915100">+31 6 33915100</a>
+        </p>
+      </section>
+      
+    </article>
+    
+    <!-- UKRAINIAN CONTENT -->
+    <article data-lang="uk">
+      
+      <section>
+        <h2>1. Вступ</h2>
+        <p>BBeauty ("ми", "нас" або "наш") поважає вашу конфіденційність і прагне захищати ваші персональні дані. Ця політика конфіденційності пояснює, як ми збираємо, використовуємо та захищаємо вашу інформацію, коли ви відвідуєте наш веб-сайт або користуєтеся нашими послугами.</p>
+        <p>Ми — beauty-салон, розташований в Alphen aan den Rijn, Нідерланди, що спеціалізується на лазерній епіляції та нарощуванні вій. Ця політика застосовується до всіх персональних даних, які ми обробляємо.</p>
+      </section>
+      
+      <section>
+        <h2>2. Інформація, яку Ми Збираємо</h2>
+        <p>Ми збираємо наступні типи персональних даних: </p>
+        <ul>
+          <li><strong>Контактна інформація:</strong> Ім'я, адреса електронної пошти, номер телефону</li>
+          <li><strong>Дані про записи:</strong> Переваги послуг, історія бронювань, примітки про процедури, медична інформація, що стосується процедур</li>
+          <li><strong>Спілкування:</strong> Повідомлення WhatsApp, електронна кореспонденція, записи телефонних дзвінків</li>
+          <li><strong>Дані веб-сайту:</strong> Файли cookie, IP-адреса, тип браузера, інформація про пристрій (тільки за вашою згодою)</li>
+          <li><strong>Платіжна інформація:</strong> Записи транзакцій (обробник платежів обробляє дані карток)</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>3. Як Ми Використовуємо Ваші Дані</h2>
+        <p>Ми використовуємо ваші персональні дані для наступних цілей:</p>
+        <ul>
+          <li>Планування та управління записами</li>
+          <li>Безпечне та ефективне надання косметологічних та лазерних процедур</li>
+          <li>Відправка нагадувань і підтверджень записів</li>
+          <li>Відповіді на ваші запити та запити служби підтримки клієнтів</li>
+          <li>Ведення записів про процедури та медичну історію (для вашої безпеки)</li>
+          <li>Обробка платежів</li>
+          <li>Покращення наших послуг і веб-сайту</li>
+          <li>Дотримання законодавчих зобов'язань (податки, бізнес-записи)</li>
+          <li>Маркетингові повідомлення (тільки за вашою явною згодою - ви можете відмовитися в будь-який час)</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>4. Правова Основа для Обробки</h2>
+        <p>Відповідно до Загального регламенту захисту даних (GDPR), ми обробляємо ваші дані на підставі:</p>
+        <ul>
+          <li><strong>Виконання договору:</strong> Для надання послуг, які ви замовили у нас</li>
+          <li><strong>Згода:</strong> Для маркетингових повідомлень та аналітичних cookies (ви можете відкликати згоду в будь-який час)</li>
+          <li><strong>Законний інтерес:</strong> Для покращення наших послуг, запобігання шахрайству та забезпечення безпеки бізнесу</li>
+          <li><strong>Законодавче зобов'язання:</strong> Для дотримання податкового законодавства, вимог до ведення бізнес-записів та правил охорони здоров'я та безпеки</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>5. Зберігання та Безпека Даних</h2>
+        <p>Ваші дані зберігаються безпечно з наступними заходами:</p>
+        <ul>
+          <li><strong>Зашифрована передача:</strong> Всі дані, надіслані через наш веб-сайт, використовують шифрування HTTPS/SSL</li>
+          <li><strong>Контроль доступу:</strong> Тільки авторизований персонал має доступ до ваших персональних даних</li>
+          <li><strong>Безпечні сервери:</strong> Дані зберігаються на безпечних серверах у межах ЄС/ЄЕЗ</li>
+          <li><strong>Регулярні оновлення:</strong> Ми підтримуємо актуальне програмне забезпечення та протоколи безпеки</li>
+          <li><strong>Навчання персоналу:</strong> Наша команда навчена захисту даних і конфіденційності</li>
+        </ul>
+        <p><strong>Термін зберігання:</strong> Ми зберігаємо ваші персональні дані протягом <strong>2 років після вашого останнього візиту</strong> до нас. Податкові та бізнес-записи зберігаються 7 років відповідно до законодавства Нідерландів.</p>
+      </section>
+      
+      <section>
+        <h2>6. Сторонні Сервіси</h2>
+        <p>Ми можемо ділитися вашими даними з довіреними постачальниками послуг третіх сторін:</p>
+        <ul>
+          <li><strong>WhatsApp (Meta):</strong> Для спілкування щодо записів та обслуговування клієнтів</li>
+          <li><strong>Google Fonts:</strong> Для типографіки веб-сайту (продуктивність, персональні дані не передаються)</li>
+          <li><strong>Провайдери аналітики: </strong> Для статистики використання веб-сайту (тільки за вашою згодою)</li>
+          <li><strong>Обробники платежів:</strong> Для безпечної обробки платежів (вони не діляться даними карток з нами)</li>
+        </ul>
+        <p><strong>Ми НЕ продаємо ваші персональні дані третім особам.</strong> Усі постачальники послуг зобов'язані контрактом захищати ваші дані та дотримуватись GDPR.</p>
+      </section>
+      
+      <section>
+        <h2>7. Ваші Права (GDPR)</h2>
+        <p>Згідно з законодавством ЄС та Нідерландів, ви маєте наступні права на захист даних:</p>
+        <ul>
+          <li><strong>Право на доступ:</strong> Запросити копію ваших персональних даних, які ми зберігаємо</li>
+          <li><strong>Право на виправлення:</strong> Виправити неточні або неповні дані</li>
+          <li><strong>Право на видалення ("право бути забутим"):</strong> Запросити видалення ваших даних (за умови законодавчих вимог до зберігання)</li>
+          <li><strong>Право на портативність даних:</strong> Отримати ваші дані в структурованому, машиночитаному форматі</li>
+          <li><strong>Право на заперечення:</strong> Відмовитися від маркетингових повідомлень або обробки даних на основі законних інтересів</li>
+          <li><strong>Право відкликати згоду:</strong> Відкликати згоду на файли cookie або маркетинг у будь-який час</li>
+          <li><strong>Право на обмеження обробки:</strong> Запросити обмеження того, як ми використовуємо ваші дані</li>
+        </ul>
+        <p>Щоб скористатися будь-яким з цих прав, будь ласка, зв'яжіться з нами (деталі нижче).</p>
+      </section>
+      
+      <section>
+        <h2>8. Файли Cookie</h2>
+        <p>Ми використовуємо cookies для покращення вашого досвіду на веб-сайті:</p>
+        <h3>Основні Cookies (згода не потрібна)</h3>
+        <ul>
+          <li><strong>Мовні налаштування:</strong> Запам'ятовує вашу обрану мову (EN/NL/UK)</li>
+          <li><strong>Налаштування теми:</strong> Зберігає вибір світлого/темного режиму</li>
+          <li><strong>Згода на cookies:</strong> Записує ваші налаштування cookies</li>
+        </ul>
+        <h3>Аналітичні Cookies (потрібна згода)</h3>
+        <ul>
+          <li><strong>Аналітика веб-сайту:</strong> Допомагає нам зрозуміти, як відвідувачі користуються нашим сайтом (наприклад, Google Analytics)</li>
+        </ul>
+        <p>Ви можете керувати налаштуваннями cookies через:</p>
+        <ul>
+          <li>Посилання "Налаштування cookie" у футері нашого веб-сайту</li>
+          <li>Налаштування вашого браузера</li>
+        </ul>
+        <p>Для більш детальної інформації див.  нашу <a href="cookie-policy.html">Політику Cookie</a>.</p>
+      </section>
+      
+      <section>
+        <h2>9. Контакт для Запитів щодо Даних</h2>
+        <div class="contact-box">
+          <strong>Контакт щодо Захисту Даних</strong>
+          <p>📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></p>
+          <p>📞 <strong>Телефон:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p>📍 <strong>Адреса: </strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Нідерланди</p>
+          <p>⏱️ <strong>Час відповіді:</strong> Ми відповімо на ваш запит щодо даних протягом <strong>30 днів</strong>.</p>
+        </div>
+      </section>
+      
+      <section>
+        <h2>10. Зміни до Цієї Політики</h2>
+        <p>Ми можемо час від часу оновлювати цю політику конфіденційності, щоб відобразити зміни в наших практиках або законодавчих вимогах. Коли ми вносимо зміни:</p>
+        <ul>
+          <li>Ми оновлюємо дату "Останнє оновлення" у верхній частині цієї сторінки</li>
+          <li>Значні зміни повідомляються електронною поштою (якщо у нас є ваша згода)</li>
+          <li>Ми рекомендуємо періодично переглядати цю політику</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>11. Скарги</h2>
+        <p>Якщо ви не задоволені тим, як ми обробляємо ваші персональні дані, ви маєте право подати скаргу до Нідерландського органу захисту даних:</p>
+        <p><strong>Autoriteit Persoonsgegevens</strong><br>
+        🌐 Веб-сайт: <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a><br>
+        📧 Email:  <a href="mailto:info@autoriteitpersoonsgegevens.nl">info@autoriteitpersoonsgegevens.nl</a></p>
+      </section>
+      
+      <section>
+        <h2>12. Інформація про Бізнес</h2>
+        <p>
+          <strong>BBeauty</strong><br>
+          📋 <strong>KVK-номер (Торгова палата):</strong> 97592366<br>
+          📍 <strong>Адреса:</strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Нідерланди<br>
+          📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a><br>
+          📞 <strong>Телефон:</strong> <a href="tel:+31633915100">+31 6 33915100</a>
+        </p>
+      </section>
+      
+    </article>
+    
+  </div>
+  
+  <script>
+    // Language switcher functionality
+    const langButtons = document.querySelectorAll('. lang-btn');
+    const body = document.body;
+    
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const lang = this.getAttribute('data-lang');
+        body.setAttribute('data-current-lang', lang);
+        
+        // Update active state
+        langButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Save to localStorage
+        localStorage.setItem('bbeauty-lang', lang);
+      });
+    });
+    
+    // Load saved language preference
+    const savedLang = localStorage.getItem('bbeauty-lang');
+    if (savedLang && ['en', 'nl', 'uk'].includes(savedLang)) {
+      body.setAttribute('data-current-lang', savedLang);
+      
+      // Update button states
+      langButtons.forEach(btn => {
+        if (btn.getAttribute('data-lang') === savedLang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList. remove('active');
+        }
+      });
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document. querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
