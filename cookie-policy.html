@@ -366,8 +366,11 @@
 </head>
 <body data-current-lang="en">
   
-  <!-- Language Switcher -->
+  <!-- Theme & Language Switcher -->
   <div class="lang-switcher">
+    <button id="theme-toggle" class="lang-btn" aria-label="Toggle dark mode" title="Toggle theme">
+      <span class="theme-icon">☀️</span>
+    </button>
     <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
     <button class="lang-btn" data-lang="nl" aria-label="Nederlands">🇳🇱</button>
     <button class="lang-btn" data-lang="uk" aria-label="Українська">🇺🇦</button>
@@ -1288,4 +1291,55 @@
       
       // Update button states
       langButtons.forEach(btn => {
-        if (btn.getAttribute
+        if (btn.getAttribute('data-lang') === savedLang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+    
+    // Dark mode functionality
+    function getPreferredTheme() {
+      const savedTheme = localStorage.getItem('bbeauty-theme');
+      if (savedTheme) return savedTheme;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('bbeauty-theme', theme);
+      
+      // Update theme icon
+      const themeIcon = document.querySelector('.theme-icon');
+      if (themeIcon) {
+        themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    }
+
+    // Initialize theme
+    const preferredTheme = getPreferredTheme();
+    setTheme(preferredTheme);
+    
+    // Theme toggle button event listener
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // Real-time system theme tracking
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('bbeauty-theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+  
+</body>
+</html>
