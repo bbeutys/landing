@@ -1056,6 +1056,155 @@
       }
     }
 
+    /* === COOKIE CONSENT BANNER === */
+
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      border-top: 2px solid var(--accent);
+      padding: 12px 20px;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 10000;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .cookie-banner {
+        animation: slideUp 0.3s ease;
+      }
+    }
+
+    [data-theme="dark"] .cookie-banner {
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .cookie-content {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cookie-text {
+      font-size: 13px;
+      color: var(--text-main);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .cookie-link {
+      color: var(--accent);
+      text-decoration: underline;
+      margin-left: 4px;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .cookie-link:hover {
+      color: var(--accent-dark);
+    }
+
+    .cookie-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .cookie-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-soft);
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .cookie-btn-reject {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: var(--border-soft);
+    }
+
+    .cookie-btn-reject:hover {
+      background: var(--btn-bg);
+      color: var(--text-main);
+      border-color: var(--accent);
+    }
+
+    .cookie-btn-accept {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .cookie-btn-accept:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(183, 129, 99, 0.3);
+    }
+
+    [data-theme="dark"] .cookie-btn-accept:hover {
+      box-shadow: 0 4px 12px rgba(255, 112, 67, 0.4);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 640px) {
+      .cookie-banner {
+        padding: 10px 16px;
+      }
+      
+      .cookie-content {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      
+      .cookie-text {
+        font-size: 12px;
+      }
+      
+      .cookie-actions {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .cookie-btn {
+        flex: 1;
+        min-width: 100px;
+        max-width: 140px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .cookie-text {
+        font-size: 11px;
+      }
+      
+      .cookie-btn {
+        font-size: 12px;
+        padding: 7px 12px;
+      }
+    }
+
     /* ===== HERO CTA BLOCK ===== */
 
     .cta-hero {
@@ -1852,6 +2001,7 @@
         </button>
         <div class="lang-switcher">
           <button class="lang-btn active" data-lang="en" aria-label="Switch to English" title="English" aria-pressed="true">🇬🇧</button>
+          <button class="lang-btn" data-lang="nl" aria-label="Switch to Dutch" title="Nederlands" aria-pressed="false">🇳🇱</button>
           <button class="lang-btn" data-lang="uk" aria-label="Switch to Ukrainian" title="Українська" aria-pressed="false">🇺🇦</button>
         </div>
       </div>
@@ -2326,6 +2476,20 @@
     </a>
   </div>
 
+  <!-- Cookie Consent Banner (GDPR Compliant) -->
+  <div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <span data-translate="cookieMessage">We use cookies to improve your experience. By continuing, you accept our use of cookies.</span>
+        <a href="/cookie-policy.html" class="cookie-link" data-translate="cookieLearnMore">Learn more</a>
+      </div>
+      <div class="cookie-actions">
+        <button id="reject-cookies" class="cookie-btn cookie-btn-reject" data-translate="cookieReject">Reject</button>
+        <button id="accept-cookies" class="cookie-btn cookie-btn-accept" data-translate="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Early theme initialization to prevent flash
     (function() {
@@ -2514,7 +2678,181 @@
         ctaBookOnline: "Book Online",
         ctaWhatsApp: "WhatsApp Us",
         ctaTrust1: "✓ Free consultation",
-        ctaTrust2: "✓ Flexible cancellation"
+        ctaTrust2: "✓ Flexible cancellation",
+        // Cookie Banner Translations
+        cookieMessage: "We use cookies to improve your experience. By continuing, you accept our use of cookies.",
+        cookieLearnMore: "Learn more",
+        cookieAccept: "Accept",
+        cookieReject: "Reject"
+      },
+      nl: {
+        servicesTitle: "Onze Diensten",
+        servicesNote: "Snelle boeking voor onze populairste behandelingen.",
+        servicesText: "Wij bieden hoogwaardige laserontharing voor vrouwen en mannen, evenals klassieke en trendy wimperextensions. Kies uw behandeling en boek online in enkele stappen of stuur ons een bericht op WhatsApp voor hulp.",
+        bookAppointment: "Afspraak maken",
+        messageWhatsApp: "Bericht op WhatsApp",
+        featuredTitle: "Populaire Behandelingen",
+        featuredNote: "Een snelle blik op onze best verkopende diensten.",
+        pricesTitle: "Dienst Prijzen",
+        pricesNote: "Transparante prijzen voor alle zones en sets.",
+        categoryBundles: "Bundels",
+        categoryWomenBody: "Vrouwen · Lichaam & Bikini",
+        categoryWomenFace: "Vrouwen · Gezicht & Mini",
+        categoryMen: "Alleen Mannen · Laser",
+        categoryLashes: "Wimperextensions",
+        bundlesTitle: "Bundels (Beste Waarde)",
+        womenBodyTitle: "Vrouwen Lichaam & Bikini (Basis Zones)",
+        womenFaceTitle: "Vrouwen Gezicht & Mini Zones",
+        menTitle: "Alleen Mannen (Laserontharing)",
+        lashesTitle: "Wimperextensions",
+        mapTitle: "Hoe Ons Te Vinden",
+        mapText: "De studio is gelegen in Alphen aan den Rijn met gemakkelijke toegang en parkeren in de buurt. Open de route in uw voorkeurskaarten-app.",
+        openGoogleMaps: "Openen in Google Maps",
+        openWaze: "Openen in Waze",
+        contactTitle: "Contact",
+        contactText: "Voor boekingen, vragen of wijzigingen in uw afspraak, stuur ons een WhatsApp-bericht of e-mail. We reageren zo snel mogelijk tussen afspraken door.",
+        chatWhatsApp: "Chatten op WhatsApp",
+        sendEmail: "Stuur een E-mail",
+        book: "Boeken",
+        bookNow: "Boek Nu",
+        heroHeadline: "Premium Laserontharing in Alphen aan den Rijn",
+        uspPainFree: "Pijnvrije Technologie",
+        uspCertified: "Gecertificeerde Specialisten",
+        uspFrom: "Vanaf €40",
+        heroByAppointment: "Alleen op afspraak",
+        trustLicensed: "Erkende Professionals",
+        trustFDA: "FDA-Goedgekeurde Apparatuur",
+        trustHygiene: "Hygiënische Normen",
+        trustClients: "500+ Tevreden Klanten",
+        whyTitle: "Waarom Voor Ons Kiezen",
+        whyEquipmentTitle: "Premium Apparatuur",
+        whyEquipmentDesc: "Nieuwste FDA-goedgekeurde lasertechnologie voor veilige, effectieve behandelingen",
+        whySpecialistsTitle: "Gecertificeerde Specialisten",
+        whySpecialistsDesc: "Getrainde professionals met jarenlange ervaring in esthetiek",
+        whyProductsTitle: "Hypoallergene Producten",
+        whyProductsDesc: "Alleen premium, dermatologisch geteste producten voor de gevoelige huid",
+        whyPricingTitle: "Transparante Prijzen",
+        whyPricingDesc: "Duidelijke prijzen zonder verborgen kosten - wat je ziet is wat je betaalt",
+        testimonialsTitle: "Wat Onze Klanten Zeggen",
+        testimonial1Text: "Beste laserontharing ervaring! Professioneel, zacht en geweldige resultaten.",
+        testimonial1Author: "Sophie van der Berg",
+        testimonial1Service: "Deep Bikini • 6 sessies",
+        testimonial2Text: "Mijn wimpers zien er ongelooflijk uit! Natuurlijk maar zo vol. Ik krijg elke dag complimenten.",
+        testimonial2Author: "Emma de Vries",
+        testimonial2Service: "Volume Wimperextensions",
+        testimonial3Text: "Schone studio, vriendelijk personeel en geweldige prijzen. Zeer aan te bevelen voor mannenverzorging.",
+        testimonial3Author: "Lars Janssen",
+        testimonial3Service: "Rug Laserbehandeling",
+        testimonial4Text: "Eindelijk een gladde huid zonder scheermesjes! Het team zorgde ervoor dat ik me heel comfortabel voelde.",
+        testimonial4Author: "Nina Bakker",
+        testimonial4Service: "Complete Benen • 8 sessies",
+        testimonial5Text: "Professionele service, moderne apparatuur. Resultaten overtroffen mijn verwachtingen!",
+        testimonial5Author: "Thomas Mulder",
+        testimonial5Service: "Borst Laser • 4 sessies",
+        testimonial6Text: "Perfecte natuurlijke look! Ze namen de tijd om precies te begrijpen wat ik wilde.",
+        testimonial6Author: "Lisa Visser",
+        testimonial6Service: "Klassieke Wimper Set",
+        faqTitle: "Veelgestelde Vragen",
+        faq1Question: "Is laserontharing pijnlijk?",
+        faq1Answer: "Moderne lasertechnologie is vrijwel pijnloos. De meeste klanten omschrijven het als een licht tintelend gevoel. Wij gebruiken FDA-goedgekeurde apparatuur met koelsystemen voor maximaal comfort.",
+        faq2Question: "Hoeveel sessies heb ik nodig?",
+        faq2Answer: "De meeste klanten zien optimale resultaten na 6-8 sessies, met tussenpozen van 4-6 weken. Het exacte aantal varieert afhankelijk van haartype, kleur en het behandelde gebied.",
+        faq3Question: "Hoe lang blijven wimperextensions zitten?",
+        faq3Answer: "Klassieke wimperextensions blijven meestal 3-4 weken zitten bij goede verzorging. We raden een opvulling elke 2-3 weken aan om de volle, frisse look te behouden.",
+        faq4Question: "Is er een consultatie vergoeding?",
+        faq4Answer: "Nee, consultaties zijn volledig gratis! We beoordelen graag uw behoeften, beantwoorden vragen en bevelen het beste behandelplan voor u aan.",
+        faq5Question: "Bieden jullie pakketdeals aan?",
+        faq5Answer: "Ja! We hebben verschillende bundelpakketten die een geweldige waarde bieden. Bekijk onze 'Bundels' sectie in de prijslijst voor combo deals op populaire behandelzones.",
+        navServices: "Diensten",
+        navPrices: "Prijzen",
+        navReviews: "Reviews",
+        navFAQ: "FAQ",
+        navContact: "Contact",
+        bookConsultation: "Gratis Consultatie Boeken",
+        consultationViaWhatsApp: "Gratis Consultatie",
+        equipmentBadge: "Nieuwste Technologie",
+        equipmentName: "Novalaser Quattro",
+        equipmentDesc: "Professioneel diode lasersysteem. De meest geavanceerde apparatuur voor veilige, effectieve en vrijwel pijnloze ontharing.",
+        eqFDA: "FDA Goedgekeurd",
+        eqPainFree: "Pijnvrij",
+        eqAllSkin: "Alle Huidtypes",
+        whyUkrainianTitle: "Oekraïense Excellentie",
+        whyUkrainianDesc: "Premium service door Oekraïense specialisten. Warmte, zorg en aandacht voor detail in elke behandeling.",
+        testimonialsNote: "Echte reviews van tevreden klanten",
+        deepBikini: "Deep Bikini",
+        deepBikiniDesc: "Gladde en nauwkeurige haarverwijdering in het volledige bikinigebied.",
+        fullLegs: "Complete Benen",
+        fullLegsDesc: "Van dijen tot enkels – complete beenbedekking.",
+        deepBikiniArmpits: "Deep Bikini + Oksels",
+        deepBikiniArmpitsDesc: "Beste waarde combo voor veelbehandelde zones.",
+        fullBack: "Complete Rug",
+        fullBackDesc: "Gelijkmatige haarvermindering over de hele rug.",
+        classicSet: "Klassieke Set",
+        classicSetDesc: "Zachte, natuurlijke look die je dagelijkse oogvorm verbetert.",
+        trendEffect: "Trend Effect (Whispy / Wet)",
+        trendEffectDesc: "Expressieve, getextureerde look met innerlijk volume.",
+        laserWomen: "Laser • Vrouwen",
+        laserMen: "Laser • Mannen",
+        laserCombo: "Laser • Combo",
+        lashExtensions: "Wimperextensions",
+        bikiniClassic: "Klassiek",
+        bikiniDeep: "Deep",
+        legsHalf: "Helft (Onder / Boven)",
+        legsFull: "Compleet",
+        armsHalf: "Helft (Onder / Boven)",
+        armsFull: "Compleet",
+        buttocks: "Billen",
+        stomach: "Buik",
+        deepBikiniArmpitsCombo: "Deep Bikini + Oksels",
+        deepBikiniArmpitsLegs: "Deep Bikini + Oksels + Complete Benen",
+        allIn: "Alles Inbegrepen (Benen + Armen + Buik + Bikini)",
+        fullBody: "Volledig Lichaam",
+        fullFace: "Volledig Gezicht",
+        chin: "Kin",
+        mustache: "Snor",
+        cheeks: "Wangen",
+        areolas: "Tepelhoven",
+        bellyLine: "Buiklijn",
+        interglutealFold: "Bilnaad",
+        menFullBack: "Complete Rug",
+        menBikini: "Bikini",
+        menArmpits: "Oksels",
+        menChest: "Borst",
+        menChestBelly: "Borst + Buik",
+        menBeardLine: "Baardlijn (Nek & Achterkant)",
+        lashesClassic: "Wimpers Klassiek",
+        lashesRefillClassic: "Opvulling Klassiek (tot 3 weken)",
+        lashesHybrid: "Hybrid Mascara Effect",
+        lashesHybridRefill: "Hybrid Opvulling (tot 3 weken)",
+        lashesVolume3D: "Volume 3D Effect · Volledige Set",
+        lashesRefill3D: "Opvulling 3D Effect (tot 3 weken)",
+        lashesRefillTrend: "Opvulling Trend Effect",
+        lashesTrendEffect: "Trend Effect Whispy / Wet met Innerlijk Volume",
+        groupBikini: "Bikini",
+        groupLegs: "Benen",
+        groupArms: "Armen",
+        groupBody: "Lichaam",
+        groupFace: "Gezicht",
+        groupMiniZones: "Mini Zones",
+        footerLocation: "BBeauty • Alphen aan den Rijn",
+        footerCopyright: "© 2025 BBeauty",
+        whatsappDeepBikini: "Hallo! Ik wil graag Deep Bikini boeken.",
+        whatsappFullLegs: "Hallo! Ik wil graag Complete Benen boeken.",
+        whatsappDeepBikiniArmpits: "Hallo! Ik wil graag Deep Bikini + Oksels boeken.",
+        whatsappFullBack: "Hallo! Ik wil graag Complete Rug boeken.",
+        whatsappClassicSet: "Hallo! Ik wil graag Klassieke Set boeken.",
+        whatsappTrendEffect: "Hallo! Ik wil graag Trend Effect (Whispy / Wet) boeken.",
+        whatsappGeneral: "Hallo! Ik wil graag een afspraak maken.",
+        ctaTitle: "Klaar om te Beginnen?",
+        ctaSubtitle: "Boek uw afspraak in 30 seconden",
+        ctaBookOnline: "Online Boeken",
+        ctaWhatsApp: "WhatsApp Ons",
+        ctaTrust1: "✓ Gratis consultatie",
+        ctaTrust2: "✓ Flexibele annulering",
+        cookieMessage: "We gebruiken cookies om uw ervaring te verbeteren. Door verder te gaan, accepteert u ons gebruik van cookies.",
+        cookieLearnMore: "Meer informatie",
+        cookieAccept: "Accepteren",
+        cookieReject: "Weigeren"
       },
       uk: {
         servicesTitle: "Наші послуги",
@@ -2693,7 +3031,12 @@
         ctaBookOnline: "Записатися Онлайн",
         ctaWhatsApp: "Написати в WhatsApp",
         ctaTrust1: "✓ Безкоштовна консультація",
-        ctaTrust2: "✓ Гнучке скасування"
+        ctaTrust2: "✓ Гнучке скасування",
+        // Cookie Banner Translations
+        cookieMessage: "Ми використовуємо файли cookie для покращення вашого досвіду. Продовжуючи, ви приймаєте наше використання cookie.",
+        cookieLearnMore: "Дізнатися більше",
+        cookieAccept: "Прийняти",
+        cookieReject: "Відхилити"
       }
     };
 
@@ -2712,7 +3055,12 @@
         return 'uk';
       }
       
-      // English for all others (nl, en, de, fr, etc.)
+      // Dutch for Netherlands
+      if (langCode.startsWith('nl')) {
+        return 'nl';
+      }
+      
+      // English for all others (en, de, fr, etc.)
       return 'en';
     }
 
@@ -3084,6 +3432,60 @@
       // Start auto-scroll
       startAutoScroll();
     }
+
+    // Cookie Consent Management (GDPR Compliant)
+    (function() {
+      const cookieBanner = document.getElementById('cookie-banner');
+      const acceptBtn = document.getElementById('accept-cookies');
+      const rejectBtn = document.getElementById('reject-cookies');
+      
+      if (!cookieBanner || !acceptBtn || !rejectBtn) {
+        console.warn('Cookie banner elements not found');
+        return;
+      }
+      
+      // Check if user already made choice
+      const cookieChoice = localStorage.getItem('cookie-consent');
+      
+      if (!cookieChoice) {
+        // Show banner after 1 second delay (less intrusive)
+        setTimeout(() => {
+          cookieBanner.style.display = 'block';
+        }, 1000);
+      } else if (cookieChoice === 'accepted') {
+        // Load analytics only if user accepted
+        loadAnalytics();
+      }
+      
+      // Accept button handler
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'accepted');
+        localStorage.setItem('cookie-consent-date', new Date().toISOString());
+        cookieBanner.style.display = 'none';
+        loadAnalytics();
+      });
+      
+      // Reject button handler
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookie-consent', 'rejected');
+        localStorage.setItem('cookie-consent-date', new Date().toISOString());
+        cookieBanner.style.display = 'none';
+        // Do NOT load analytics
+      });
+      
+      // Load analytics/tracking only if user consented
+      function loadAnalytics() {
+        // Placeholder for analytics loading
+        // Example: Google Analytics, Facebook Pixel, etc.
+        console.log('Analytics loaded (user consent given)');
+        
+        // Example Google Analytics:
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag(){dataLayer.push(arguments);}
+        // gtag('js', new Date());
+        // gtag('config', 'GA_MEASUREMENT_ID');
+      }
+    })();
   </script>
 </body>
 </html>
