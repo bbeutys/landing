@@ -1591,16 +1591,16 @@
       // Update map section
       document.querySelector('#map-title').textContent = t.mapTitle;
       document.querySelector('.map-text').textContent = t.mapText;
-      const googleMapsBtn = document.querySelector('.map-block .btn.outline:first-child span:last-child');
-      const wazeBtn = document.querySelector('.map-block .btn.outline:last-child span:last-child');
+      const googleMapsBtn = document.querySelector('.map-block [href*="google.com/maps"] span:last-child');
+      const wazeBtn = document.querySelector('.map-block [href*="waze.com"] span:last-child');
       if (googleMapsBtn) googleMapsBtn.textContent = t.openGoogleMaps;
       if (wazeBtn) wazeBtn.textContent = t.openWaze;
 
       // Update contact section
       document.querySelector('#contact-title').textContent = t.contactTitle;
       document.querySelector('.contact-text').textContent = t.contactText;
-      const whatsappBtn = document.querySelector('.contact-block .btn.outline:first-child span:last-child');
-      const emailBtn = document.querySelector('.contact-block .btn.outline:last-child span:last-child');
+      const whatsappBtn = document.querySelector('.contact-block [href*="wa.me"] span:last-child');
+      const emailBtn = document.querySelector('.contact-block [href^="mailto:"] span:last-child');
       if (whatsappBtn) whatsappBtn.textContent = t.chatWhatsApp;
       if (emailBtn) emailBtn.textContent = t.sendEmail;
 
