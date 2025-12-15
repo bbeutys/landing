@@ -2031,11 +2031,12 @@
           brightness(0.90)
           contrast(0.93)
           saturate(0.88);
-        transform: none !important;
+        transform: none;
       }
       
       [data-theme="dark"] .laser-image:hover,
-      [data-theme="dark"] .laser-image:active {
+      [data-theme="dark"] .laser-image:active,
+      [data-theme="dark"] .laser-image:focus {
         filter: 
           brightness(0.85)
           contrast(0.90)
@@ -2043,12 +2044,14 @@
       }
       
       .equipment-visual:hover,
-      .equipment-visual:active {
+      .equipment-visual:active,
+      .equipment-visual:focus {
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
       }
       
       [data-theme="dark"] .equipment-visual:hover,
-      [data-theme="dark"] .equipment-visual:active {
+      [data-theme="dark"] .equipment-visual:active,
+      [data-theme="dark"] .equipment-visual:focus {
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
       }
     }
