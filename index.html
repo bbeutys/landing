@@ -1910,8 +1910,8 @@
       gap: 4px;
     }
 
-    /* === EQUIPMENT VISUAL - CIRCULAR VIGNETTE EFFECT === */
-    
+    /* === FIX MOBILE LASER IMAGE BUG === */
+
     .equipment-visual {
       position: relative;
       width: 360px;
@@ -1921,10 +1921,7 @@
       align-items: center;
       justify-content: center;
       
-      /* ✅ Perfect circle mask */
       border-radius: 50%;
-      
-      /* Background blend for smooth transition to page */
       background: radial-gradient(
         circle,
         var(--page-bg) 0%,
@@ -1932,11 +1929,19 @@
       );
       
       padding: 0;
-      overflow: hidden;  /* ✅ Crop square corners of image */
-      isolation: isolate;  /* Create stacking context for blending */
+      overflow: hidden;
+      isolation: isolate;
+      
+      /* ✅ Shadow on CONTAINER (circular) not image */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.3s ease;
     }
 
-    /* ✅ VIGNETTE OVERLAY - darkens edges, keeps center bright */
+    [data-theme="dark"] .equipment-visual {
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ✅ VIGNETTE OVERLAY */
     .equipment-visual::after {
       content: '';
       position: absolute;
@@ -1946,21 +1951,19 @@
       height: 100%;
       border-radius: 50%;
       
-      /* Strong radial vignette: transparent center → dark edges */
       background: radial-gradient(
         circle at center,
-        transparent 0%,           /* Center stays bright */
-        transparent 35%,          /* Preserve center area */
-        rgba(0, 0, 0, 0.12) 65%, /* Start darkening */
-        rgba(0, 0, 0, 0.30) 100% /* Dark edges */
+        transparent 0%,
+        transparent 35%,
+        rgba(0, 0, 0, 0.12) 65%,
+        rgba(0, 0, 0, 0.30) 100%
       );
       
-      pointer-events: none;  /* Don't block hover events */
-      z-index: 2;            /* Above image */
+      pointer-events: none;
+      z-index: 2;
     }
 
     [data-theme="dark"] .equipment-visual::after {
-      /* Stronger vignette in dark theme for better contrast */
       background: radial-gradient(
         circle at center,
         transparent 0%,
@@ -1973,49 +1976,87 @@
     .laser-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;  /* ✅ Fill circle completely (was: contain) */
+      object-fit: contain;  /* ✅ CHANGED: contain instead of cover */
       position: relative;
-      z-index: 1;  /* Below vignette overlay */
+      z-index: 1;
       
-      /* ✅ DIM the bright colors */
+      /* ✅ REMOVED drop-shadow - it created square halo */
       filter: 
-        brightness(0.90)      /* 10% darker */
-        contrast(0.93)        /* Softer contrast */
-        saturate(0.88)        /* 12% less saturated */
-        drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+        brightness(0.90)
+        contrast(0.93)
+        saturate(0.88);
       
-      transition: all 0.4s ease;
+      /* ✅ Only filter transition, NO transform */
+      transition: filter 0.4s ease;
     }
 
     [data-theme="dark"] .laser-image {
-      /* Even darker in dark theme */
       filter: 
-        brightness(0.85)      /* 15% darker */
+        brightness(0.85)
         contrast(0.90)
-        saturate(0.85)
-        drop-shadow(0 12px 35px rgba(0, 0, 0, 0.35));
+        saturate(0.85);
     }
 
-    .laser-image:hover {
-      transform: scale(1.05);
+    /* ✅ Hover effects ONLY on desktop with mouse */
+    @media (hover: hover) and (pointer: fine) {
+      .laser-image:hover {
+        filter: 
+          brightness(0.93)
+          contrast(0.95)
+          saturate(0.91);
+      }
       
-      /* Slightly brighter on hover for interaction */
-      filter: 
-        brightness(0.93)
-        contrast(0.95)
-        saturate(0.91)
-        drop-shadow(0 15px 40px rgba(0, 0, 0, 0.22));
+      [data-theme="dark"] .laser-image:hover {
+        filter: 
+          brightness(0.88)
+          contrast(0.93)
+          saturate(0.88);
+      }
+      
+      .equipment-visual:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.22);
+      }
+      
+      [data-theme="dark"] .equipment-visual:hover {
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.4);
+      }
     }
 
-    [data-theme="dark"] .laser-image:hover {
-      filter: 
-        brightness(0.88)
-        contrast(0.93)
-        saturate(0.88)
-        drop-shadow(0 18px 45px rgba(0, 0, 0, 0.4));
+    /* ✅ DISABLE all hover effects on touch devices */
+    @media (hover: none) or (pointer: coarse) {
+      .laser-image:hover,
+      .laser-image:active,
+      .laser-image:focus {
+        filter: 
+          brightness(0.90)
+          contrast(0.93)
+          saturate(0.88);
+        transform: none;
+      }
+      
+      [data-theme="dark"] .laser-image:hover,
+      [data-theme="dark"] .laser-image:active,
+      [data-theme="dark"] .laser-image:focus {
+        filter: 
+          brightness(0.85)
+          contrast(0.90)
+          saturate(0.85);
+      }
+      
+      .equipment-visual:hover,
+      .equipment-visual:active,
+      .equipment-visual:focus {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+      
+      [data-theme="dark"] .equipment-visual:hover,
+      [data-theme="dark"] .equipment-visual:active,
+      [data-theme="dark"] .equipment-visual:focus {
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      }
     }
 
-    /* Responsive - maintain perfect circle */
+    /* Responsive sizing */
     @media (max-width: 768px) {
       .equipment-banner {
         flex-direction: column;
@@ -2564,11 +2605,9 @@
         <div class="footer-divider"></div>
         
         <div class="footer-links">
-          <a href="/privacy-policy.html" data-translate="privacyPolicy">Privacy Policy</a>
+          <a href="privacy-policy.html" data-translate="privacyPolicy">Privacy Policy</a>
           <span class="footer-dot">•</span>
-          <a href="/terms.html" data-translate="termsOfService">Terms & Conditions</a>
-          <span class="footer-dot">•</span>
-          <a href="/cookie-policy.html" data-translate="cookiePolicy">Cookie Policy</a>
+          <a href="cookie-policy.html" data-translate="cookiePolicy">Cookie Policy</a>
           <span class="footer-dot">•</span>
           <a href="#cookie-settings" id="cookie-settings-link" data-translate="cookieSettings">Cookie Settings</a>
         </div>
