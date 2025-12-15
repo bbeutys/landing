@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms & Conditions - BBeauty</title>
+  <meta name="description" content="BBeauty Terms & Conditions - Algemene Voorwaarden.  Appointment policy, cancellation terms, payment conditions. ">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="logo-bbeauty.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant: wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    : root {
+      --page-bg: #f6f3ec;
+      --card-bg: #fffaf4;
+      --accent: #b78163;
+      --accent-dark: #aa6c50;
+      --border-soft: #e3d7c7;
+      --text-main: #22231e;
+      --text-muted: #706a61;
+      --warning-bg: #fff3cd;
+      --warning-border: #ffc107;
+      --warning-text: #856404;
+    }
+    
+    [data-theme="dark"] {
+      --page-bg: #2E1E12;
+      --card-bg:  #3d2a1c;
+      --accent: #FF7043;
+      --accent-dark:  #FF8A65;
+      --border-soft: #5a4030;
+      --text-main:  #f5e6d3;
+      --text-muted: #c4b5a3;
+      --warning-bg:  #5a4a2e;
+      --warning-border: #d4a24a;
+      --warning-text:  #ffd966;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background:  var(--page-bg);
+      color: var(--text-main);
+      line-height:  1.6;
+      padding: 40px 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    . container {
+      max-width:  800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    }
+    
+    . lang-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+    
+    .lang-btn {
+      font-size: 20px;
+      background: var(--card-bg);
+      border: 2px solid var(--border-soft);
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+    
+    .lang-btn:hover {
+      opacity:  0.8;
+      transform: scale(1.05);
+    }
+    
+    .lang-btn.active {
+      opacity: 1;
+      border-color: var(--accent);
+      background: rgba(183, 129, 99, 0.1);
+    }
+    
+    .lang-btn: focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    
+    . back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition:  all 0.2s ease;
+    }
+    
+    .back-link:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+      transform: translateX(-3px);
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom:  2px solid var(--border-soft);
+    }
+    
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-size:  32px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom:  8px;
+    }
+    
+    .last-updated {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    
+    h2 {
+      font-family: 'Cormorant', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 32px;
+      margin-bottom:  12px;
+    }
+    
+    h3 {
+      font-size: 18px;
+      font-weight:  600;
+      margin-top: 20px;
+      margin-bottom:  8px;
+      color: var(--text-main);
+    }
+    
+    p {
+      margin-bottom: 16px;
+      font-size: 15px;
+    }
+    
+    ul, ol {
+      margin-left:  24px;
+      margin-bottom:  16px;
+    }
+    
+    li {
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    
+    strong {
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+    
+    a {
+      color: var(--accent);
+      transition: color 0.2s ease;
+    }
+    
+    a:hover {
+      color: var(--accent-dark);
+    }
+    
+    .info-box {
+      background: rgba(183, 129, 99, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      border-radius: 8px;
+      margin:  24px 0;
+    }
+    
+    .info-box strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom:  12px;
+      color: var(--accent);
+    }
+    
+    .warning-box {
+      background: var(--warning-bg);
+      border:  2px solid var(--warning-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+    
+    .warning-box strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom:  12px;
+      color: var(--warning-text);
+    }
+    
+    .warning-box . emoji {
+      font-size: 24px;
+      margin-right: 8px;
+    }
+    
+    [data-lang] {
+      display: none;
+    }
+    
+    body[data-current-lang="en"] [data-lang="en"] {
+      display: block;
+    }
+    
+    body[data-current-lang="nl"] [data-lang="nl"] {
+      display: block;
+    }
+    
+    body[data-current-lang="uk"] [data-lang="uk"] {
+      display: block;
+    }
+    
+    @media (max-width: 640px) {
+      body {
+        padding: 20px 12px;
+      }
+      
+      .container {
+        padding: 24px;
+        border-radius: 16px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+      
+      h2 {
+        font-size:  20px;
+      }
+      
+      h3 {
+        font-size: 16px;
+      }
+      
+      . lang-switcher {
+        top: 12px;
+        right: 12px;
+      }
+      
+      .lang-btn {
+        font-size: 18px;
+        padding: 6px 10px;
+      }
+      
+      .info-box,
+      .warning-box {
+        padding: 16px;
+      }
+    }
+    
+    @media print {
+      . lang-switcher,
+      .back-link {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .container {
+        box-shadow: none;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body data-current-lang="en">
+  
+  <!-- Language Switcher -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="en" aria-label="English">🇬🇧</button>
+    <button class="lang-btn" data-lang="nl" aria-label="Nederlands">🇳🇱</button>
+    <button class="lang-btn" data-lang="uk" aria-label="Українська">🇺🇦</button>
+  </div>
+  
+  <!-- Main Container -->
+  <div class="container">
+    
+    <!-- Back Link -->
+    <a href="index.html" class="back-link">← <span data-lang="en">Back to Home</span><span data-lang="nl">Terug naar Home</span><span data-lang="uk">Назад на головну</span></a>
+    
+    <!-- Header -->
+    <header class="header">
+      <h1 data-lang="en">Terms & Conditions</h1>
+      <h1 data-lang="nl">Algemene Voorwaarden</h1>
+      <h1 data-lang="uk">Умови Використання</h1>
+      
+      <p class="last-updated" data-lang="en">Last updated: December 15, 2025</p>
+      <p class="last-updated" data-lang="nl">Laatst bijgewerkt: 15 december 2025</p>
+      <p class="last-updated" data-lang="uk">Останнє оновлення: 15 грудня 2025 року</p>
+    </header>
+    
+    <!-- ENGLISH CONTENT -->
+    <article data-lang="en">
+      
+      <section>
+        <h2>1. Definitions</h2>
+        <ul>
+          <li><strong>"BBeauty", "we", "us", "our"</strong> refers to the beauty salon operated under KVK number 97592366, located at Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Netherlands.</li>
+          <li><strong>"Client", "you", "your"</strong> refers to the person receiving our services.</li>
+          <li><strong>"Services"</strong> refers to all beauty treatments provided by BBeauty, including but not limited to laser hair removal, lash extensions, and other beauty treatments.</li>
+          <li><strong>"Appointment"</strong> refers to a scheduled service booking. </li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>2. Acceptance of Terms</h2>
+        <p>By booking an appointment or using our services, you agree to these Terms & Conditions. Please read them carefully before making a booking. </p>
+        <p>If you do not agree with any part of these terms, please do not book our services.</p>
+      </section>
+      
+      <section>
+        <h2>3. Services Offered</h2>
+        <p>BBeauty specializes in: </p>
+        <ul>
+          <li><strong>Laser Hair Removal</strong> (for women and men) - various body areas</li>
+          <li><strong>Lash Extensions</strong> - classic, volume, hybrid styles</li>
+          <li><strong>Other Beauty Treatments</strong> - as listed on our website and price list</li>
+        </ul>
+        <p>All services are provided by trained and certified professionals using professional-grade equipment.</p>
+      </section>
+      
+      <section>
+        <h2>4. Appointment Booking</h2>
+        <h3>How to Book</h3>
+        <ul>
+          <li><strong>WhatsApp: </strong> <a href="https://wa.me/31633915100">+31 6 33915100</a></li>
+          <li><strong>Phone:</strong> <a href="tel:+31633915100">+31 6 33915100</a></li>
+          <li><strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></li>
+        </ul>
+        <h3>Booking Confirmation</h3>
+        <p>Your appointment is confirmed only after you receive a confirmation message from us (via WhatsApp, SMS, or email).</p>
+        <p>Please arrive <strong>5-10 minutes early</strong> for your appointment to complete any necessary paperwork.</p>
+      </section>
+      
+      <section>
+        <h2>5. Cancellation Policy</h2>
+        <div class="warning-box">
+          <strong><span class="emoji">⚠️</span> Important Cancellation Policy</strong>
+          <p><strong>24 hours notice required</strong> for all cancellations or rescheduling. </p>
+          <ul>
+            <li>✅ <strong>24+ hours notice: </strong> FREE cancellation or rescheduling</li>
+            <li>⚠️ <strong>Less than 24 hours notice:</strong> 50% of service fee charged</li>
+            <li>❌ <strong>No-show (missed appointment):</strong> 100% of service fee charged</li>
+          </ul>
+          <p><strong>How to cancel:</strong> WhatsApp or call <a href="tel:+31633915100">+31 6 33915100</a></p>
+        </div>
+        
+        <h3>Exceptions</h3>
+        <p>Emergency situations (illness, family emergency) will be considered on a case-by-case basis.  Please contact us as soon as possible. </p>
+        
+        <h3>Late Arrivals</h3>
+        <ul>
+          <li><strong>5-10 minutes late:</strong> Service may be shortened to end on time</li>
+          <li><strong>15+ minutes late:</strong> Appointment may be cancelled (charged as no-show)</li>
+        </ul>
+        <p>We respect your time and ask that you respect ours and our other clients' scheduled appointments.</p>
+      </section>
+      
+      <section>
+        <h2>6. Payment Terms</h2>
+        <h3>When Payment is Due</h3>
+        <p><strong>Payment is due at the time of service</strong> (after your treatment is completed).</p>
+        
+        <h3>Payment Methods Accepted</h3>
+        <ul>
+          <li>💵 Cash (EUR)</li>
+          <li>💳 Debit/Credit Card (PIN)</li>
+          <li>🏦 iDEAL (Dutch bank transfer)</li>
+        </ul>
+        
+        <h3>Prices & VAT</h3>
+        <p><strong>All prices include 21% BTW (VAT)</strong> as required by Dutch law.</p>
+        <p>Prices are listed on our website and may be updated periodically. Current prices apply at the time of booking.</p>
+        
+        <h3>Invoices</h3>
+        <p>Invoices are provided upon request.  Please ask at the time of payment if you need an invoice for your records.</p>
+      </section>
+      
+      <section>
+        <h2>7. Client Responsibilities</h2>
+        <p>As a client, you are responsible for: </p>
+        <ul>
+          <li><strong>Providing accurate information: </strong> Contact details, medical history, medications</li>
+          <li><strong>Disclosing relevant medical conditions:</strong> Especially for laser treatments (see Contraindications section)</li>
+          <li><strong>Following pre-treatment instructions:</strong> E.g., no sun exposure 2 weeks before laser</li>
+          <li><strong>Following aftercare instructions:</strong> Provided after each treatment</li>
+          <li><strong>Arriving on time:</strong> Respect appointment times</li>
+          <li><strong>Informing us of changes:</strong> Health status, medications, allergies</li>
+        </ul>
+        <p><strong>Failure to follow instructions may affect treatment results and safety.  We are not liable for complications arising from non-compliance.</strong></p>
+      </section>
+      
+      <section>
+        <h2>8. Contraindications & Safety</h2>
+        <h3>Laser Hair Removal - NOT RECOMMENDED if you: </h3>
+        <div class="warning-box">
+          <strong><span class="emoji">🚫</span> Contraindications for Laser Treatment</strong>
+          <ul>
+            <li>❌ Are pregnant or breastfeeding</li>
+            <li>❌ Are taking photosensitive medications (e.g., Roaccutane/isotretinoin - must wait 6 months after stopping)</li>
+            <li>❌ Have active skin infections, wounds, or conditions in the treatment area (eczema, psoriasis, herpes outbreak)</li>
+            <li>❌ Have had sun exposure or tanning (including self-tanner) in the past 2 weeks</li>
+            <li>❌ Have tattoos or permanent makeup in the treatment area</li>
+            <li>❌ Have a history of keloid scarring</li>
+            <li>❌ Have very dark skin (Fitzpatrick Type VI) - consult first</li>
+            <li>❌ Are under 16 years old (parental consent required for ages 16-18)</li>
+          </ul>
+        </div>
+        
+        <h3>You MUST inform us if you: </h3>
+        <ul>
+          <li>Have diabetes, epilepsy, or immune system disorders</li>
+          <li>Are taking blood thinners or any new medications</li>
+          <li>Have had recent cosmetic procedures (Botox, fillers, chemical peels)</li>
+          <li>Experience any changes in your health between sessions</li>
+        </ul>
+        
+        <p><strong>Consultation Required:</strong> A consultation is mandatory before your first laser treatment. We will assess your skin type, medical history, and treatment suitability.</p>
+        <p><strong>Patch Test:</strong> A patch test may be performed for first-time laser clients to ensure skin compatibility.</p>
+      </section>
+      
+      <section>
+        <h2>9. Treatment Expectations & Results</h2>
+        <h3>Realistic Expectations</h3>
+        <ul>
+          <li><strong>Results vary by individual</strong> based on skin type, hair type, hormones, and other factors</li>
+          <li><strong>Multiple sessions required: </strong> Typically 6-8 sessions for laser hair removal (spaced 4-8 weeks apart)</li>
+          <li><strong>No guaranteed outcomes:</strong> We provide professional service but cannot guarantee specific results</li>
+          <li><strong>Maintenance may be needed:</strong> Occasional touch-up sessions after completing the initial course</li>
+        </ul>
+        
+        <h3>Our Commitment</h3>
+        <p>We use professional-grade, certified equipment and follow industry best practices. During your consultation, we will discuss realistic expectations for your specific situation.</p>
+      </section>
+      
+      <section>
+        <h2>10. Liability & Insurance</h2>
+        <ul>
+          <li><strong>BBeauty is a fully insured business</strong> with professional liability insurance</li>
+          <li><strong>We are not liable</strong> if you fail to follow pre-treatment or aftercare instructions</li>
+          <li><strong>We are not liable</strong> for missed appointments, late arrivals, or cancellation fees</li>
+          <li><strong>We are not liable</strong> for results if you provide inaccurate medical information or fail to disclose contraindications</li>
+          <li><strong>Force majeure:</strong> We are not liable for delays or cancellations due to events beyond our control (illness, natural disasters, government restrictions)</li>
+        </ul>
+        
+        <p><strong>In case of adverse reactions:</strong> Contact us immediately.  We will provide appropriate aftercare guidance and, if necessary, refer you to medical professionals.</p>
+      </section>
+      
+      <section>
+        <h2>11. Refund Policy</h2>
+        <h3>Completed Services</h3>
+        <p><strong>No refunds</strong> are provided for completed services. Payment is final once the treatment is delivered.</p>
+        
+        <h3>Treatment Packages</h3>
+        <p>If you purchase a package (e.g., 6-session laser package) and wish to cancel: </p>
+        <ul>
+          <li>Refund is <strong>pro-rated for unused sessions</strong> minus a 10% administrative fee</li>
+          <li>Refund is calculated based on the original package price, not individual session rates</li>
+        </ul>
+        
+        <h3>Cancelled Appointments</h3>
+        <ul>
+          <li><strong>24+ hours notice:</strong> Full refund of any prepayment</li>
+          <li><strong>Less than 24 hours or no-show:</strong> No refund</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>12. Intellectual Property</h2>
+        <p>The BBeauty name, logo, website content, and images are protected by intellectual property rights and may not be used without written permission.</p>
+        <p><strong>Client Photos:</strong> We may request to take before/after photos for our portfolio or social media.  This requires your explicit written consent.  You may refuse or withdraw consent at any time.</p>
+      </section>
+      
+      <section>
+        <h2>13. Privacy & Data Protection</h2>
+        <p>We process your personal data in accordance with the General Data Protection Regulation (GDPR) and Dutch privacy laws. </p>
+        <p>For full details, see our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <h3>Key Points: </h3>
+        <ul>
+          <li>Your data is stored securely and used only for providing services</li>
+          <li>Data is retained for 2 years after your last appointment</li>
+          <li>You have rights to access, correct, or delete your data</li>
+          <li>We do not sell your data to third parties</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>14. Complaints Procedure</h2>
+        <p>We strive for excellent service.  If you have a complaint: </p>
+        
+        <h3>Step 1: Contact Us</h3>
+        <div class="info-box">
+          <strong>📧 Submit a Complaint</strong>
+          <p><strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p><strong>Response time:</strong> We will respond within <strong>5 business days</strong></p>
+        </div>
+        
+        <h3>Step 2: Escalation</h3>
+        <p>If we cannot resolve your complaint to your satisfaction, you may escalate it to: </p>
+        <p><strong>Geschillencommissie (Dutch Disputes Commission)</strong><br>
+        Website: <a href="https://www.degeschillencommissie.nl" target="_blank" rel="noopener">degeschillencommissie.nl</a></p>
+      </section>
+      
+      <section>
+        <h2>15. Governing Law & Jurisdiction</h2>
+        <ul>
+          <li><strong>Governed by Dutch law: </strong> These terms are subject to the laws of the Netherlands</li>
+          <li><strong>Jurisdiction: </strong> Any disputes will be resolved in the courts of the Netherlands</li>
+          <li><strong>Alternative dispute resolution:</strong> We encourage mediation before legal action</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>16. Changes to Terms</h2>
+        <p>We reserve the right to modify these Terms & Conditions at any time. </p>
+        <ul>
+          <li>Changes will be posted on this page with an updated "Last updated" date</li>
+          <li>Significant changes will be communicated via email (if we have your consent)</li>
+          <li>Changes take effect immediately upon posting</li>
+        </ul>
+        <p>Your continued use of our services after changes constitutes acceptance of the new terms.</p>
+      </section>
+      
+      <section>
+        <h2>17. Contact Information</h2>
+        <div class="info-box">
+          <strong>BBeauty - Contact Details</strong>
+          <p>📋 <strong>KVK-nummer (Chamber of Commerce):</strong> 97592366</p>
+          <p>📍 <strong>Address:</strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Netherlands</p>
+          <p>📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail. com</a></p>
+          <p>📞 <strong>Phone/WhatsApp:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p>🌐 <strong>Website:</strong> <a href="index.html">bbeauty.nl</a></p>
+        </div>
+        <p><strong>Business Hours:</strong> Please contact us via WhatsApp or phone to schedule appointments.</p>
+      </section>
+      
+    </article>
+    
+    <!-- DUTCH CONTENT -->
+    <article data-lang="nl">
+      
+      <section>
+        <h2>1. Definities</h2>
+        <ul>
+          <li><strong>"BBeauty", "wij", "ons", "onze"</strong> verwijst naar de beauty salon met KVK-nummer 97592366, gevestigd aan Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Nederland. </li>
+          <li><strong>"Klant", "u", "uw"</strong> verwijst naar de persoon die onze diensten ontvangt. </li>
+          <li><strong>"Diensten"</strong> verwijst naar alle beauty-behandelingen van BBeauty, inclusief maar niet beperkt tot laserontharing, wimperextensions en andere schoonheidsbehandelingen.</li>
+          <li><strong>"Afspraak"</strong> verwijst naar een geplande dienstenboeking.</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>2. Acceptatie van Voorwaarden</h2>
+        <p>Door een afspraak te boeken of gebruik te maken van onze diensten, gaat u akkoord met deze Algemene Voorwaarden.  Lees ze zorgvuldig door voordat u een boeking maakt.</p>
+        <p>Als u het niet eens bent met een deel van deze voorwaarden, boek dan niet onze diensten.</p>
+      </section>
+      
+      <section>
+        <h2>3. Aangeboden Diensten</h2>
+        <p>BBeauty is gespecialiseerd in: </p>
+        <ul>
+          <li><strong>Laserontharing</strong> (voor vrouwen en mannen) - verschillende lichaamsdelen</li>
+          <li><strong>Wimperextensions</strong> - classic, volume, hybrid stijlen</li>
+          <li><strong>Andere Schoonheidsbehandelingen</strong> - zoals vermeld op onze website en prijslijst</li>
+        </ul>
+        <p>Alle diensten worden geleverd door opgeleide en gecertificeerde professionals met professionele apparatuur.</p>
+      </section>
+      
+      <section>
+        <h2>4. Afspraken Maken</h2>
+        <h3>Hoe te Boeken</h3>
+        <ul>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/31633915100">+31 6 33915100</a></li>
+          <li><strong>Telefoon:</strong> <a href="tel:+31633915100">+31 6 33915100</a></li>
+          <li><strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></li>
+        </ul>
+        <h3>Bevestiging van Boeking</h3>
+        <p>Uw afspraak is pas bevestigd nadat u een bevestigingsbericht van ons heeft ontvangen (via WhatsApp, SMS of email).</p>
+        <p>Kom <strong>5-10 minuten eerder</strong> voor uw afspraak om eventuele administratie te voltooien.</p>
+      </section>
+      
+      <section>
+        <h2>5. Annuleringsbeleid</h2>
+        <div class="warning-box">
+          <strong><span class="emoji">⚠️</span> Belangrijk Annuleringsbeleid</strong>
+          <p><strong>24 uur van tevoren</strong> is vereist voor alle annuleringen of wijzigingen. </p>
+          <ul>
+            <li>✅ <strong>24+ uur van tevoren: </strong> GRATIS annuleren of wijzigen</li>
+            <li>⚠️ <strong>Minder dan 24 uur van tevoren:</strong> 50% van de behandelprijs in rekening gebracht</li>
+            <li>❌ <strong>No-show (gemiste afspraak):</strong> 100% van de behandelprijs in rekening gebracht</li>
+          </ul>
+          <p><strong>Hoe te annuleren:</strong> WhatsApp of bel <a href="tel:+31633915100">+31 6 33915100</a></p>
+        </div>
+        
+        <h3>Uitzonderingen</h3>
+        <p>Noodsituaties (ziekte, familie-noodgeval) worden per geval beoordeeld.  Neem zo snel mogelijk contact met ons op.</p>
+        
+        <h3>Te Laat Komen</h3>
+        <ul>
+          <li><strong>5-10 minuten te laat:</strong> Behandeling kan worden ingekort om op tijd te eindigen</li>
+          <li><strong>15+ minuten te laat:</strong> Afspraak kan worden geannuleerd (kosten als no-show)</li>
+        </ul>
+        <p>Wij respecteren uw tijd en vragen dat u onze tijd en die van andere klanten respecteert.</p>
+      </section>
+      
+      <section>
+        <h2>6. Betalingsvoorwaarden</h2>
+        <h3>Wanneer Betaling Verschuldigd is</h3>
+        <p><strong>Betaling is verschuldigd op het moment van de dienstverlening</strong> (na afloop van uw behandeling).</p>
+        
+        <h3>Geaccepteerde Betaalmethoden</h3>
+        <ul>
+          <li>💵 Contant (EUR)</li>
+          <li>💳 Betaalpas/Creditcard (PIN)</li>
+          <li>🏦 iDEAL</li>
+        </ul>
+        
+        <h3>Prijzen & BTW</h3>
+        <p><strong>Alle prijzen zijn inclusief 21% BTW</strong> zoals vereist door de Nederlandse wet.</p>
+        <p>Prijzen staan op onze website en kunnen periodiek worden bijgewerkt. Actuele prijzen gelden op het moment van boeken.</p>
+        
+        <h3>Facturen</h3>
+        <p>Facturen worden op verzoek verstrekt.  Vraag bij betaling als u een factuur nodig heeft.</p>
+      </section>
+      
+      <section>
+        <h2>7. Verantwoordelijkheden van de Klant</h2>
+        <p>Als klant bent u verantwoordelijk voor:</p>
+        <ul>
+          <li><strong>Verstrekken van accurate informatie: </strong> Contactgegevens, medische geschiedenis, medicatie</li>
+          <li><strong>Melden van relevante medische aandoeningen:</strong> Vooral voor laserbehandelingen (zie Contra-indicaties)</li>
+          <li><strong>Volgen van pre-behandelingsinstructies:</strong> Bijv. geen zonblootstelling 2 weken voor laser</li>
+          <li><strong>Volgen van nazorginstructies:</strong> Verstrekt na elke behandeling</li>
+          <li><strong>Op tijd komen:</strong> Respecteer afspraaktijden</li>
+          <li><strong>Ons informeren over veranderingen:</strong> Gezondheidstoestand, medicatie, allergieën</li>
+        </ul>
+        <p><strong>Het niet opvolgen van instructies kan de behandelresultaten en veiligheid beïnvloeden.  Wij zijn niet aansprakelijk voor complicaties als gevolg van niet-naleving.</strong></p>
+      </section>
+      
+      <section>
+        <h2>8. Contra-indicaties & Veiligheid</h2>
+        <h3>Laserontharing - NIET AANBEVOLEN als u:</h3>
+        <div class="warning-box">
+          <strong><span class="emoji">🚫</span> Contra-indicaties voor Laserbehandeling</strong>
+          <ul>
+            <li>❌ Zwanger bent of borstvoeding geeft</li>
+            <li>❌ Lichtgevoelige medicatie gebruikt (bijv. Roaccutane/isotretinoïne - 6 maanden wachten na stoppen)</li>
+            <li>❌ Actieve huidinfecties, wonden of aandoeningen heeft in het behandelgebied (eczeem, psoriasis, herpes)</li>
+            <li>❌ Zonblootstelling of bruining heeft gehad (inclusief zelfbruiner) in de afgelopen 2 weken</li>
+            <li>❌ Tatoeages of permanente make-up heeft in het behandelgebied</li>
+            <li>❌ Een geschiedenis van keloïd littekenvorming heeft</li>
+            <li>❌ Zeer donkere huid heeft (Fitzpatrick Type VI) - eerst overleggen</li>
+            <li>❌ Jonger bent dan 16 jaar (ouderlijke toestemming vereist voor 16-18 jaar)</li>
+          </ul>
+        </div>
+        
+        <h3>U MOET ons informeren als u:</h3>
+        <ul>
+          <li>Diabetes, epilepsie of immuunsysteemaandoeningen heeft</li>
+          <li>Bloedverdunners of nieuwe medicatie gebruikt</li>
+          <li>Recente cosmetische procedures heeft gehad (Botox, fillers, chemische peelings)</li>
+          <li>Veranderingen in uw gezondheid ervaart tussen sessies</li>
+        </ul>
+        
+        <p><strong>Consultatie Vereist: </strong> Een consultatie is verplicht voor uw eerste laserbehandeling. Wij beoordelen uw huidtype, medische geschiedenis en geschiktheid voor behandeling.</p>
+        <p><strong>Proefbehandeling: </strong> Een proefbehandeling kan worden uitgevoerd voor nieuwe laserklanten om huidcompatibiliteit te waarborgen.</p>
+      </section>
+      
+      <section>
+        <h2>9. Behandelverwachtingen & Resultaten</h2>
+        <h3>Realistische Verwachtingen</h3>
+        <ul>
+          <li><strong>Resultaten variëren per persoon</strong> op basis van huidtype, haartype, hormonen en andere factoren</li>
+          <li><strong>Meerdere sessies vereist: </strong> Meestal 6-8 sessies voor laserontharing (4-8 weken tussenpozen)</li>
+          <li><strong>Geen gegarandeerde resultaten:</strong> Wij bieden professionele service maar kunnen geen specifieke resultaten garanderen</li>
+          <li><strong>Onderhoud kan nodig zijn:</strong> Incidentele bijwerksessies na voltooiing van de eerste kuur</li>
+        </ul>
+        
+        <h3>Onze Toewijding</h3>
+        <p>Wij gebruiken professionele, gecertificeerde apparatuur en volgen best practices uit de industrie. Tijdens uw consultatie bespreken wij realistische verwachtingen voor uw specifieke situatie.</p>
+      </section>
+      
+      <section>
+        <h2>10. Aansprakelijkheid & Verzekering</h2>
+        <ul>
+          <li><strong>BBeauty is een volledig verzekerd bedrijf</strong> met professionele aansprakelijkheidsverzekering</li>
+          <li><strong>Wij zijn niet aansprakelijk</strong> als u de pre-behandeling of nazorginstructies niet opvolgt</li>
+          <li><strong>Wij zijn niet aansprakelijk</strong> voor gemiste afspraken, te laat komen of annuleringskosten</li>
+          <li><strong>Wij zijn niet aansprakelijk</strong> voor resultaten als u onjuiste medische informatie verstrekt of contra-indicaties niet meldt</li>
+          <li><strong>Overmacht:</strong> Wij zijn niet aansprakelijk voor vertragingen of annuleringen door gebeurtenissen buiten onze controle (ziekte, natuurrampen, overheidsmaatregelen)</li>
+        </ul>
+        
+        <p><strong>Bij ongewenste reacties:</strong> Neem onmiddellijk contact met ons op.  Wij bieden passende nazorginstructies en verwijzen indien nodig door naar medische professionals.</p>
+      </section>
+      
+      <section>
+        <h2>11. Restitutiebeleid</h2>
+        <h3>Voltooide Diensten</h3>
+        <p><strong>Geen restituties</strong> voor voltooide diensten.  Betaling is definitief zodra de behandeling is geleverd.</p>
+        
+        <h3>Behandelpakketten</h3>
+        <p>Als u een pakket koopt (bijv. 6-sessie laserpakket) en wilt annuleren: </p>
+        <ul>
+          <li>Restitutie is <strong>naar rato voor ongebruikte sessies</strong> minus 10% administratiekosten</li>
+          <li>Restitutie wordt berekend op basis van de originele pakketprijs, niet individuele sessietarieven</li>
+        </ul>
+        
+        <h3>Geannuleerde Afspraken</h3>
+        <ul>
+          <li><strong>24+ uur van tevoren:</strong> Volledige restitutie van vooruitbetaling</li>
+          <li><strong>Minder dan 24 uur of no-show:</strong> Geen restitutie</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>12. Intellectueel Eigendom</h2>
+        <p>De naam BBeauty, logo, website-inhoud en afbeeldingen zijn beschermd door intellectuele eigendomsrechten en mogen niet worden gebruikt zonder schriftelijke toestemming. </p>
+        <p><strong>Foto's van Klanten: </strong> Wij kunnen verzoeken om voor/na foto's te maken voor ons portfolio of social media. Dit vereist uw expliciete schriftelijke toestemming.  U kunt weigeren of toestemming op elk moment intrekken.</p>
+      </section>
+      
+      <section>
+        <h2>13. Privacy & Gegevensbescherming</h2>
+        <p>Wij verwerken uw persoonsgegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG) en Nederlandse privacywetten.</p>
+        <p>Voor volledige details, zie ons <a href="privacy-policy.html">Privacybeleid</a>.</p>
+        <h3>Belangrijkste Punten: </h3>
+        <ul>
+          <li>Uw gegevens worden veilig opgeslagen en alleen gebruikt voor het leveren van diensten</li>
+          <li>Gegevens worden bewaard voor 2 jaar na uw laatste afspraak</li>
+          <li>U heeft rechten om uw gegevens in te zien, te corrigeren of te verwijderen</li>
+          <li>Wij verkopen uw gegevens niet aan derden</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>14. Klachtenprocedure</h2>
+        <p>Wij streven naar uitstekende service.  Als u een klacht heeft: </p>
+        
+        <h3>Stap 1: Neem Contact Op</h3>
+        <div class="info-box">
+          <strong>📧 Dien een Klacht In</strong>
+          <p><strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></p>
+          <p><strong>Telefoon:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p><strong>Reactietijd:</strong> Wij reageren binnen <strong>5 werkdagen</strong></p>
+        </div>
+        
+        <h3>Stap 2: Escalatie</h3>
+        <p>Als wij uw klacht niet naar tevredenheid kunnen oplossen, kunt u deze escaleren naar:</p>
+        <p><strong>Geschillencommissie</strong><br>
+        Website: <a href="https://www.degeschillencommissie.nl" target="_blank" rel="noopener">degeschillencommissie.nl</a></p>
+      </section>
+      
+      <section>
+        <h2>15. Toepasselijk Recht & Jurisdictie</h2>
+        <ul>
+          <li><strong>Nederlands recht:</strong> Deze voorwaarden vallen onder Nederlands recht</li>
+          <li><strong>Jurisdictie:</strong> Geschillen worden opgelost door Nederlandse rechtbanken</li>
+          <li><strong>Alternatieve geschillenbeslechting:</strong> Wij moedigen bemiddeling aan voor juridische actie</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>16. Wijzigingen in Voorwaarden</h2>
+        <p>Wij behouden ons het recht voor om deze Algemene Voorwaarden op elk moment te wijzigen. </p>
+        <ul>
+          <li>Wijzigingen worden op deze pagina geplaatst met een bijgewerkte "Laatst bijgewerkt" datum</li>
+          <li>Belangrijke wijzigingen worden via email gecommuniceerd (als wij uw toestemming hebben)</li>
+          <li>Wijzigingen worden onmiddellijk na plaatsing van kracht</li>
+        </ul>
+        <p>Uw voortgezet gebruik van onze diensten na wijzigingen betekent acceptatie van de nieuwe voorwaarden.</p>
+      </section>
+      
+      <section>
+        <h2>17. Contactinformatie</h2>
+        <div class="info-box">
+          <strong>BBeauty - Contactgegevens</strong>
+          <p>📋 <strong>KVK-nummer:</strong> 97592366</p>
+          <p>📍 <strong>Adres: </strong> Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Nederland</p>
+          <p>📧 <strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail. com</a></p>
+          <p>📞 <strong>Telefoon/WhatsApp:</strong> <a href="tel:+31633915100">+31 6 33915100</a></p>
+          <p>🌐 <strong>Website:</strong> <a href="index.html">bbeauty.nl</a></p>
+        </div>
+        <p><strong>Openingstijden:</strong> Neem contact met ons op via WhatsApp of telefoon om afspraken in te plannen.</p>
+      </section>
+      
+    </article>
+    
+    <!-- UKRAINIAN CONTENT -->
+    <article data-lang="uk">
+      
+      <section>
+        <h2>1. Визначення</h2>
+        <ul>
+          <li><strong>"BBeauty", "ми", "нас", "наш"</strong> відноситься до beauty-салону з номером KVK 97592366, розташованого за адресою Ouvertureweg 15-19, 2401 MA Alphen aan den Rijn, Нідерланди. </li>
+          <li><strong>"Клієнт", "ви", "ваш"</strong> відноситься до особи, яка отримує наші послуги. </li>
+          <li><strong>"Послуги"</strong> відноситься до всіх beauty-процедур, що надаються BBeauty, включаючи, але не обмежуючись лазерною епіляцією, нарощуванням вій та іншими косметологічними процедурами.</li>
+          <li><strong>"Запис"</strong> відноситься до запланованого бронювання послуги.</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>2. Прийняття Умов</h2>
+        <p>Бронюючи запис або користуючись нашими послугами, ви погоджуєтесь з цими Умовами Використання.  Будь ласка, уважно прочитайте їх перед бронюванням.</p>
+        <p>Якщо ви не погоджуєтесь з будь-якою частиною цих умов, будь ласка, не бронюйте наші послуги.</p>
+      </section>
+      
+      <section>
+        <h2>3. Послуги, що Надаються</h2>
+        <p>BBeauty спеціалізується на: </p>
+        <ul>
+          <li><strong>Лазерна епіляція</strong> (для жінок і чоловіків) - різні зони тіла</li>
+          <li><strong>Нарощування вій</strong> - класичні, об'ємні, гібридні стилі</li>
+          <li><strong>Інші косметологічні процедури</strong> - як зазначено на нашому веб-сайті та у прайс-листі</li>
+        </ul>
+        <p>Усі послуги надаються навченими та сертифікованими професіоналами з використанням професійного обладнання.</p>
+      </section>
+      
+      <section>
+        <h2>4. Бронювання Запису</h2>
+        <h3>Як Забронювати</h3>
+        <ul>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/31633915100">+31 6 33915100</a></li>
+          <li><strong>Телефон:</strong> <a href="tel:+31633915100">+31 6 33915100</a></li>
+          <li><strong>Email:</strong> <a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></li>
+        </ul>
+        <h3>Підтвердження Бронювання</h3>
+        <p>Ваш запис підтверджується тільки після того, як ви отримаєте підтвердження від нас (через WhatsApp, SMS або email).</p>
+        <p>Будь ласка, прийдіть <strong>на 5-10 хвилин раніше</strong> для завершення будь-якого необхідного оформлення.</p>
+      </section>
+      
+      <section>
+        <h2>5. Політика Скасування</h2>
+        <div class="warning-box">
+          <strong><span class="emoji">⚠️</span> Важлива Політика Скасування</strong>
+          <p><strong>Попередження за 24 години</strong> необхідне для всіх скасувань або перенесень. </p>
+          <ul>
+            <li>✅ <strong>Попередження 24+ години: </strong> БЕЗКОШТОВНЕ скасування або перенесення</li>
+            <li>⚠️ <strong>Менше 24 годин попередження:</strong> Стягується 50% вартості послуги</li>
+            <li>❌ <strong>No-show (пропущений запис):</strong> Стягується 100% вартості послуги</li>
+          </ul>
+          <p><strong>Як скасувати:</strong> WhatsApp або телефонуйте <a href="tel:+31633915100">+31 6 33915100</a></p>
+        </div>
+        
+        <h3>Винятки</h3>
+        <p>Надзвичайні ситуації (хвороба, сімейна надзвичайна ситуація) розглядаються індивідуально.  Будь ласка, зв'яжіться з нами якомога швидше.</p>
+        
+        <h3>Запізнення</h3>
+        <ul>
+          <li><strong>Запізнення на 5-10 хвилин:</strong> Процедура може бути скорочена для закінчення вчасно</li>
+          <li><strong>Запізнення на 15+ хвилин:</strong> Запис може бути скасований (стягується як no-show)</li>
+        </ul>
+        <p>Ми поважаємо ваш час і просимо вас поважати наш час та час інших клієнтів.</p>
+      </section>
+      
+      <section>
+        <h2>6. Умови Оплати</h2>
+        <h3>Коли Потрібно Платити</h3>
+        <p><strong>Оплата здійснюється під час надання послуги</strong> (після завершення вашої процедури).</p>
+        
+        <h3>Прийнятні Способи Оплати</h3>
+        <ul>
+          <li>💵 Готівка (EUR)</li>
+          <li>💳 Дебетова/Кредитна картка (PIN)</li>
+          <li>🏦 iDEAL (нідерландський банківський переказ)</li>
+        </ul>
+        
+        <h3>Ціни & ПДВ</h3>
+        <p><strong>Усі ціни включають 21% BTW (ПДВ)</strong> відповідно до законодавства Нідерландів.</p>
+        <p>Ціни вказані на нашому веб-сайті і можуть періодично оновлюватися.  Поточні ціни діють на момент бронювання.</p>
+        
+        <h3>Рахунки</h3>
+        <p>Рахунки надаються на запит.  Будь ласка, запитайте під час оплати, якщо вам потрібен рахунок.</p>
+      </section>
+      
+      <section>
+        <h2>7. Відповідальність Клієнта</h2>
+        <p>Як клієнт, ви несете відповідальність за: </p>
+        <ul>
+          <li><strong>Надання точної інформації: </strong> Контактні дані, медична історія, ліки</li>
+          <li><strong>Повідомлення про відповідні медичні стани:</strong> Особливо для лазерних процедур (див. розділ Протипоказання)</li>
+          <li><strong>Дотримання інструкцій перед процедурою:</strong> Наприклад, відсутність сонячного опромінення за 2 тижні до лазера</li>
+          <li><strong>Дотримання інструкцій з догляду:</strong> Надаються після кожної процедури</li>
+          <li><strong>Приходити вчасно:</strong> Поважайте час запису</li>
+          <li><strong>Інформування нас про зміни:</strong> Стан здоров'я, ліки, алергії</li>
+        </ul>
+        <p><strong>Недотримання інструкцій може вплинути на результати процедури та безпеку.  Ми не несемо відповідальності за ускладнення, що виникли внаслідок недотримання.</strong></p>
+      </section>
+      
+      <section>
+        <h2>8. Протипоказання та Безпека</h2>
+        <h3>Лазерна епіляція - НЕ РЕКОМЕНДУЄТЬСЯ, якщо ви:</h3>
+        <div class="warning-box">
+          <strong><span class="emoji">🚫</span> Протипоказання для Лазерної Процедури</strong>
+          <ul>
+            <li>❌ Вагітні або годуєте груддю</li>
+            <li>❌ Приймаєте фоточутливі ліки (наприклад, Роаккутан/ізотретиноїн - необхідно почекати 6 місяців після припинення)</li>
+            <li>❌ Маєте активні шкірні інфекції, рани або стани в зоні процедури (екзема, псоріаз, герпес)</li>
+            <li>❌ Мали сонячне опромінення або засмагу (включаючи автозасмагу) протягом останніх 2 тижнів</li>
+            <li>❌ Маєте татуювання або перманентний макіяж у зоні процедури</li>
+            <li>❌ Маєте історію келоїдних рубців</li>
+            <li>❌ Маєте дуже темну шкіру (Тип Фітцпатрика VI) - спочатку проконсультуйтеся</li>
+            <li>❌ Молодше 16 років (необхідна згода батьків для віку 16-18 років)</li>
+          </ul>
+        </div>
+        
+        <h3>Ви ПОВИННІ повідомити нас, якщо ви:</h3>
+        <ul>
+          <li>Маєте діабет, епілепсію або розлади імунної системи</li>
+          <li>Приймаєте розріджувачі крові або будь-які нові ліки</li>
+          <li>Мали недавні косметичні процедури (Ботокс, філери, хімічні пілінги)</li>
+          <li>Відчуваєте будь-які зміни у вашому здоров'ї між сеансами</li>
+        </ul>
+        
+        <p><strong>Необхідна Консультація:</strong> Консультація є обов'язковою перед вашою першою лазерною процедурою.  Ми оцінимо ваш тип шкіри, медичну історію та придатність для процедури.</p>
+        <p><strong>Тестова Процедура:</strong> Тестова процедура може бути виконана для нових клієнтів лазера для забезпечення сумісності зі шкірою.</p>
+      </section>
+      
+      <section>
+        <h2>9. Очікування від Процедури та Результати</h2>
+        <h3>Реалістичні Очікування</h3>
+        <ul>
+          <li><strong>Результати відрізняються індивідуально</strong> залежно від типу шкіри, типу волосся, гормонів та інших факторів</li>
+          <li><strong>Необхідні множинні сеанси: </strong> Зазвичай 6-8 сеансів для лазерної епіляції (з інтервалом 4-8 тижнів)</li>
+          <li><strong>Немає гарантованих результатів: </strong> Ми надаємо професійну послугу, але не можемо гарантувати конкретні результати</li>
+          <li><strong>Може знадобитися підтримка:</strong> Періодичні додаткові сеанси після завершення початкового курсу</li>
+        </ul>
+        
+        <h3>Наше Зобов'язання</h3>
+        <p>Ми використовуємо професійне, сертифіковане обладнання та дотримуємося найкращих практик індустрії. Під час вашої консультації ми обговоримо реалістичні очікування для вашої конкретної ситуації.</p>
+      </section>
+      
+      <section>
+        <h2>10. Відповідальність та Страхування</h2>
+        <ul>
+          <li><strong>BBeauty є повністю застрахованим бізнесом</strong> з професійним страхуванням відповідальності</li>
+          <li><strong>Ми не несемо відповідальності</strong>, якщо ви не дотримуєтесь інструкцій перед процедурою або після неї</li>
+          <li><strong>Ми не несемо відповідальності</strong> за пропущені записи, запізнення або збори за скасування</li>
+          <li><strong>Ми не несемо відповідальності</strong> за результати, якщо ви надаєте неточну медичну інформацію або не повідомляєте про протипоказання</li>
+          <li><strong>Форс-мажор:</strong> Ми не несемо відповідальності за затримки або скасування через події поза нашим контролем (хвороба, стихійні лиха, урядові обмеження)</li>
+        </ul>
+        
+        <p><strong>У разі несприятливих реакцій: </strong> Зв'яжіться з нами негайно.  Ми надамо відповідні інструкції з догляду і, якщо необхідно, направимо вас до медичних фахівців.</p>
+      </section>
+      
+      <section>
+        <h2>11. Політика Повернення Коштів</h2>
+        <h3>Завершені Послуги</h3>
+        <p><strong>Повернення коштів не надається</strong> за завершені послуги.  Оплата є остаточною після надання процедури.</p>
+        
+        <h3>Пакети Процедур</h3>
+        <p>Якщо ви купуєте пакет (наприклад, пакет з 6 лазерних сеансів) і бажаєте скасувати: </p>
+        <ul>
+          <li>Повернення коштів <strong>пропорційне за невикористані сеанси</strong> мінус 10% адміністративний збір</li>
+          <li>Повернення коштів розраховується на основі початкової ціни
