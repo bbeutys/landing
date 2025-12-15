@@ -1025,35 +1025,100 @@
       line-height: 1.4;
     }
 
-    /* Ukrainian Excellence Card */
+    /* === WHY CHOOSE US - UKRAINIAN EXCELLENCE EMPHASIS === */
     .why-card.highlight-ua {
-      border: 2px solid #0057B7;
-      background: linear-gradient(135deg, 
-        rgba(0, 87, 183, 0.05) 0%, 
-        rgba(255, 215, 0, 0.05) 100%
+      /* ✅ Span all columns in grid */
+      grid-column: 1 / -1;
+      
+      /* Limit max width and center */
+      max-width: 600px;
+      margin: 0 auto;
+      
+      /* ✅ Emphasize visually with gradient background */
+      background: linear-gradient(
+        135deg,
+        rgba(183, 129, 99, 0.08) 0%,
+        rgba(170, 108, 80, 0.05) 100%
       );
-      position: relative;
-      overflow: hidden;
+      
+      /* Stronger border */
+      border: 2px solid var(--accent);
+      
+      /* More padding for emphasis */
+      padding: 24px 20px;
+      text-align: center;
+      
+      /* Subtle shadow for depth */
+      box-shadow: 
+        0 8px 20px rgba(183, 129, 99, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .why-card.highlight-ua::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, #0057B7 50%, #FFD700 50%);
+    .why-card.highlight-ua:hover {
+      transform: translateY(-4px);
+      box-shadow: 
+        0 12px 28px rgba(183, 129, 99, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     }
 
+    [data-theme="dark"] .why-card.highlight-ua {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 112, 67, 0.12) 0%,
+        rgba(255, 138, 101, 0.08) 100%
+      );
+      box-shadow: 
+        0 8px 20px rgba(255, 112, 67, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    [data-theme="dark"] .why-card.highlight-ua:hover {
+      box-shadow: 
+        0 12px 28px rgba(255, 112, 67, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    /* ✅ Larger icon for emphasis */
     .why-card.highlight-ua .why-icon {
       font-size: 48px;
-      animation: gentle-wave 3s ease-in-out infinite;
+      margin-bottom: 8px;
+      display: block;
     }
 
-    @keyframes gentle-wave {
-      0%, 100% { transform: rotate(-5deg); }
-      50% { transform: rotate(5deg); }
+    /* ✅ Larger title */
+    .why-card.highlight-ua .why-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ✅ Constrain description width for readability */
+    .why-card.highlight-ua .why-desc {
+      font-size: 14px;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Mobile: still full width but better proportions */
+    @media (max-width: 640px) {
+      .why-card.highlight-ua {
+        padding: 20px 16px;
+      }
+      
+      .why-card.highlight-ua .why-icon {
+        font-size: 40px;
+      }
+      
+      .why-card.highlight-ua .why-title {
+        font-size: 16px;
+      }
+      
+      .why-card.highlight-ua .why-desc {
+        font-size: 13px;
+      }
     }
 
     /* ===== NEW SECTIONS: TESTIMONIALS ===== */
@@ -1410,61 +1475,112 @@
       gap: 4px;
     }
 
-    /* === EQUIPMENT VISUAL - SQUARE IMAGE WITH BUILT-IN BACKGROUND === */
+    /* === EQUIPMENT VISUAL - CIRCULAR VIGNETTE EFFECT === */
     
     .equipment-visual {
       position: relative;
-      width: 360px;   /* ✅ Square 1:1 ratio */
-      height: 360px;  /* ✅ Same as width */
+      width: 360px;
+      height: 360px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       
-      /* ✅ NO background - image has built-in beige gradient */
-      background: none;
+      /* ✅ Perfect circle mask */
+      border-radius: 50%;
       
-      /* Soft rounded corners to complement circular composition */
-      border-radius: 20px;
+      /* Background blend for smooth transition to page */
+      background: radial-gradient(
+        circle,
+        var(--page-bg) 0%,
+        transparent 100%
+      );
+      
       padding: 0;
+      overflow: hidden;  /* ✅ Crop square corners of image */
+      isolation: isolate;  /* Create stacking context for blending */
     }
 
-    /* NO background in dark theme either */
-    [data-theme="dark"] .equipment-visual {
-      background: none;
-    }
-
-    /* Remove all pseudo-element decorations */
-    .equipment-visual::before,
+    /* ✅ VIGNETTE OVERLAY - darkens edges, keeps center bright */
     .equipment-visual::after {
-      display: none;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      
+      /* Strong radial vignette: transparent center → dark edges */
+      background: radial-gradient(
+        circle at center,
+        transparent 0%,           /* Center stays bright */
+        transparent 35%,          /* Preserve center area */
+        rgba(0, 0, 0, 0.12) 65%, /* Start darkening */
+        rgba(0, 0, 0, 0.30) 100% /* Dark edges */
+      );
+      
+      pointer-events: none;  /* Don't block hover events */
+      z-index: 2;            /* Above image */
+    }
+
+    [data-theme="dark"] .equipment-visual::after {
+      /* Stronger vignette in dark theme for better contrast */
+      background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        transparent 30%,
+        rgba(0, 0, 0, 0.20) 60%,
+        rgba(0, 0, 0, 0.45) 100%
+      );
     }
 
     .laser-image {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;  /* ✅ Fill circle completely (was: contain) */
+      position: relative;
+      z-index: 1;  /* Below vignette overlay */
       
-      /* Minimal shadow - don't overpower built-in design */
-      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.12));
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      /* ✅ DIM the bright colors */
+      filter: 
+        brightness(0.90)      /* 10% darker */
+        contrast(0.93)        /* Softer contrast */
+        saturate(0.88)        /* 12% less saturated */
+        drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+      
+      transition: all 0.4s ease;
     }
 
     [data-theme="dark"] .laser-image {
-      /* Stronger shadow in dark theme for better contrast */
-      filter: drop-shadow(0 12px 35px rgba(0, 0, 0, 0.3));
+      /* Even darker in dark theme */
+      filter: 
+        brightness(0.85)      /* 15% darker */
+        contrast(0.90)
+        saturate(0.85)
+        drop-shadow(0 12px 35px rgba(0, 0, 0, 0.35));
     }
 
     .laser-image:hover {
       transform: scale(1.05);
-      filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.18));
+      
+      /* Slightly brighter on hover for interaction */
+      filter: 
+        brightness(0.93)
+        contrast(0.95)
+        saturate(0.91)
+        drop-shadow(0 15px 40px rgba(0, 0, 0, 0.22));
     }
 
     [data-theme="dark"] .laser-image:hover {
-      filter: drop-shadow(0 18px 45px rgba(0, 0, 0, 0.4));
+      filter: 
+        brightness(0.88)
+        contrast(0.93)
+        saturate(0.88)
+        drop-shadow(0 18px 45px rgba(0, 0, 0, 0.4));
     }
 
-    /* Responsive - maintain 1:1 square ratio */
+    /* Responsive - maintain perfect circle */
     @media (max-width: 768px) {
       .equipment-banner {
         flex-direction: column;
@@ -1474,7 +1590,7 @@
       
       .equipment-visual {
         width: 280px;
-        height: 280px;  /* ✅ 1:1 ratio */
+        height: 280px;
         margin-top: 20px;
       }
     }
@@ -1493,7 +1609,7 @@
     @media (max-width: 480px) {
       .equipment-visual {
         width: 220px;
-        height: 220px;  /* ✅ 1:1 ratio */
+        height: 220px;
       }
     }
   </style>
