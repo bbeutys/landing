@@ -868,6 +868,58 @@
         min-height: 44px;
       }
 
+      /* === MOBILE CTA OPTIMIZATION === */
+      
+      /* ✅ Larger primary action buttons - 56px height */
+      .btn.primary {
+        font-size: 17px;
+        padding: 16px 24px;
+        min-height: 56px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      /* ✅ Hero section CTA buttons - 54px height */
+      .btn-row .btn {
+        min-height: 54px;
+        font-size: 16px;
+        padding: 15px 22px;
+      }
+      
+      /* ✅ Service card booking buttons - 50px height */
+      .service-footer .btn {
+        min-height: 50px;
+        font-size: 15px;
+        padding: 13px 18px;
+      }
+      
+      /* ✅ Ensure adequate spacing between touch targets */
+      .btn-row {
+        gap: 14px;
+        margin-top: 16px;
+      }
+      
+      /* ✅ Service grid buttons - full width on mobile */
+      .service-footer .btn.full-width {
+        width: 100%;
+        min-width: auto;
+      }
+      
+      /* ✅ Price navigation chips - larger */
+      .chip-link {
+        min-height: 44px;
+        padding: 10px 16px;
+        font-size: 12px;
+      }
+      
+      /* ✅ CTA hero buttons - full width */
+      .cta-buttons .btn {
+        min-height: 56px;
+        width: 100%;
+      }
+
       .services-grid {
         grid-template-columns: 1fr;
         gap: 18px;
@@ -927,6 +979,7 @@
       }
     }
 
+    /* ✅ Extra small screens - maintain minimum sizes */
     @media (max-width: 380px) {
       .hero-title {
         font-size: 18px;
@@ -944,6 +997,25 @@
         width: 100%;
         text-align: center;
         justify-content: center;
+      }
+
+      .btn.primary {
+        font-size: 16px;
+        min-height: 54px;
+        padding: 15px 20px;
+      }
+      
+      .service-footer .btn {
+        font-size: 14px;
+        min-height: 48px;
+      }
+    }
+
+    /* ✅ Improve button icon spacing on mobile */
+    @media (max-width: 640px) {
+      .btn .btn-icon {
+        font-size: 18px;
+        margin-right: 6px;
       }
     }
 
@@ -981,6 +1053,130 @@
       }
       .trust-item {
         justify-content: center;
+      }
+    }
+
+    /* ===== HERO CTA BLOCK ===== */
+
+    .cta-hero {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 2px solid var(--accent);
+      margin: 28px 0;
+      box-shadow: 
+        0 8px 24px rgba(183, 129, 99, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-hero:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 12px 32px rgba(183, 129, 99, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    }
+
+    [data-theme="dark"] .cta-hero {
+      box-shadow: 
+        0 8px 24px rgba(255, 112, 67, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    [data-theme="dark"] .cta-hero:hover {
+      box-shadow: 
+        0 12px 32px rgba(255, 112, 67, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    }
+
+    .cta-title {
+      font-family: 'Cormorant', serif;
+      font-size: 26px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+
+    .cta-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .cta-btn-main {
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      min-width: 180px;
+    }
+
+    .cta-btn-alt {
+      padding: 14px 28px;
+      font-size: 16px;
+      min-width: 180px;
+    }
+
+    .cta-trust {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .cta-trust-divider {
+      color: var(--border-soft);
+      font-weight: 300;
+    }
+
+    @media (max-width: 640px) {
+      .cta-hero {
+        padding: 28px 20px;
+        margin: 24px 0;
+      }
+      
+      .cta-title {
+        font-size: 22px;
+      }
+      
+      .cta-subtitle {
+        font-size: 14px;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .cta-btn-main,
+      .cta-btn-alt {
+        width: 100%;
+        min-width: auto;
+      }
+      
+      .cta-trust {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .cta-trust-divider {
+        display: none;
       }
     }
 
@@ -1727,6 +1923,27 @@
           </div>
         </div>
 
+        <!-- Enhanced Hero CTA Block -->
+        <div class="cta-hero">
+          <h3 class="cta-title" data-translate="ctaTitle">Ready to Get Started?</h3>
+          <p class="cta-subtitle" data-translate="ctaSubtitle">Book your appointment in 30 seconds</p>
+          <div class="cta-buttons">
+            <a href="#services" class="btn primary cta-btn-main">
+              <span class="btn-icon">📅</span>
+              <span data-translate="ctaBookOnline">Book Online</span>
+            </a>
+            <a href="https://wa.me/31633915100" class="btn outline cta-btn-alt" target="_blank" rel="noopener" data-whatsapp-service="general">
+              <span class="btn-icon">💬</span>
+              <span data-translate="ctaWhatsApp">WhatsApp Us</span>
+            </a>
+          </div>
+          <div class="cta-trust">
+            <span data-translate="ctaTrust1">✓ Free consultation</span>
+            <span class="cta-trust-divider">•</span>
+            <span data-translate="ctaTrust2">✓ Flexible cancellation</span>
+          </div>
+        </div>
+
         <!-- Why Choose Us Section -->
         <section class="section" id="why-us" aria-labelledby="why-title">
           <div class="section-header">
@@ -2290,7 +2507,14 @@
         whatsappFullBack: "Hello! I would like to book Complete Back.",
         whatsappClassicSet: "Hello! I would like to book Classic Set.",
         whatsappTrendEffect: "Hello! I would like to book Trend Effect (Whispy / Wet).",
-        whatsappGeneral: "Hello! I would like to book an appointment."
+        whatsappGeneral: "Hello! I would like to book an appointment.",
+        // CTA Hero Block
+        ctaTitle: "Ready to Get Started?",
+        ctaSubtitle: "Book your appointment in 30 seconds",
+        ctaBookOnline: "Book Online",
+        ctaWhatsApp: "WhatsApp Us",
+        ctaTrust1: "✓ Free consultation",
+        ctaTrust2: "✓ Flexible cancellation"
       },
       uk: {
         servicesTitle: "Наші послуги",
@@ -2462,7 +2686,14 @@
         whatsappFullBack: "Привіт! Я хочу записатися на всю спину.",
         whatsappClassicSet: "Привіт! Я хочу записатися на класичний набір вій.",
         whatsappTrendEffect: "Привіт! Я хочу записатися на трендовий ефект (Whispy / Wet).",
-        whatsappGeneral: "Привіт! Я хочу записатися на процедуру."
+        whatsappGeneral: "Привіт! Я хочу записатися на процедуру.",
+        // CTA Hero Block
+        ctaTitle: "Готові Почати?",
+        ctaSubtitle: "Запишіться за 30 секунд",
+        ctaBookOnline: "Записатися Онлайн",
+        ctaWhatsApp: "Написати в WhatsApp",
+        ctaTrust1: "✓ Безкоштовна консультація",
+        ctaTrust2: "✓ Гнучке скасування"
       }
     };
 
