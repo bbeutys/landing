@@ -703,41 +703,131 @@
       margin-bottom: 10px;
     }
 
+    /* === ENHANCED LEGAL FOOTER === */
+
     footer {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--text-muted);
+      margin-top: 48px;
+      padding: 32px 20px 20px 20px;
+      background: var(--card-bg);
+      border-top: 2px solid var(--border-soft);
       position: relative;
     }
 
-    footer a {
+    .footer-main {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      line-height: 1.8;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-main strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .footer-main a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-main a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .footer-business,
+    .footer-contact,
+    .footer-legal {
+      color: var(--text-muted);
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: var(--border-soft);
+      margin: 24px 0;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
 
-    /* Decorative accent above footer */
-    footer::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 60px;
-      background-image: url('mini-icon.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.35;
-      mix-blend-mode: multiply;
-      will-change: transform;
-      pointer-events: none;
+    .footer-links a:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
-    [data-theme="dark"] footer::before {
-      opacity: 0.25;
-      mix-blend-mode: overlay;
-      filter: brightness(0.8) contrast(0.9);
+    .footer-dot {
+      color: var(--border-soft);
+      user-select: none;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* Mobile responsive footer */
+    @media (max-width: 768px) {
+      footer {
+        margin-top: 40px;
+        padding: 28px 16px 16px 16px;
+      }
+      
+      .footer-main {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+        margin-bottom: 20px;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .footer-dot {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      footer {
+        padding: 24px 12px 12px 12px;
+      }
+      
+      .footer-main {
+        font-size: 12px;
+      }
+      
+      .footer-links {
+        font-size: 11px;
+      }
     }
 
     /* Skip to main content link for accessibility */
@@ -1970,7 +2060,7 @@
     "logo": "https://bbeautys.nl/logo-bbeauty.png",
     "image": "https://bbeautys.nl/logo-bbeauty.png",
     "telephone": "+31-6-33915100",
-    "email": "hello@bbeauty.nl",
+    "email": "bbeutysnl@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Ouvertureweg 15 - 19",
@@ -2439,7 +2529,7 @@
               <span class="btn-icon">💬</span>
               <span data-translate="chatWhatsApp">Chat on WhatsApp</span>
             </a>
-            <a href="mailto:hello@bbeauty.nl" class="btn outline">
+            <a href="mailto:bbeutysnl@gmail.com" class="btn outline">
               <span class="btn-icon">✉️</span>
               <span data-translate="sendEmail">Send an Email</span>
             </a>
@@ -2449,8 +2539,43 @@
 
       <!-- Footer -->
       <footer role="contentinfo">
-        <div data-translate="footerLocation">BBeauty • Alphen aan den Rijn</div>
-        <div data-translate="footerCopyright">© 2025 BBeauty</div>
+        <div class="footer-main">
+          <div class="footer-business">
+            <strong>BBeauty</strong>
+            <div>Ouvertureweg 15-19</div>
+            <div>2401 MA Alphen aan den Rijn</div>
+            <div data-translate="footerNetherlands">Netherlands</div>
+          </div>
+          
+          <div class="footer-contact">
+            <div><strong data-translate="footerContact">Contact</strong></div>
+            <div><a href="mailto:bbeutysnl@gmail.com">bbeutysnl@gmail.com</a></div>
+            <div><a href="tel:+31633915100">+31 6 33915100</a></div>
+            <div><a href="https://wa.me/31633915100" target="_blank" rel="noopener">WhatsApp</a></div>
+          </div>
+          
+          <div class="footer-legal">
+            <div><strong data-translate="footerLegal">Legal</strong></div>
+            <div>KVK: 97592366</div>
+            <div data-translate="footerInsured">Fully insured</div>
+          </div>
+        </div>
+        
+        <div class="footer-divider"></div>
+        
+        <div class="footer-links">
+          <a href="/privacy-policy.html" data-translate="privacyPolicy">Privacy Policy</a>
+          <span class="footer-dot">•</span>
+          <a href="/terms.html" data-translate="termsOfService">Terms & Conditions</a>
+          <span class="footer-dot">•</span>
+          <a href="/cookie-policy.html" data-translate="cookiePolicy">Cookie Policy</a>
+          <span class="footer-dot">•</span>
+          <a href="#cookie-settings" id="cookie-settings-link" data-translate="cookieSettings">Cookie Settings</a>
+        </div>
+        
+        <div class="footer-copyright">
+          <div>© 2025 BBeauty. <span data-translate="footerRights">All rights reserved.</span></div>
+        </div>
       </footer>
     </div>
   </div>
@@ -2662,6 +2787,16 @@
         groupBody: "Body",
         groupFace: "Face",
         groupMiniZones: "Mini Zones",
+        // Footer translations
+        footerNetherlands: "Netherlands",
+        footerContact: "Contact",
+        footerLegal: "Legal",
+        footerInsured: "Fully insured",
+        footerRights: "All rights reserved.",
+        privacyPolicy: "Privacy Policy",
+        termsOfService: "Terms & Conditions",
+        cookiePolicy: "Cookie Policy",
+        cookieSettings: "Cookie Settings",
         footerLocation: "BBeauty • Alphen aan den Rijn",
         footerCopyright: "© 2025 BBeauty",
         // WhatsApp messages
@@ -2834,6 +2969,16 @@
         groupBody: "Lichaam",
         groupFace: "Gezicht",
         groupMiniZones: "Mini Zones",
+        // Footer translations
+        footerNetherlands: "Nederland",
+        footerContact: "Contact",
+        footerLegal: "Juridisch",
+        footerInsured: "Volledig verzekerd",
+        footerRights: "Alle rechten voorbehouden.",
+        privacyPolicy: "Privacybeleid",
+        termsOfService: "Algemene Voorwaarden",
+        cookiePolicy: "Cookiebeleid",
+        cookieSettings: "Cookie-instellingen",
         footerLocation: "BBeauty • Alphen aan den Rijn",
         footerCopyright: "© 2025 BBeauty",
         whatsappDeepBikini: "Hallo! Ik wil graag Deep Bikini boeken.",
@@ -3015,6 +3160,16 @@
         groupBody: "Тіло",
         groupFace: "Обличчя",
         groupMiniZones: "Міні-зони",
+        // Footer translations
+        footerNetherlands: "Нідерланди",
+        footerContact: "Контакти",
+        footerLegal: "Правова інформація",
+        footerInsured: "Повністю застраховано",
+        footerRights: "Усі права захищені.",
+        privacyPolicy: "Політика конфіденційності",
+        termsOfService: "Умови використання",
+        cookiePolicy: "Політика cookie",
+        cookieSettings: "Налаштування cookie",
         footerLocation: "BBeauty • Алфен-ан-ден-Рейн",
         footerCopyright: "© 2025 BBeauty",
         // WhatsApp messages
@@ -3275,6 +3430,9 @@
       // Initialize testimonials slider
       initTestimonialsSlider();
 
+      // Initialize cookie settings link
+      initCookieSettings();
+
       // Real-time system theme tracking
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         // Only auto-switch if user hasn't manually selected
@@ -3431,6 +3589,33 @@
 
       // Start auto-scroll
       startAutoScroll();
+    }
+
+    // Cookie Settings Link - allows users to change cookie preference
+    function initCookieSettings() {
+      const cookieSettingsLink = document.getElementById('cookie-settings-link');
+      
+      if (cookieSettingsLink) {
+        cookieSettingsLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Clear cookie consent from localStorage
+          localStorage.removeItem('cookie-consent');
+          localStorage.removeItem('cookie-consent-date');
+          
+          // Show cookie banner again
+          const cookieBanner = document.getElementById('cookie-banner');
+          if (cookieBanner) {
+            cookieBanner.style.display = 'block';
+          }
+          
+          // Scroll to bottom to show banner
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+          });
+        });
+      }
     }
 
     // Cookie Consent Management (GDPR Compliant)
