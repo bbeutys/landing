@@ -115,15 +115,7 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        repeating-linear-gradient(
-          135deg,
-          transparent,
-          transparent 35px,
-          rgba(183, 129, 99, 0.02) 35px,
-          rgba(183, 129, 99, 0.02) 70px
-        ),
-        radial-gradient(circle at top, var(--gradient-top) 0, var(--page-bg) 45%, var(--page-bg) 100%);
+      background: radial-gradient(circle at top, var(--gradient-top) 0, var(--page-bg) 45%, var(--page-bg) 100%);
       color: var(--text-main);
       min-height: 100vh;
       position: relative;
@@ -224,7 +216,7 @@
       overflow: hidden;
     }
 
-    /* Hero section background with back.png + CSS pattern */
+    /* Hero section background with back.png */
     .hero::before {
       content: '';
       position: absolute;
@@ -233,17 +225,9 @@
       transform: translateX(-50%);
       width: 120%;
       height: 400px;
-      background-image: 
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 20px,
-          rgba(183, 129, 99, 0.03) 20px,
-          rgba(183, 129, 99, 0.03) 40px
-        ),
-        url('back.png');
-      background-size: auto, cover;
-      background-position: 0 0, center;
+      background-image: url('back.png');
+      background-size: cover;
+      background-position: center;
       opacity: 0.20;
       mix-blend-mode: multiply;
       filter: contrast(1.15) brightness(1.05);
@@ -382,7 +366,7 @@
       margin-top: 28px;
     }
 
-    /* Featured & Price sections background with big-back.png + CSS pattern */
+    /* Featured & Price sections background with big-back.png */
     .section#featured,
     .section#prices {
       position: relative;
@@ -396,18 +380,10 @@
       left: -10%;
       width: 120%;
       height: 100%;
-      background-image: 
-        repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent 25px,
-          rgba(183, 129, 99, 0.02) 25px,
-          rgba(183, 129, 99, 0.02) 50px
-        ),
-        url('big-back.png');
-      background-size: auto, cover;
-      background-position: 0 0, center;
-      background-attachment: scroll, fixed;
+      background-image: url('big-back.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       opacity: 0.15;
       mix-blend-mode: soft-light;
       filter: contrast(1.2) brightness(1.05);
@@ -549,6 +525,17 @@
     .service-name {
       font-size: 14px;
       font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .inline-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      white-space: nowrap;
     }
 
     .service-meta {
@@ -573,6 +560,10 @@
     .btn.small {
       padding: 7px 14px;
       font-size: 13px;
+    }
+
+    .service-footer .btn.full-width {
+      width: 100%;
     }
 
     .price-nav {
@@ -641,24 +632,7 @@
       display: none;
     }
 
-    /* Decorative accent with mini-icon.png */
-    .price-section::after {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 80px;
-      height: 80px;
-      background-image: url('mini-icon.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.20;
-      mix-blend-mode: multiply;
-      filter: contrast(1.1);
-      z-index: 0;
-      will-change: transform;
-      animation: float 6s ease-in-out infinite;
-    }
+    /* Removed decorative watermark from price section per optimization requirements */
 
     .price-section h3 {
       font-size: 14px;
@@ -707,12 +681,17 @@
       background-image: url('mini-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.20;
-      mix-blend-mode: overlay;
-      filter: contrast(1.1);
+      opacity: 0.25;
+      mix-blend-mode: multiply;
       transform: rotate(-15deg);
       will-change: transform;
       pointer-events: none;
+    }
+
+    [data-theme="dark"] .contact-block::before {
+      opacity: 0.18;
+      mix-blend-mode: overlay;
+      filter: brightness(0.7);
     }
 
     .map-text, .contact-text {
@@ -747,11 +726,16 @@
       background-image: url('mini-icon.png');
       background-size: contain;
       background-repeat: no-repeat;
-      opacity: 0.20;
-      mix-blend-mode: darken;
-      filter: contrast(1.1);
+      opacity: 0.35;
+      mix-blend-mode: multiply;
       will-change: transform;
       pointer-events: none;
+    }
+
+    [data-theme="dark"] footer::before {
+      opacity: 0.25;
+      mix-blend-mode: overlay;
+      filter: brightness(0.8) contrast(0.9);
     }
 
     /* Skip to main content link for accessibility */
@@ -920,6 +904,10 @@
         gap: 12px;
       }
 
+      .inline-price {
+        font-size: 18px;
+      }
+
       /* Mobile adjustments for decorative images */
       .section#featured::before,
       .section#prices::before {
@@ -929,17 +917,10 @@
         backface-visibility: hidden;
       }
 
-      .price-section::after {
-        width: 60px;
-        height: 60px;
-        opacity: 0.15;
-        transform: translateZ(0);
-      }
-
       .contact-block::before {
         width: 70px;
         height: 70px;
-        opacity: 0.15;
+        opacity: 0.20;
         transform: translateZ(0) rotate(-15deg);
       }
     }
@@ -1061,63 +1042,75 @@
             <!-- Women laser examples -->
             <article class="service-card">
               <div class="service-label" data-translate="laserWomen">Laser • Women</div>
-              <h3 class="service-name" data-translate="deepBikini">Deep Bikini</h3>
+              <h3 class="service-name">
+                <span data-translate="deepBikini">Deep Bikini</span>
+                <span class="inline-price">€75</span>
+              </h3>
               <p class="service-meta" data-translate="deepBikiniDesc">Smooth and precise hair removal in the full bikini area.</p>
               <div class="service-footer">
-                <div class="price" aria-label="Price: 75 euros">€75</div>
-                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="deepBikini">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary full-width" rel="noopener noreferrer" target="_blank" data-translate="bookNow" data-whatsapp-service="deepBikini">Book Now</a>
               </div>
             </article>
 
             <article class="service-card">
               <div class="service-label" data-translate="laserWomen">Laser • Women</div>
-              <h3 class="service-name" data-translate="fullLegs">Complete Legs</h3>
+              <h3 class="service-name">
+                <span data-translate="fullLegs">Complete Legs</span>
+                <span class="inline-price">€80</span>
+              </h3>
               <p class="service-meta" data-translate="fullLegsDesc">From thighs to ankles – complete leg coverage.</p>
               <div class="service-footer">
-                <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="fullLegs">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary full-width" rel="noopener noreferrer" target="_blank" data-translate="bookNow" data-whatsapp-service="fullLegs">Book Now</a>
               </div>
             </article>
 
             <article class="service-card">
               <div class="service-label" data-translate="laserCombo">Laser • Combo</div>
-              <h3 class="service-name" data-translate="deepBikiniArmpits">Deep Bikini + Armpits</h3>
+              <h3 class="service-name">
+                <span data-translate="deepBikiniArmpits">Deep Bikini + Armpits</span>
+                <span class="inline-price">€80</span>
+              </h3>
               <p class="service-meta" data-translate="deepBikiniArmpitsDesc">Best value combo for frequently treated zones.</p>
               <div class="service-footer">
-                <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="deepBikiniArmpits">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary full-width" rel="noopener noreferrer" target="_blank" data-translate="bookNow" data-whatsapp-service="deepBikiniArmpits">Book Now</a>
               </div>
             </article>
 
             <!-- Men laser examples -->
             <article class="service-card">
               <div class="service-label" data-translate="laserMen">Laser • Men</div>
-              <h3 class="service-name" data-translate="fullBack">Complete Back</h3>
+              <h3 class="service-name">
+                <span data-translate="fullBack">Complete Back</span>
+                <span class="inline-price">€60</span>
+              </h3>
               <p class="service-meta" data-translate="fullBackDesc">Even hair reduction across the entire back.</p>
               <div class="service-footer">
-                <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="fullBack">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary full-width" rel="noopener noreferrer" target="_blank" data-translate="bookNow" data-whatsapp-service="fullBack">Book Now</a>
               </div>
             </article>
 
             <!-- Lashes examples -->
             <article class="service-card">
               <div class="service-label" data-translate="lashExtensions">Lash Extensions</div>
-              <h3 class="service-name" data-translate="classicSet">Classic Set</h3>
+              <h3 class="service-name">
+                <span data-translate="classicSet">Classic Set</span>
+                <span class="inline-price">€60</span>
+              </h3>
               <p class="service-meta" data-translate="classicSetDesc">Soft, natural look that enhances your everyday eye shape.</p>
               <div class="service-footer">
-                <div class="price" aria-label="Price: 60 euros">€60</div>
-                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="classicSet">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary full-width" rel="noopener noreferrer" target="_blank" data-translate="bookNow" data-whatsapp-service="classicSet">Book Now</a>
               </div>
             </article>
 
             <article class="service-card">
               <div class="service-label" data-translate="lashExtensions">Lash Extensions</div>
-              <h3 class="service-name" data-translate="trendEffect">Trend Effect (Whispy / Wet)</h3>
+              <h3 class="service-name">
+                <span data-translate="trendEffect">Trend Effect (Whispy / Wet)</span>
+                <span class="inline-price">€80</span>
+              </h3>
               <p class="service-meta" data-translate="trendEffectDesc">Expressive, textured look with inner volume.</p>
               <div class="service-footer">
-                <div class="price" aria-label="Price: 80 euros">€80</div>
-                <a href="https://wa.me/31633915100" class="btn small primary" rel="noopener noreferrer" target="_blank" data-translate="book" data-whatsapp-service="trendEffect">Book</a>
+                <a href="https://wa.me/31633915100" class="btn small primary full-width" rel="noopener noreferrer" target="_blank" data-translate="bookNow" data-whatsapp-service="trendEffect">Book Now</a>
               </div>
             </article>
           </div>
@@ -1297,6 +1290,7 @@
         chatWhatsApp: "Chat on WhatsApp",
         sendEmail: "Send an Email",
         book: "Book",
+        bookNow: "Book Now",
         // Service cards
         deepBikini: "Deep Bikini",
         deepBikiniDesc: "Smooth and precise hair removal in the full bikini area.",
@@ -1399,6 +1393,7 @@
         chatWhatsApp: "Написати в WhatsApp",
         sendEmail: "Надіслати Email",
         book: "Записатися",
+        bookNow: "Записатися зараз",
         // Service cards
         deepBikini: "Глибоке бікіні",
         deepBikiniDesc: "Гладке та точне видалення волосся у всій зоні бікіні.",
