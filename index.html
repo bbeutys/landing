@@ -510,8 +510,10 @@
       box-shadow: var(--btn-shadow-outline-hover);
     }
 
-    .btn.outline:hover .btn-icon {
-      animation: bounce 0.6s ease 3;
+    @media (prefers-reduced-motion: no-preference) {
+      .btn.outline:hover .btn-icon {
+        animation: bounce 0.6s ease 3;
+      }
     }
 
     @keyframes bounce {
