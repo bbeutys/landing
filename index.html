@@ -1288,12 +1288,12 @@
         lashesTitle: "Lash Extensions",
         mapTitle: "How to Find Us",
         mapText: "The studio is located in Alphen aan den Rijn with convenient access and nearby parking. Open the route in your preferred maps app.",
-        openGoogleMaps: "📍 Open in Google Maps",
-        openWaze: "🚗 Open in Waze",
+        openGoogleMaps: "Open in Google Maps",
+        openWaze: "Open in Waze",
         contactTitle: "Contact",
         contactText: "For bookings, questions or changes to your appointment, send us a WhatsApp message or email. We'll reply as soon as possible between appointments.",
-        chatWhatsApp: "💬 Chat on WhatsApp",
-        sendEmail: "✉️ Send an Email",
+        chatWhatsApp: "Chat on WhatsApp",
+        sendEmail: "Send an Email",
         book: "Book",
         // Service cards
         deepBikini: "Deep Bikini",
@@ -1390,12 +1390,12 @@
         lashesTitle: "Нарощування вій",
         mapTitle: "Як нас знайти",
         mapText: "Студія розташована в Алфен-ан-ден-Рейні зі зручним доступом та паркуванням поруч. Відкрийте маршрут у своєму улюбленому додатку карт.",
-        openGoogleMaps: "📍 Відкрити в Google Maps",
-        openWaze: "🚗 Відкрити в Waze",
+        openGoogleMaps: "Відкрити в Google Maps",
+        openWaze: "Відкрити в Waze",
         contactTitle: "Контакти",
         contactText: "Для бронювання, питань або змін у записі надішліть нам повідомлення в WhatsApp або електронний лист. Ми відповімо якомога швидше між процедурами.",
-        chatWhatsApp: "💬 Написати в WhatsApp",
-        sendEmail: "✉️ Надіслати Email",
+        chatWhatsApp: "Написати в WhatsApp",
+        sendEmail: "Надіслати Email",
         book: "Записатися",
         // Service cards
         deepBikini: "Глибоке бікіні",
@@ -1593,16 +1593,16 @@
       document.querySelector('.map-text').textContent = t.mapText;
       const googleMapsBtn = document.querySelector('.map-block .btn.outline:first-child span:last-child');
       const wazeBtn = document.querySelector('.map-block .btn.outline:last-child span:last-child');
-      if (googleMapsBtn) googleMapsBtn.textContent = t.openGoogleMaps.replace('📍 ', '');
-      if (wazeBtn) wazeBtn.textContent = t.openWaze.replace('🚗 ', '');
+      if (googleMapsBtn) googleMapsBtn.textContent = t.openGoogleMaps;
+      if (wazeBtn) wazeBtn.textContent = t.openWaze;
 
       // Update contact section
       document.querySelector('#contact-title').textContent = t.contactTitle;
       document.querySelector('.contact-text').textContent = t.contactText;
       const whatsappBtn = document.querySelector('.contact-block .btn.outline:first-child span:last-child');
       const emailBtn = document.querySelector('.contact-block .btn.outline:last-child span:last-child');
-      if (whatsappBtn) whatsappBtn.textContent = t.chatWhatsApp.replace('💬 ', '');
-      if (emailBtn) emailBtn.textContent = t.sendEmail.replace('✉️ ', '');
+      if (whatsappBtn) whatsappBtn.textContent = t.chatWhatsApp;
+      if (emailBtn) emailBtn.textContent = t.sendEmail;
 
       // Update WhatsApp links
       updateWhatsAppLinks();
