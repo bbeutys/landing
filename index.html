@@ -66,6 +66,7 @@
       --btn-shadow-primary-hover: 0 8px 20px rgba(183, 129, 99, 0.35);
       --btn-shadow-outline-hover: 0 6px 16px rgba(183, 129, 99, 0.25);
       --btn-transition: all 0.2s ease;
+      --accent-shadow: rgba(183, 129, 99, 0.4);
     }
 
     [data-theme="dark"] {
@@ -90,6 +91,7 @@
       --btn-shadow-active: 0 2px 8px rgba(0, 0, 0, 0.25);
       --btn-shadow-primary-hover: 0 8px 20px rgba(255, 112, 67, 0.4);
       --btn-shadow-outline-hover: 0 6px 16px rgba(255, 112, 67, 0.3);
+      --accent-shadow: rgba(255, 112, 67, 0.4);
     }
 
     * {
@@ -1023,19 +1025,61 @@
       line-height: 1.4;
     }
 
+    /* Ukrainian Excellence Card */
+    .why-card.highlight-ua {
+      border: 2px solid #0057B7;
+      background: linear-gradient(135deg, 
+        rgba(0, 87, 183, 0.05) 0%, 
+        rgba(255, 215, 0, 0.05) 100%
+      );
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-card.highlight-ua::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #0057B7 50%, #FFD700 50%);
+    }
+
+    .why-card.highlight-ua .why-icon {
+      font-size: 48px;
+      animation: gentle-wave 3s ease-in-out infinite;
+    }
+
+    @keyframes gentle-wave {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+    }
+
     /* ===== NEW SECTIONS: TESTIMONIALS ===== */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+    .testimonials-slider {
+      position: relative;
       margin-top: 14px;
+      padding: 0 50px;
+    }
+
+    .testimonials-track {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonials-wrapper {
+      display: flex;
+      transition: transform 0.4s ease;
     }
 
     .testimonial-card {
+      min-width: 100%;
       background: var(--btn-bg);
       border-radius: 16px;
       border: 1px solid var(--border-soft);
-      padding: 16px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .testimonial-stars {
@@ -1061,6 +1105,81 @@
     .testimonial-service {
       font-size: 11px;
       color: var(--text-muted);
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: var(--card-bg);
+      border: 2px solid var(--border-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: var(--btn-transition);
+      color: var(--accent);
+      z-index: 10;
+    }
+
+    .slider-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      box-shadow: var(--btn-shadow-hover);
+    }
+
+    .slider-btn.prev {
+      left: 0;
+    }
+
+    .slider-btn.next {
+      right: 0;
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .slider-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-soft);
+      border: none;
+      cursor: pointer;
+      transition: var(--btn-transition);
+      padding: 0;
+    }
+
+    .slider-dots .dot:hover {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .slider-dots .dot.active {
+      background: var(--accent);
+      width: 24px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 640px) {
+      .testimonials-slider {
+        padding: 0 40px;
+      }
+
+      .slider-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+      }
     }
 
     /* ===== NEW SECTIONS: FAQ ===== */
@@ -1103,6 +1222,12 @@
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
       z-index: 100;
       display: none;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .sticky-cta.visible {
+      transform: translateY(0);
     }
 
     .sticky-cta .btn {
@@ -1181,34 +1306,79 @@
       right: 24px;
       width: 56px;
       height: 56px;
-      background: #25D366;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 4px 12px rgba(183, 129, 99, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
       z-index: 100;
       cursor: pointer;
-      transition: var(--btn-transition);
-      animation: pulse 2s infinite;
+      transition: all 0.3s ease;
+      animation: pulse-accent 2s infinite;
+    }
+
+    [data-theme="dark"] .whatsapp-bubble {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 6px 16px rgba(255, 112, 67, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     .whatsapp-bubble:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 20px rgba(183, 129, 99, 0.6);
     }
 
-    .whatsapp-bubble::before {
-      content: '💬';
-      font-size: 28px;
+    [data-theme="dark"] .whatsapp-bubble:hover {
+      box-shadow: 0 8px 20px rgba(255, 112, 67, 0.6);
     }
 
-    @keyframes pulse {
+    .whatsapp-bubble .bubble-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .bubble-tooltip {
+      position: absolute;
+      right: 70px;
+      background: var(--card-bg);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 1px solid var(--border-soft);
+    }
+
+    .whatsapp-bubble:hover .bubble-tooltip {
+      opacity: 1;
+    }
+
+    @keyframes pulse-accent {
       0%, 100% {
-        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 4px 12px rgba(183, 129, 99, 0.4);
       }
       50% {
-        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.1);
+        box-shadow: 0 4px 20px rgba(183, 129, 99, 0.7), 0 0 0 8px rgba(183, 129, 99, 0.1);
+      }
+    }
+
+    [data-theme="dark"] .whatsapp-bubble {
+      animation: pulse-accent-dark 2s infinite;
+    }
+
+    @keyframes pulse-accent-dark {
+      0%, 100% {
+        box-shadow: 0 6px 16px rgba(255, 112, 67, 0.4);
+      }
+      50% {
+        box-shadow: 0 6px 20px rgba(255, 112, 67, 0.7), 0 0 0 8px rgba(255, 112, 67, 0.1);
       }
     }
 
@@ -1216,6 +1386,10 @@
       .whatsapp-bubble {
         bottom: 70px;
         right: 16px;
+      }
+      
+      .bubble-tooltip {
+        display: none;
       }
     }
 
@@ -1247,6 +1421,161 @@
       }
       .usp-divider {
         display: none;
+      }
+    }
+
+    /* ===== EQUIPMENT BANNER ===== */
+    .equipment-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px;
+      margin: 22px 0;
+      background: linear-gradient(135deg, var(--card-bg) 0%, var(--btn-bg) 100%);
+      border-radius: 20px;
+      border: 2px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .equipment-content {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .equipment-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: white;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .badge-icon {
+      font-size: 14px;
+    }
+
+    .equipment-title {
+      font-family: 'Cormorant', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .equipment-year {
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .equipment-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .equipment-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .eq-feature {
+      font-size: 12px;
+      color: var(--text-main);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .equipment-visual {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .tech-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      opacity: 0.3;
+      animation: tech-pulse 3s ease-in-out infinite;
+    }
+
+    .tech-pulse {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    @keyframes tech-pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .equipment-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .equipment-title {
+        justify-content: center;
+        font-size: 20px;
+      }
+
+      .equipment-features {
+        justify-content: center;
+      }
+
+      .equipment-visual {
+        width: 100px;
+        height: 100px;
       }
     }
   </style>
@@ -1319,6 +1648,32 @@
       <!-- Main Content -->
       <main id="main-content">
 
+        <!-- Equipment Banner -->
+        <div class="equipment-banner">
+          <div class="equipment-content">
+            <div class="equipment-badge">
+              <span class="badge-icon">🔬</span>
+              <span class="badge-text" data-translate="equipmentBadge">Latest Technology</span>
+            </div>
+            <h3 class="equipment-title">
+              <span data-translate="equipmentName">Novalaser Quattro</span>
+              <span class="equipment-year">2025</span>
+            </h3>
+            <p class="equipment-desc" data-translate="equipmentDesc">
+              Professional diode laser system. The most advanced equipment for safe, effective, and virtually pain-free hair removal.
+            </p>
+            <div class="equipment-features">
+              <span class="eq-feature">✓ <span data-translate="eqFDA">FDA Approved</span></span>
+              <span class="eq-feature">✓ <span data-translate="eqPainFree">Pain-Free</span></span>
+              <span class="eq-feature">✓ <span data-translate="eqAllSkin">All Skin Types</span></span>
+            </div>
+          </div>
+          <div class="equipment-visual">
+            <div class="tech-circle"></div>
+            <div class="tech-pulse"></div>
+          </div>
+        </div>
+
         <!-- Trust Bar -->
         <div class="trust-bar">
           <div class="trust-item">
@@ -1364,6 +1719,11 @@
               <span class="why-icon">💰</span>
               <div class="why-title" data-translate="whyPricingTitle">Transparent Pricing</div>
               <div class="why-desc" data-translate="whyPricingDesc">Clear prices with no hidden fees - what you see is what you pay</div>
+            </div>
+            <div class="why-card highlight-ua">
+              <span class="why-icon">🇺🇦</span>
+              <div class="why-title" data-translate="whyUkrainianTitle">Ukrainian Excellence</div>
+              <div class="why-desc" data-translate="whyUkrainianDesc">Premium service by Ukrainian specialists. Warmth, care, and attention to detail in every treatment.</div>
             </div>
           </div>
         </section>
@@ -1469,29 +1829,71 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="section" id="testimonials" aria-labelledby="testimonials-title">
+        <section class="section testimonials" id="testimonials" aria-labelledby="testimonials-title">
           <div class="section-header">
             <h2 id="testimonials-title" class="section-title" data-translate="testimonialsTitle">What Our Clients Say</h2>
+            <span class="section-note" data-translate="testimonialsNote">Real reviews from happy clients</span>
           </div>
-          <div class="testimonials-grid">
-            <article class="testimonial-card">
-              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text" data-translate="testimonial1Text">"Amazing experience! The deep bikini treatment was completely painless. The specialist was professional and made me feel comfortable throughout."</p>
-              <div class="testimonial-author" data-translate="testimonial1Author">Sophie M.</div>
-              <div class="testimonial-service" data-translate="testimonial1Service">Deep Bikini</div>
-            </article>
-            <article class="testimonial-card">
-              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text" data-translate="testimonial2Text">"Best lash extensions I've ever had! Natural look, lasted 4 weeks. The attention to detail is incredible. Will definitely come back!"</p>
-              <div class="testimonial-author" data-translate="testimonial2Author">Emma L.</div>
-              <div class="testimonial-service" data-translate="testimonial2Service">Classic Lash Extensions</div>
-            </article>
-            <article class="testimonial-card">
-              <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text" data-translate="testimonial3Text">"Finally found a studio that does men's laser properly. Back treatment was quick and effective. Already seeing results after 3 sessions."</p>
-              <div class="testimonial-author" data-translate="testimonial3Author">Mark V.</div>
-              <div class="testimonial-service" data-translate="testimonial3Service">Complete Back Laser</div>
-            </article>
+          
+          <div class="testimonials-slider">
+            <button class="slider-btn prev" aria-label="Previous testimonial">‹</button>
+            
+            <div class="testimonials-track">
+              <div class="testimonials-wrapper">
+                <article class="testimonial-card">
+                  <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text" data-translate="testimonial1Text">Best laser hair removal experience! Professional, gentle, and amazing results.</p>
+                  <div class="testimonial-author" data-translate="testimonial1Author">Sophie van der Berg</div>
+                  <div class="testimonial-service" data-translate="testimonial1Service">Deep Bikini • 6 sessions</div>
+                </article>
+                
+                <article class="testimonial-card">
+                  <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text" data-translate="testimonial2Text">My lashes look incredible! Natural but so full. I get compliments every day.</p>
+                  <div class="testimonial-author" data-translate="testimonial2Author">Emma de Vries</div>
+                  <div class="testimonial-service" data-translate="testimonial2Service">Volume Lash Extensions</div>
+                </article>
+                
+                <article class="testimonial-card">
+                  <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text" data-translate="testimonial3Text">Clean studio, friendly staff, and great prices. Highly recommend for men's grooming.</p>
+                  <div class="testimonial-author" data-translate="testimonial3Author">Lars Janssen</div>
+                  <div class="testimonial-service" data-translate="testimonial3Service">Back Laser Treatment</div>
+                </article>
+                
+                <article class="testimonial-card">
+                  <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text" data-translate="testimonial4Text">Finally smooth skin without razors! The team made me feel so comfortable.</p>
+                  <div class="testimonial-author" data-translate="testimonial4Author">Nina Bakker</div>
+                  <div class="testimonial-service" data-translate="testimonial4Service">Complete Legs • 8 sessions</div>
+                </article>
+                
+                <article class="testimonial-card">
+                  <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text" data-translate="testimonial5Text">Professional service, modern equipment. Results exceeded my expectations!</p>
+                  <div class="testimonial-author" data-translate="testimonial5Author">Thomas Mulder</div>
+                  <div class="testimonial-service" data-translate="testimonial5Service">Chest Laser • 4 sessions</div>
+                </article>
+                
+                <article class="testimonial-card">
+                  <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text" data-translate="testimonial6Text">Perfect natural look! They took time to understand exactly what I wanted.</p>
+                  <div class="testimonial-author" data-translate="testimonial6Author">Lisa Visser</div>
+                  <div class="testimonial-service" data-translate="testimonial6Service">Classic Lash Set</div>
+                </article>
+              </div>
+            </div>
+            
+            <button class="slider-btn next" aria-label="Next testimonial">›</button>
+          </div>
+          
+          <div class="slider-dots">
+            <button class="dot active" data-slide="0" aria-label="Go to testimonial 1"></button>
+            <button class="dot" data-slide="1" aria-label="Go to testimonial 2"></button>
+            <button class="dot" data-slide="2" aria-label="Go to testimonial 3"></button>
+            <button class="dot" data-slide="3" aria-label="Go to testimonial 4"></button>
+            <button class="dot" data-slide="4" aria-label="Go to testimonial 5"></button>
+            <button class="dot" data-slide="5" aria-label="Go to testimonial 6"></button>
           </div>
         </section>
 
@@ -1666,11 +2068,18 @@
   </nav>
 
   <!-- WhatsApp Floating Bubble -->
-  <a href="https://wa.me/31633915100" class="whatsapp-bubble" rel="noopener noreferrer" target="_blank" aria-label="Chat on WhatsApp" data-whatsapp-service="general"></a>
+  <a href="https://wa.me/31633915100" class="whatsapp-bubble" rel="noopener noreferrer" target="_blank" aria-label="Free Consultation via WhatsApp" data-whatsapp-service="general">
+    <svg class="bubble-icon" width="32" height="32" viewBox="0 0 32 32" fill="white">
+      <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.739 5.479 2.032 7.784L0 32l8.427-2.016A15.904 15.904 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333c-2.453 0-4.787-.666-6.784-1.827l-.485-.29-5.026 1.203 1.217-4.933-.318-.504A13.231 13.231 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.973c-.4-.2-2.365-1.168-2.731-1.301-.365-.133-.631-.2-.897.2-.266.4-1.032 1.301-1.265 1.567-.233.266-.465.3-.865.1-.4-.2-1.687-.622-3.213-1.983-1.187-1.06-1.989-2.368-2.222-2.768-.233-.4-.025-.616.175-.815.18-.18.4-.465.6-.698.2-.233.266-.4.4-.665.133-.266.066-.5-.034-.698-.1-.2-.897-2.165-1.23-2.965-.324-.78-.652-.673-.897-.686-.233-.013-.498-.016-.764-.016-.266 0-.698.1-1.064.5-.365.4-1.397 1.368-1.397 3.333s1.43 3.867 1.63 4.133c.2.266 2.816 4.3 6.822 6.03.953.412 1.697.658 2.276.842.957.304 1.828.261 2.517.158.768-.115 2.365-.968 2.698-1.903.333-.935.333-1.736.233-1.903-.1-.167-.365-.267-.765-.467z"/>
+    </svg>
+    <span class="bubble-tooltip" data-translate="consultationViaWhatsApp">Free Consultation</span>
+  </a>
 
   <!-- Sticky CTA (mobile only) -->
   <div class="sticky-cta">
-    <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" data-translate="stickyCTA" data-whatsapp-service="general">Book Appointment</a>
+    <a href="https://wa.me/31633915100" class="btn primary sticky-btn" rel="noopener noreferrer" target="_blank" data-whatsapp-service="general">
+      <span data-translate="bookConsultation">Book Free Consultation</span>
+    </a>
   </div>
 
   <script>
@@ -1737,15 +2146,24 @@
         whyPricingDesc: "Clear prices with no hidden fees - what you see is what you pay",
         // Testimonials
         testimonialsTitle: "What Our Clients Say",
-        testimonial1Text: "Amazing experience! The deep bikini treatment was completely painless. The specialist was professional and made me feel comfortable throughout.",
-        testimonial1Author: "Sophie M.",
-        testimonial1Service: "Deep Bikini",
-        testimonial2Text: "Best lash extensions I've ever had! Natural look, lasted 4 weeks. The attention to detail is incredible. Will definitely come back!",
-        testimonial2Author: "Emma L.",
-        testimonial2Service: "Classic Lash Extensions",
-        testimonial3Text: "Finally found a studio that does men's laser properly. Back treatment was quick and effective. Already seeing results after 3 sessions.",
-        testimonial3Author: "Mark V.",
-        testimonial3Service: "Complete Back Laser",
+        testimonial1Text: "Best laser hair removal experience! Professional, gentle, and amazing results.",
+        testimonial1Author: "Sophie van der Berg",
+        testimonial1Service: "Deep Bikini • 6 sessions",
+        testimonial2Text: "My lashes look incredible! Natural but so full. I get compliments every day.",
+        testimonial2Author: "Emma de Vries",
+        testimonial2Service: "Volume Lash Extensions",
+        testimonial3Text: "Clean studio, friendly staff, and great prices. Highly recommend for men's grooming.",
+        testimonial3Author: "Lars Janssen",
+        testimonial3Service: "Back Laser Treatment",
+        testimonial4Text: "Finally smooth skin without razors! The team made me feel so comfortable.",
+        testimonial4Author: "Nina Bakker",
+        testimonial4Service: "Complete Legs • 8 sessions",
+        testimonial5Text: "Professional service, modern equipment. Results exceeded my expectations!",
+        testimonial5Author: "Thomas Mulder",
+        testimonial5Service: "Chest Laser • 4 sessions",
+        testimonial6Text: "Perfect natural look! They took time to understand exactly what I wanted.",
+        testimonial6Author: "Lisa Visser",
+        testimonial6Service: "Classic Lash Set",
         // FAQ
         faqTitle: "Frequently Asked Questions",
         faq1Question: "Is laser hair removal painful?",
@@ -1764,7 +2182,21 @@
         navReviews: "Reviews",
         navFAQ: "FAQ",
         navContact: "Contact",
-        stickyCTA: "Book Appointment",
+        // Sticky CTA & WhatsApp
+        bookConsultation: "Book Free Consultation",
+        consultationViaWhatsApp: "Free Consultation",
+        // Equipment Banner
+        equipmentBadge: "Latest Technology",
+        equipmentName: "Novalaser Quattro",
+        equipmentDesc: "Professional diode laser system. The most advanced equipment for safe, effective, and virtually pain-free hair removal.",
+        eqFDA: "FDA Approved",
+        eqPainFree: "Pain-Free",
+        eqAllSkin: "All Skin Types",
+        // Ukrainian Excellence
+        whyUkrainianTitle: "Ukrainian Excellence",
+        whyUkrainianDesc: "Premium service by Ukrainian specialists. Warmth, care, and attention to detail in every treatment.",
+        // Testimonials Note
+        testimonialsNote: "Real reviews from happy clients",
         // Service cards
         deepBikini: "Deep Bikini",
         deepBikiniDesc: "Smooth and precise hair removal in the full bikini area.",
@@ -1886,15 +2318,24 @@
         whyPricingDesc: "Чіткі ціни без прихованих платежів - ви платите те, що бачите",
         // Testimonials
         testimonialsTitle: "Що кажуть наші клієнти",
-        testimonial1Text: "Дивовижний досвід! Процедура глибокого бікіні була абсолютно безболісною. Спеціаліст був професійним і дбав про мій комфорт.",
-        testimonial1Author: "Софія М.",
-        testimonial1Service: "Глибоке бікіні",
-        testimonial2Text: "Найкраще нарощування вій, яке я коли-небудь робила! Природний вигляд, тримались 4 тижні. Увага до деталей неймовірна. Обов'язково повернуся!",
-        testimonial2Author: "Емма Л.",
-        testimonial2Service: "Класичне нарощування вій",
-        testimonial3Text: "Нарешті знайшов студію, яка правильно робить лазерну епіляцію для чоловіків. Процедура на спині була швидкою та ефективною. Вже бачу результати після 3 сеансів.",
-        testimonial3Author: "Марк В.",
-        testimonial3Service: "Лазер на всю спину",
+        testimonial1Text: "Найкращий досвід лазерної епіляції! Професійно, ніжно, дивовижні результати.",
+        testimonial1Author: "Софія ван дер Берг",
+        testimonial1Service: "Глибоке бікіні • 6 сеансів",
+        testimonial2Text: "Мої вії виглядають неймовірно! Природно, але так пишно. Отримую компліменти щодня.",
+        testimonial2Author: "Емма де Фріс",
+        testimonial2Service: "Об'ємне нарощування вій",
+        testimonial3Text: "Чиста студія, привітний персонал, чудові ціни. Дуже рекомендую для чоловічого догляду.",
+        testimonial3Author: "Ларс Янссен",
+        testimonial3Service: "Лазерна епіляція спини",
+        testimonial4Text: "Нарешті гладенька шкіра без бритви! Команда створила дуже комфортну атмосферу.",
+        testimonial4Author: "Ніна Баккер",
+        testimonial4Service: "Всі ноги • 8 сеансів",
+        testimonial5Text: "Професійний сервіс, сучасне обладнання. Результат перевершив очікування!",
+        testimonial5Author: "Томас Малдер",
+        testimonial5Service: "Груди лазер • 4 сеанси",
+        testimonial6Text: "Ідеальний природний вигляд! Вони приділили час, щоб зрозуміти, чого я хочу.",
+        testimonial6Author: "Ліза Віссер",
+        testimonial6Service: "Класичний набір вій",
         // FAQ
         faqTitle: "Часті питання",
         faq1Question: "Чи болюча лазерна епіляція?",
@@ -1913,7 +2354,21 @@
         navReviews: "Відгуки",
         navFAQ: "Питання",
         navContact: "Контакти",
-        stickyCTA: "Записатися",
+        // Sticky CTA & WhatsApp
+        bookConsultation: "Замовити безкоштовну консультацію",
+        consultationViaWhatsApp: "Безкоштовна консультація",
+        // Equipment Banner
+        equipmentBadge: "Новітні технології",
+        equipmentName: "Novalaser Quattro",
+        equipmentDesc: "Професійна діодна лазерна система. Найсучасніше обладнання для безпечної та безболісної епіляції.",
+        eqFDA: "Схвалено FDA",
+        eqPainFree: "Безболісно",
+        eqAllSkin: "Всі типи шкіри",
+        // Ukrainian Excellence
+        whyUkrainianTitle: "Українська якість",
+        whyUkrainianDesc: "Преміум-сервіс від українських спеціалістів. Тепло, турбота та увага до деталей у кожній процедурі.",
+        // Testimonials Note
+        testimonialsNote: "Справжні відгуки від щасливих клієнтів",
         // Service cards
         deepBikini: "Глибоке бікіні",
         deepBikiniDesc: "Гладке та точне видалення волосся у всій зоні бікіні.",
@@ -2187,6 +2642,12 @@
 
       // Initialize floating navigation
       initFloatingNav();
+
+      // Initialize sticky CTA scroll detection
+      initStickyCTA();
+
+      // Initialize testimonials slider
+      initTestimonialsSlider();
     });
 
     // Progress Bar functionality
@@ -2240,6 +2701,99 @@
 
       window.addEventListener('scroll', updateActiveNav);
       updateActiveNav();
+    }
+
+    // Sticky CTA with 50% scroll delay
+    function initStickyCTA() {
+      const stickyCTA = document.querySelector('.sticky-cta');
+      if (!stickyCTA) return;
+
+      let stickyShown = false;
+
+      function updateStickyCTA() {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        
+        if (scrollPercent > 50 && !stickyShown) {
+          stickyCTA.classList.add('visible');
+          stickyShown = true;
+        }
+      }
+
+      window.addEventListener('scroll', updateStickyCTA);
+      updateStickyCTA();
+    }
+
+    // Testimonials Slider
+    function initTestimonialsSlider() {
+      const wrapper = document.querySelector('.testimonials-wrapper');
+      const prevBtn = document.querySelector('.slider-btn.prev');
+      const nextBtn = document.querySelector('.slider-btn.next');
+      const dots = document.querySelectorAll('.slider-dots .dot');
+      
+      if (!wrapper || !prevBtn || !nextBtn || dots.length === 0) return;
+
+      let currentSlide = 0;
+      const totalSlides = dots.length;
+      let autoScrollInterval;
+
+      function goToSlide(index) {
+        currentSlide = index;
+        wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentSlide);
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        goToSlide(currentSlide);
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        goToSlide(currentSlide);
+      }
+
+      function startAutoScroll() {
+        stopAutoScroll();
+        autoScrollInterval = setInterval(nextSlide, 5000);
+      }
+
+      function stopAutoScroll() {
+        if (autoScrollInterval) {
+          clearInterval(autoScrollInterval);
+        }
+      }
+
+      // Event listeners
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAutoScroll();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAutoScroll();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          goToSlide(index);
+          startAutoScroll();
+        });
+      });
+
+      // Pause on hover
+      const slider = document.querySelector('.testimonials-slider');
+      if (slider) {
+        slider.addEventListener('mouseenter', stopAutoScroll);
+        slider.addEventListener('mouseleave', startAutoScroll);
+      }
+
+      // Start auto-scroll
+      startAutoScroll();
     }
   </script>
 </body>
