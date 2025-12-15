@@ -511,7 +511,7 @@
     }
 
     .btn.outline:hover .btn-icon {
-      animation: bounce 0.6s ease infinite;
+      animation: bounce 0.6s ease 3;
     }
 
     @keyframes bounce {
@@ -1211,11 +1211,11 @@
           <div class="btn-row">
             <a href="https://www.google.com/maps/search/?api=1&query=Ouvertureweg+15+-+19+2402+DT+Alphen+aan+den+Rijn+Netherlands" class="btn outline" rel="noopener noreferrer" target="_blank">
               <span class="btn-icon">📍</span>
-              <span>Open in Google Maps</span>
+              <span data-translate="openGoogleMaps">Open in Google Maps</span>
             </a>
             <a href="https://waze.com/ul?q=Ouvertureweg+15+-+19+Alphen+aan+den+Rijn+Netherlands" class="btn outline" rel="noopener noreferrer" target="_blank">
               <span class="btn-icon">🚗</span>
-              <span>Open in Waze</span>
+              <span data-translate="openWaze">Open in Waze</span>
             </a>
           </div>
         </section>
@@ -1232,11 +1232,11 @@
           <div class="btn-row">
             <a href="https://wa.me/31633915100" class="btn outline" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp" data-whatsapp-service="general">
               <span class="btn-icon">💬</span>
-              <span>Chat on WhatsApp</span>
+              <span data-translate="chatWhatsApp">Chat on WhatsApp</span>
             </a>
             <a href="mailto:hello@bbeauty.nl" class="btn outline">
               <span class="btn-icon">✉️</span>
-              <span>Send an Email</span>
+              <span data-translate="sendEmail">Send an Email</span>
             </a>
           </div>
         </section>
@@ -1591,18 +1591,10 @@
       // Update map section
       document.querySelector('#map-title').textContent = t.mapTitle;
       document.querySelector('.map-text').textContent = t.mapText;
-      const googleMapsBtn = document.querySelector('.map-block [href*="google.com/maps"] span:last-child');
-      const wazeBtn = document.querySelector('.map-block [href*="waze.com"] span:last-child');
-      if (googleMapsBtn) googleMapsBtn.textContent = t.openGoogleMaps;
-      if (wazeBtn) wazeBtn.textContent = t.openWaze;
 
       // Update contact section
       document.querySelector('#contact-title').textContent = t.contactTitle;
       document.querySelector('.contact-text').textContent = t.contactText;
-      const whatsappBtn = document.querySelector('.contact-block [href*="wa.me"] span:last-child');
-      const emailBtn = document.querySelector('.contact-block [href^="mailto:"] span:last-child');
-      if (whatsappBtn) whatsappBtn.textContent = t.chatWhatsApp;
-      if (emailBtn) emailBtn.textContent = t.sendEmail;
 
       // Update WhatsApp links
       updateWhatsAppLinks();
