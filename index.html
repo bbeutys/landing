@@ -58,6 +58,14 @@
       --hero-gradient-start: rgba(246, 243, 236, 0.7);
       --hero-gradient-mid: rgba(246, 243, 236, 0.3);
       --hero-gradient-end: rgba(246, 243, 236, 0.8);
+      
+      /* Unified Button System */
+      --btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --btn-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+      --btn-shadow-active: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --btn-shadow-primary-hover: 0 8px 20px rgba(183, 129, 99, 0.35);
+      --btn-shadow-outline-hover: 0 6px 16px rgba(183, 129, 99, 0.25);
+      --btn-transition: all 0.2s ease;
     }
 
     [data-theme="dark"] {
@@ -75,6 +83,13 @@
       --hero-gradient-start: rgba(46, 30, 18, 0.7);
       --hero-gradient-mid: rgba(46, 30, 18, 0.3);
       --hero-gradient-end: rgba(46, 30, 18, 0.8);
+      
+      /* Dark mode button shadows */
+      --btn-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --btn-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.4);
+      --btn-shadow-active: 0 2px 8px rgba(0, 0, 0, 0.25);
+      --btn-shadow-primary-hover: 0 8px 20px rgba(255, 112, 67, 0.4);
+      --btn-shadow-outline-hover: 0 6px 16px rgba(255, 112, 67, 0.3);
     }
 
     * {
@@ -101,6 +116,13 @@
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
+        repeating-linear-gradient(
+          135deg,
+          transparent,
+          transparent 35px,
+          rgba(183, 129, 99, 0.02) 35px,
+          rgba(183, 129, 99, 0.02) 70px
+        ),
         radial-gradient(circle at top, var(--gradient-top) 0, var(--page-bg) 45%, var(--page-bg) 100%);
       color: var(--text-main);
       min-height: 100vh;
@@ -202,7 +224,7 @@
       overflow: hidden;
     }
 
-    /* Hero section background with back.png */
+    /* Hero section background with back.png + CSS pattern */
     .hero::before {
       content: '';
       position: absolute;
@@ -211,12 +233,20 @@
       transform: translateX(-50%);
       width: 120%;
       height: 400px;
-      background-image: url('back.png');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
+      background-image: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 20px,
+          rgba(183, 129, 99, 0.03) 20px,
+          rgba(183, 129, 99, 0.03) 40px
+        ),
+        url('back.png');
+      background-size: auto, cover;
+      background-position: 0 0, center;
+      opacity: 0.20;
       mix-blend-mode: multiply;
-      filter: contrast(1.1);
+      filter: contrast(1.15) brightness(1.05);
       z-index: 0;
       pointer-events: none;
     }
@@ -244,23 +274,33 @@
     }
 
     .logo-wrap {
-      width: 150px;
-      height: 150px;
+      width: 170px;
+      height: 170px;
       margin: 0 auto 14px;
       border-radius: 50%;
       background: radial-gradient(circle, #fffdf9 0, var(--circle-bg) 80%);
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--accent);
+      border: 3px solid var(--accent);
       box-shadow: 
-        0 4px 12px rgba(183, 129, 99, 0.2),
-        0 8px 24px rgba(183, 129, 99, 0.15);
+        0 6px 16px rgba(183, 129, 99, 0.25),
+        0 12px 32px rgba(183, 129, 99, 0.20),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .logo-wrap:hover {
+      transform: scale(1.02);
+      box-shadow: 
+        0 8px 20px rgba(183, 129, 99, 0.3),
+        0 16px 40px rgba(183, 129, 99, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     }
 
     .logo-wrap img {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
       display: block;
@@ -342,7 +382,7 @@
       margin-top: 28px;
     }
 
-    /* Featured & Price sections background with big-back.png */
+    /* Featured & Price sections background with big-back.png + CSS pattern */
     .section#featured,
     .section#prices {
       position: relative;
@@ -356,13 +396,21 @@
       left: -10%;
       width: 120%;
       height: 100%;
-      background-image: url('big-back.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      opacity: 0.12;
+      background-image: 
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 25px,
+          rgba(183, 129, 99, 0.02) 25px,
+          rgba(183, 129, 99, 0.02) 50px
+        ),
+        url('big-back.png');
+      background-size: auto, cover;
+      background-position: 0 0, center;
+      background-attachment: scroll, fixed;
+      opacity: 0.15;
       mix-blend-mode: soft-light;
-      filter: contrast(1.15);
+      filter: contrast(1.2) brightness(1.05);
       z-index: 0;
       pointer-events: none;
     }
@@ -412,6 +460,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
       padding: 11px 18px;
       border-radius: 999px;
       border: 1px solid var(--border-soft);
@@ -421,7 +470,8 @@
       text-decoration: none;
       color: var(--text-main);
       cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+      transition: var(--btn-transition);
+      box-shadow: var(--btn-shadow);
     }
 
     .btn.primary {
@@ -430,21 +480,45 @@
       color: white;
     }
 
+    .btn.outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
     .btn:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
       border-color: var(--accent);
-      filter: brightness(1.1);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+      box-shadow: var(--btn-shadow-hover);
     }
     
     .btn:active {
       transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--btn-shadow-active);
     }
     
     .btn.primary:hover {
       background: var(--accent-dark);
-      box-shadow: 0 8px 18px rgba(255, 112, 67, 0.3);
+      border-color: var(--accent-dark);
+      box-shadow: var(--btn-shadow-primary-hover);
+    }
+
+    .btn.outline:hover {
+      background: var(--accent);
+      color: white;
+      box-shadow: var(--btn-shadow-outline-hover);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .btn.outline:hover .btn-icon {
+        animation: bounce 0.6s ease 3;
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
     }
 
     .services-grid {
@@ -520,14 +594,15 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: var(--btn-transition);
+      box-shadow: var(--btn-shadow);
     }
 
     .chip-link:hover {
       border-color: var(--accent);
       color: var(--accent-dark);
-      filter: brightness(1.1);
       transform: translateY(-1px);
+      box-shadow: var(--btn-shadow-hover);
     }
 
     .chip-link.active {
@@ -535,12 +610,13 @@
       color: white;
       background: var(--accent);
       font-weight: 600;
-      box-shadow: 0 2px 8px rgba(255, 112, 67, 0.3);
+      box-shadow: var(--btn-shadow-primary-hover);
     }
     
     .chip-link.active:hover {
-      transform: none;
+      transform: translateY(-1px);
       background: var(--accent-dark);
+      border-color: var(--accent-dark);
     }
 
     .chip-link:focus {
@@ -550,6 +626,7 @@
     
     .chip-link:active {
       transform: translateY(0);
+      box-shadow: var(--btn-shadow-active);
     }
 
     .price-section {
@@ -714,15 +791,40 @@
       }
     }
 
-    @media (min-width: 1024px) {
+    /* Tablet size: 160px logo */
+    @media (min-width: 768px) {
       .logo-wrap {
-        width: 190px;
-        height: 190px;
+        width: 180px;
+        height: 180px;
       }
 
       .logo-wrap img {
-        width: 180px;
-        height: 180px;
+        width: 170px;
+        height: 170px;
+      }
+    }
+
+    /* Desktop size: 200px logo */
+    @media (min-width: 1024px) {
+      .logo-wrap {
+        width: 220px;
+        height: 220px;
+        box-shadow: 
+          0 8px 20px rgba(183, 129, 99, 0.3),
+          0 16px 40px rgba(183, 129, 99, 0.25),
+          0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      }
+
+      .logo-wrap:hover {
+        box-shadow: 
+          0 10px 24px rgba(183, 129, 99, 0.35),
+          0 20px 48px rgba(183, 129, 99, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      }
+
+      .logo-wrap img {
+        width: 210px;
+        height: 210px;
       }
     }
 
@@ -736,14 +838,15 @@
         padding: 20px 16px 24px;
       }
 
+      /* Mobile size: 140px logo */
       .logo-wrap {
-        width: 130px;
-        height: 130px;
+        width: 150px;
+        height: 150px;
       }
 
       .logo-wrap img {
-        width: 120px;
-        height: 120px;
+        width: 140px;
+        height: 140px;
       }
 
       .hero-title {
@@ -1108,8 +1211,14 @@
             preferred maps app.
           </p>
           <div class="btn-row">
-            <a href="https://www.google.com/maps/search/?api=1&query=Ouvertureweg+15+-+19+2402+DT+Alphen+aan+den+Rijn+Netherlands" class="btn primary" rel="noopener noreferrer" target="_blank">Open in Google Maps</a>
-            <a href="https://waze.com/ul?q=Ouvertureweg+15+-+19+Alphen+aan+den+Rijn+Netherlands" class="btn" rel="noopener noreferrer" target="_blank">Open in Waze</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ouvertureweg+15+-+19+2402+DT+Alphen+aan+den+Rijn+Netherlands" class="btn outline" rel="noopener noreferrer" target="_blank">
+              <span class="btn-icon">📍</span>
+              <span data-translate="openGoogleMaps">Open in Google Maps</span>
+            </a>
+            <a href="https://waze.com/ul?q=Ouvertureweg+15+-+19+Alphen+aan+den+Rijn+Netherlands" class="btn outline" rel="noopener noreferrer" target="_blank">
+              <span class="btn-icon">🚗</span>
+              <span data-translate="openWaze">Open in Waze</span>
+            </a>
           </div>
         </section>
 
@@ -1123,8 +1232,14 @@
             soon as possible between appointments.
           </p>
           <div class="btn-row">
-            <a href="https://wa.me/31633915100" class="btn primary" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp" data-whatsapp-service="general">Chat on WhatsApp</a>
-            <a href="mailto:hello@bbeauty.nl" class="btn">Send an Email</a>
+            <a href="https://wa.me/31633915100" class="btn outline" rel="noopener noreferrer" target="_blank" aria-label="Chat with us on WhatsApp" data-whatsapp-service="general">
+              <span class="btn-icon">💬</span>
+              <span data-translate="chatWhatsApp">Chat on WhatsApp</span>
+            </a>
+            <a href="mailto:hello@bbeauty.nl" class="btn outline">
+              <span class="btn-icon">✉️</span>
+              <span data-translate="sendEmail">Send an Email</span>
+            </a>
           </div>
         </section>
       </main>
@@ -1478,14 +1593,10 @@
       // Update map section
       document.querySelector('#map-title').textContent = t.mapTitle;
       document.querySelector('.map-text').textContent = t.mapText;
-      document.querySelector('.map-block .btn.primary').textContent = t.openGoogleMaps;
-      document.querySelector('.map-block .btn:not(.primary)').textContent = t.openWaze;
 
       // Update contact section
       document.querySelector('#contact-title').textContent = t.contactTitle;
       document.querySelector('.contact-text').textContent = t.contactText;
-      document.querySelector('.contact-block .btn.primary').textContent = t.chatWhatsApp;
-      document.querySelector('.contact-block .btn:not(.primary)').textContent = t.sendEmail;
 
       // Update WhatsApp links
       updateWhatsAppLinks();
