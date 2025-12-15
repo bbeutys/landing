@@ -2711,7 +2711,10 @@
       let stickyShown = false;
 
       function updateStickyCTA() {
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollHeight <= 0) return; // Prevent division by zero on short pages
+        
+        const scrollPercent = (window.scrollY / scrollHeight) * 100;
         
         if (scrollPercent > 50 && !stickyShown) {
           stickyCTA.classList.add('visible');
