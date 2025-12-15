@@ -53,13 +53,30 @@ php -S localhost:8000
 ```
 .
 ├── index.html          # Main landing page
+├── privacy-policy.html # GDPR-compliant privacy policy (EN/NL/UK)
+├── cookie-policy.html  # Cookie policy with consent management (EN/NL/UK)
+├── terms.html          # Terms & conditions (EN/NL/UK)
 ├── logo-bbeauty.png    # Optimized logo (300x166px, ~60KB)
+├── back.png            # Background texture image
+├── big-back.png        # Large background texture
+├── mini-icon.png       # Decorative icon
+├── laser.png           # Service illustration
 ├── favicon.ico         # Browser favicon
 ├── CNAME               # GitHub Pages domain config
 └── README.md           # This file
 ```
 
 ## ✨ Recent Improvements (December 2024)
+
+### 🔒 Legal Compliance & GDPR (December 15, 2024)
+- ✅ **Complete Privacy Policy**: GDPR-compliant privacy policy in 3 languages (EN/NL/UK)
+- ✅ **Cookie Policy**: Detailed cookie usage policy with browser instructions
+- ✅ **Terms & Conditions**: Comprehensive terms covering all services and policies
+- ✅ **Dark Mode Support**: All policy pages support light/dark theme with localStorage sync
+- ✅ **Language Consistency**: Policy pages available in English, Dutch, and Ukrainian
+- ✅ **Cookie Consent Banner**: GDPR-compliant cookie banner with accept/reject options
+- ✅ **Footer Navigation**: Links to all legal pages in footer
+- ✅ **Privacy Notice**: Contact section includes privacy policy agreement notice
 
 ### 🌍 New Features (Latest Update)
 - ✅ **Refined Typography**: Elegant Google Fonts (Cormorant for headings, Inter for body text) with fallback stacks
@@ -117,11 +134,14 @@ php -S localhost:8000
 
 - **Responsive Design**: Optimized for mobile, tablet, and desktop
 - **Modern Aesthetics**: Warm, minimalist design with soft colors
+- **Dark Mode**: System-aware theme with manual toggle (light/dark)
 - **Quick Booking**: Direct WhatsApp integration with pre-filled messages
 - **Complete Price List**: Transparent pricing for all services
 - **Easy Navigation**: Quick links to price categories
 - **Location Integration**: Direct links to Google Maps and Waze
 - **Accessibility**: WCAG-compliant with keyboard navigation support
+- **GDPR Compliance**: Complete privacy policy, cookie policy, and terms
+- **Cookie Consent**: User-controlled cookie preferences with localStorage
 
 ## 🎨 Design System
 
@@ -147,10 +167,11 @@ php -S localhost:8000
 
 ## 🌍 Language
 
-Currently available in **English** and **Ukrainian** (Українська). 
+Currently available in **English**, **Dutch** (Nederlands), and **Ukrainian** (Українська). 
 
-- Language switcher in the header (🇬🇧/🇺🇦)
+- Language switcher in the header (🇬🇧/🇳🇱/🇺🇦)
 - Selected language persists across page visits (localStorage)
+- All pages including legal documents available in all three languages
 - Default language: English
 
 ## 📞 Contact Information
