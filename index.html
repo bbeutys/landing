@@ -1068,7 +1068,12 @@
       padding: 12px 20px;
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
       z-index: 10000;
-      animation: slideUp 0.3s ease;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .cookie-banner {
+        animation: slideUp 0.3s ease;
+      }
     }
 
     [data-theme="dark"] .cookie-banner {
