@@ -1412,56 +1412,42 @@
 
     .equipment-visual {
       position: relative;
-      width: 120px;
-      height: 120px;
+      width: 200px;
+      height: 200px;
       flex-shrink: 0;
-      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .tech-circle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-      opacity: 0.3;
-      animation: tech-pulse 3s ease-in-out infinite;
+    .laser-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 16px;
+      filter: drop-shadow(0 4px 20px rgba(183, 129, 99, 0.3));
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
 
-    .tech-pulse {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      animation: pulse-ring 2s ease-out infinite;
+    [data-theme="dark"] .laser-image {
+      filter: drop-shadow(0 4px 20px rgba(255, 112, 67, 0.4));
     }
 
-    @keyframes tech-pulse {
-      0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.5;
-      }
+    .laser-image:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 8px 30px rgba(183, 129, 99, 0.5));
     }
 
-    @keyframes pulse-ring {
-      0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(1.8);
-        opacity: 0;
+    [data-theme="dark"] .laser-image:hover {
+      filter: drop-shadow(0 8px 30px rgba(255, 112, 67, 0.6));
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .equipment-visual {
+        width: 150px;
+        height: 150px;
+        margin-top: 16px;
       }
     }
 
@@ -1484,6 +1470,13 @@
       .equipment-visual {
         width: 100px;
         height: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .equipment-visual {
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
@@ -1577,8 +1570,7 @@
             </div>
           </div>
           <div class="equipment-visual">
-            <div class="tech-circle"></div>
-            <div class="tech-pulse"></div>
+            <img src="laser.png" alt="Novalaser Quattro 2025 Professional Diode Laser" class="laser-image" loading="lazy">
           </div>
         </div>
 
